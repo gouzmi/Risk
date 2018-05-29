@@ -19,17 +19,20 @@ import java.awt.Toolkit;
 
 public class Map extends JFrame{
 	
+	Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
+	int l = p.width;
+	int h = p.height;
+	float cl = 0.8f;
+	float ch= 0.7f;
+	
 	public Map() {
-		Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
-		int l = p.width;
-		int h = p.height;
+		
 		this.setSize(l,h);
 		this.setTitle("RiskIsep");
-		
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
-	    
-	    //this.setUndecorated(true);
+	    this.setUndecorated(false);	    
+	    //this.setResizable(true);
 	    Background map = new Background();
 	    this.add(map);
 	    this.setVisible(true);
@@ -43,8 +46,7 @@ public class Map extends JFrame{
 	
 	public class Background extends JPanel implements MouseMotionListener{ 
 		
-		int width;
-		int height;
+		
 		ArrayList<BufferedImage> imageList = new ArrayList<BufferedImage>(); // 
 		ArrayList<ImageIcon> imageNom = new ArrayList<ImageIcon>(); // 
 		ArrayList<BufferedImage> imageList_highlight = new ArrayList<BufferedImage>(); // 
@@ -59,9 +61,9 @@ public class Map extends JFrame{
 			  super.paintComponent(g);
 				for (BufferedImage each : imageToDraw) 
 				{
-					g.drawImage(each, 0, 0, this);}
+					g.drawImage(each, 0, 0,(int) (cl*l),(int) (ch*h), this);}
 				ImageIcon y = new ImageIcon("images/map1.png");
-				g.drawImage(y.getImage(), 0, 0,this);
+				g.drawImage(y.getImage(), 0, 0,(int) (cl*l),(int) (ch*h),this);
 		  	}
 
 		  	public Background() {
@@ -108,8 +110,8 @@ public class Map extends JFrame{
 		@Override
 		public void mouseMoved(MouseEvent e) {
 
-			int ix = e.getX();
-			int iy = e.getY();
+			int ix = (int)((1366/(l*cl))*e.getX());
+			int iy = (int)((915/(h*ch))*e.getY());
 			System.out.println(ix);
 			System.out.println(iy);
 			int index = 0; 
