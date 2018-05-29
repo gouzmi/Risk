@@ -14,6 +14,7 @@ public class Risk{
 
 	//Menu fenetre = new Menu();
 	Map map = new Map();
+	//TEST
 	
 	
 }
