@@ -22,8 +22,8 @@ public class Map extends JFrame{
 	Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
 	int l = p.width;
 	int h = p.height;
-	float cl = 0.8f;
-	float ch= 0.7f;
+	float cl = 0.85f;
+	float ch= 0.71f;
 	
 	public Map() {
 		
