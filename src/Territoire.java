@@ -7,15 +7,9 @@ import javax.swing.ImageIcon;
 public class Territoire {
 	String nom;
 	Territoire voisins[];
-<<<<<<< HEAD
-=======
+	
 	public static ArrayList<Territoire> territoiresList;
-	static Territoire voisin[] = new Territoire[2];
-	static Territoire Alaska = new Territoire("Alaska",voisin);
-	static Territoire NorthwestTerritory = new Territoire("NorthwestTerritory",voisin);
-	static Territoire Alberta = new Territoire("Alberta",voisin);
-	static Territoire Ontario = new Territoire("Ontario",voisin);
-	static Territoire Greenland = new Territoire("Greenland",voisin);
+	
 	
 	
 	/*
@@ -64,29 +58,23 @@ public class Territoire {
 	*/
 
 	
->>>>>>> 6b6a295c73bf2b23e9bb8602e50f1d0b89ce00fa
 	   
 	public Territoire(String nom, Territoire voisins[]) {
 		this.nom = nom;
 		this.voisins = voisins;
 	}
 	
-<<<<<<< HEAD
-	
-=======
+
 	public static void attribuerTer() {
 		
-		territoiresList.add(Alaska);
-		territoiresList.add(NorthwestTerritory);
-		territoiresList.add(Alberta);
-		territoiresList.add(Ontario);
+		
 		int j = 0; 
 		Collections.shuffle(territoiresList); // mélange liste Territoires
 		for (Territoire t : territoiresList){
-			if (j==Joueur.joueurList.size()-1){
+			if (j==Plateau.joueurList.size()-1){
 				j=0;
 			}
-			Joueur.joueurList.get(j).addTerritoire(t);
+			Plateau.joueurList.get(j).addTerritoire(t);
 			territoiresList.remove(t);
 			j++;
 		}
@@ -117,10 +105,6 @@ public class Territoire {
 		Territoire.territoiresList = territoiresList;
 	}
 
-	public static Territoire[] getVoisin() {
-		return voisin;
-	}
->>>>>>> 6b6a295c73bf2b23e9bb8602e50f1d0b89ce00fa
 
 	
 }

@@ -5,6 +5,18 @@ public class Plateau {
 
 	public static ArrayList<Joueur> joueurList;
 	public static ArrayList<Territoire> territoiresList;
+	
+	/*static Territoire voisin[] = new Territoire[2];
+	static Territoire Alaska = new Territoire("Alaska",voisin);
+	static Territoire NorthwestTerritory = new Territoire("NorthwestTerritory",voisin);
+	static Territoire Alberta = new Territoire("Alberta",voisin);
+	static Territoire Ontario = new Territoire("Ontario",voisin);
+	static Territoire Greenland = new Territoire("Greenland",voisin);
+	territoiresList.add(Alaska);
+		territoiresList.add(NorthwestTerritory);
+		territoiresList.add(Alberta);
+		territoiresList.add(Ontario);*/
+	
 	public Plateau() {
 
 		ArrayList<Joueur> jList = new ArrayList<Joueur>();
