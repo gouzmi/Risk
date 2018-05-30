@@ -13,14 +13,14 @@ public class Risk{
   public static void main(String[] args) throws IOException{
 
 	//Menu fenetre = new Menu();
-	//Map map = new Map();
+	Map map = new Map();
 	  
 	  
-	  System.out.println("salut");
+	  /*System.out.println("salut");
 	  Joueur.initListJoueurs(3);
 	  
 	  Territoire.attribuerTer();
-	  System.out.println("c");
+	  System.out.println("c");*/
 	
 }
 }
