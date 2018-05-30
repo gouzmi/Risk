@@ -19,15 +19,20 @@ import java.awt.Toolkit;
 
 public class Map extends JFrame{
 	
-	Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
-	int l = p.width;
-	int h = p.height;
+	//Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
+	//int l = p.width;
+	//int h = p.height;
 	float cl = 0.75f;
 	float ch= 0.7f;
 	
 	public Map() {
 		
+		Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
+		int l = p.width;
+		int h = p.height;
 		this.setSize(l,h);
+		
+		//this.setSize(l,h);
 		this.setTitle("RiskIsep");
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
