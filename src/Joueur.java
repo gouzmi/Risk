@@ -3,21 +3,14 @@ import java.util.ArrayList;
 public class Joueur {
 	public String nom;
 	public int id;
-	public static ArrayList<Joueur> joueurList;
-	protected ArrayList<Territoire> territoireList;
+	protected ArrayList<Territoire> territoireListJoueur;
+	
 	
 	public Joueur(int id, String nom) {
 		this.id = id;
 		this.nom = nom;
-	}
-	
-	public static void initListJoueurs(int nbJoueur) {
-		for (int i = 1; i <= nbJoueur; i++) {
-			
-			joueurList.add(new Joueur(i, "joueur"+i));
-			
-			System.out.println(joueurList.get(i));
-		}
+		ArrayList<Territoire> terList = new ArrayList<Territoire>();
+		this.territoireListJoueur = terList;
 	}
 	
 	public String getNom() {
@@ -36,23 +29,20 @@ public class Joueur {
 		this.id = id;
 	}
 
-	public static ArrayList<Joueur> getJoueurList() {
-		return joueurList;
+	public static void initListJoueurs(int nbJoueur) {
+		for (int i =1; i <=nbJoueur; i++) {
+			
+			Joueur j=new Joueur(i, "joueur"+i);
+			
+			Plateau.joueurList.add(j);
+			
+			System.out.println(Plateau.joueurList.get(i-1).getNom());
+		}
 	}
 
-	public static void setJoueurList(ArrayList<Joueur> joueurList) {
-		Joueur.joueurList = joueurList;
-	}
-
-	public ArrayList<Territoire> getTerritoireList() {
-		return territoireList;
-	}
-
-	public void setTerritoireList(ArrayList<Territoire> territoireList) {
-		this.territoireList = territoireList;
-	}
 
 	public void addTerritoire (Territoire territoire){
-		this.territoireList.add(territoire);
+		this.territoireListJoueur.add(territoire);
+		
 	}
 }

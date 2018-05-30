@@ -20,10 +20,13 @@ import java.awt.Toolkit;
 public class Map extends JFrame{
 	
 	Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
-	int l = p.width;
-	int h = p.height;
-	float cl = 0.75f;
-	float ch= 0.7f;
+	//int l = p.width;
+	//int h = p.height;
+	int l = 1366;
+	int h = 915;
+			
+	float cl = 1f;
+	float ch= 1f;
 	
 	public Map() {
 		
@@ -32,7 +35,7 @@ public class Map extends JFrame{
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
 	    this.setUndecorated(false);	    
-	    //this.setResizable(true);
+	    this.setResizable(true);
 	    Background map = new Background();
 	    this.add(map);
 	    this.setVisible(true);
@@ -64,6 +67,7 @@ public class Map extends JFrame{
 					g.drawImage(each, 0, 0,(int) (cl*l),(int) (ch*h), this);}
 				ImageIcon y = new ImageIcon("images/map1.png");
 				g.drawImage(y.getImage(), 0, 0,(int) (cl*l),(int) (ch*h),this);
+				g.fillOval(20, 20, 75, 75);
 		  	}
 
 		  	public Background() {
