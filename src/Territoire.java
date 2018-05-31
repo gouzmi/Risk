@@ -7,7 +7,9 @@ import javax.swing.ImageIcon;
 public class Territoire {
 	String nom;
 	Territoire voisins[];
-	
+	protected ArrayList<Soldat> soldatListJoueur;
+	protected ArrayList<Cavalier> cavalierListJoueur;
+	protected ArrayList<Canon> canonListJoueur;
 	public static ArrayList<Territoire> territoiresList;
 	
 	
@@ -45,7 +47,7 @@ public class Territoire {
 	Siberia : Ural, Yakutsk, Irkutsk, Mongolia, China
 	China : Ural, Afganistan, India, Siam, Mongolia, Siberia
 	India : Middle East, Afganistan, Siam, China
-	SIam : India, China, Indonesia
+	Siam : India, China, Indonesia
 	Mongolia : China, Siberia, Irkutsk, Kamchatka, Japan
 	Yakutsk : Siberia, Irkutsk, Kamchatka
 	Irkutsk : Siberia, Yakutsk, Kamchatka, Mongolia 

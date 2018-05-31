@@ -18,16 +18,53 @@ public class Plateau {
 	}
 	
 	public static void init() {
-		Territoire voisin[] = new Territoire[2];
-		Territoire Alaska = new Territoire("Alaska",voisin);
-		Territoire NorthwestTerritory = new Territoire("NorthwestTerritory",voisin);
-		 Territoire Alberta = new Territoire("Alberta",voisin);
-		 Territoire Ontario = new Territoire("Ontario",voisin);
-		 Territoire Greenland = new Territoire("Greenland",voisin);
-		//territoiresList.add(Alaska);
+		Territoire Alaska = new Territoire("Alaska",null);
+		Territoire NorthwestTerritory = new Territoire("Northwest Territory",null);
+		Territoire Alberta = new Territoire("Alberta",null);
+		Territoire Ontario = new Territoire("Ontario",null);
+		Territoire Greenland = new Territoire("Greenland",null);
+		Territoire WesternUS = new Territoire("Western US",null);
+		Territoire Quebec = new Territoire("Quebec",null);
+		Territoire EasternUS = new Territoire("Eastern US",null);
+		Territoire CentralAmerica = new Territoire("Central America",null);
+		Territoire Ontario = new Territoire("Ontario",null);
+		Territoire Greenland = new Territoire("Greenland",null);
+		Territoire WesternUS = new Territoire("Western US",null);
+		Territoire Alaska = new Territoire("Alaska",null);
+		Territoire NorthwestTerritory = new Territoire("Northwest Territory",null);
+		Territoire Alberta = new Territoire("Alberta",null);
+		Territoire Ontario = new Territoire("Ontario",null);
+		Territoire Greenland = new Territoire("Greenland",null);
+		Territoire WesternUS = new Territoire("Western US",null);
+		Territoire Alaska = new Territoire("Alaska",null);
+		Territoire NorthwestTerritory = new Territoire("Northwest Territory",null);
+		Territoire Alberta = new Territoire("Alberta",null);
+		Territoire Ontario = new Territoire("Ontario",null);
+		Territoire Greenland = new Territoire("Greenland",null);
+		Territoire WesternUS = new Territoire("Western US",null);
+		Territoire Alaska = new Territoire("Alaska",null);
+		Territoire NorthwestTerritory = new Territoire("Northwest Territory",null);
+		Territoire Alberta = new Territoire("Alberta",null);
+		Territoire Ontario = new Territoire("Ontario",null);
+		Territoire Greenland = new Territoire("Greenland",null);
+		Territoire WesternUS = new Territoire("Western US",null);
+		Territoire Alaska = new Territoire("Alaska",null);
+		Territoire NorthwestTerritory = new Territoire("Northwest Territory",null);
+		Territoire Alberta = new Territoire("Alberta",null);
+		Territoire Ontario = new Territoire("Ontario",null);
+		Territoire Greenland = new Territoire("Greenland",null);
+		Territoire WesternUS = new Territoire("Western US",null);
+		Territoire Alaska = new Territoire("Alaska",null);
+		Territoire NorthwestTerritory = new Territoire("Northwest Territory",null);
+		Territoire Alberta = new Territoire("Alberta",null);
+		Territoire Ontario = new Territoire("Ontario",null);
+		Territoire Greenland = new Territoire("Greenland",null);
+		Territoire WesternUS = new Territoire("Western US",null);
+		territoiresList.add(Alaska);
 		territoiresList.add(NorthwestTerritory);
 		territoiresList.add(Alberta);
 		territoiresList.add(Ontario);
+		territoiresList.add(WesternUS);
 	}
 	
 

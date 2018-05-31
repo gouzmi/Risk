@@ -20,15 +20,15 @@ import java.awt.Toolkit;
 public class Map extends JFrame{
 	
 	Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
-	int l = p.width;
-	int h = p.height;
-	//int l = 1366;
-	//int h = 915;
+	//int l = p.width;
+	//int h = p.height;
+	int l = 1366;
+	int h = 915;
 			
-	//float cl = 1f;
-	//float ch= 1f;
-	float cl = 0.75f;
-	float ch= 0.7f;
+	float cl = 1f;
+	float ch= 1f;
+	//float cl = 0.75f;
+	//float ch= 0.7f;
 	
 	public Map() {
 		
@@ -145,15 +145,10 @@ public class Map extends JFrame{
 					String nom = source.substring(14, source.length()-6);
 					System.out.println(nom);
 					for(Joueur j: Plateau.joueurList) {
-						System.out.println(j.getNom());
-						for(Territoire t : j.territoireListJoueur) {
-							String a = t.getNom();
-							System.out.println(a);
-							System.out.println("-------");
-							System.out.println(nom);
-							if(a.equals(nom)) {
-								//System.out.println(j.getNom());
-								System.out.println("NICE");
+						for(Territoire t : j.territoireListJoueur) {		
+							if(t.getNom().equals(nom)) {
+								System.out.println("-------");
+								System.out.println(t.getNom()+" appartient à "+j.getNom());
 							}
 						}
 					}
