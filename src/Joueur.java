@@ -36,11 +36,9 @@ public class Joueur {
 	public static void initListJoueurs(int nbJoueur) {
 		for (int i =1; i <=nbJoueur; i++) {
 			
-			Joueur j=new Joueur(i, "joueur"+i);
-			
-			Plateau.joueurList.add(j);
-			
-			System.out.println(Plateau.joueurList.get(i-1).getNom());
+			Joueur j=new Joueur(i, "joueur"+i);			
+			Plateau.joueurList.add(j);		
+			//System.out.println(Plateau.joueurList.get(i-1).getNom());
 		}
 	}
 

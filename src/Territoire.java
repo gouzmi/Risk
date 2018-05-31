@@ -58,7 +58,8 @@ public class Territoire {
 	Eastern Australia : Western Australia, New Guinea
 	New Guinea : Indonesia, Eastern Australia, Western Australia
 	*/
-
+	
+	
 	
 	   
 	public Territoire(String nom, Territoire voisins[]) {
@@ -77,9 +78,13 @@ public class Territoire {
 			}
 			Plateau.joueurList.get(j).addTerritoire(t);
 			//territoiresList.remove(t);
-			System.out.println(Plateau.joueurList.get(j).getNom());
-			System.out.println(Plateau.joueurList.get(j).territoireListJoueur.get(Plateau.joueurList.get(j).territoireListJoueur.size()-1).getNom());
 			j++;
+		}
+		
+		for(Joueur l : Plateau.joueurList) {
+			System.out.println(l.getNom());
+			System.out.println(l.territoireListJoueur.size());
+			
 		}
 		
 	}
