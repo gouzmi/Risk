@@ -48,4 +48,10 @@ public class Joueur {
 	public void addTerritoire (Territoire territoire){
 		this.territoireListJoueur.add(territoire);	
 	}
+	
+	public void addSoldat (){
+		Soldat soldat = new Soldat(); 
+		this.soldatListJoueur.add(soldat);
+		
+	}
 }
