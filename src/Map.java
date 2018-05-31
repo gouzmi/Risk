@@ -149,6 +149,12 @@ public class Map extends JFrame{
 							if(t.getNom().equals(nom)) {
 								System.out.println("-------");
 								System.out.println(t.getNom()+" appartient à "+j.getNom());
+								//System.out.println("Soldat");
+								//System.out.println(t.getSoldatListJoueur().size());
+								System.out.println("Cavalier");
+								System.out.println(t.getCavalierListJoueur().size());
+								System.out.println("Canon");
+								System.out.println(t.getCanonListJoueur().size());
 							}
 						}
 					}

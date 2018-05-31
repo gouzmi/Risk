@@ -65,6 +65,8 @@ public class Territoire {
 	public Territoire(String nom, Territoire voisins[]) {
 		this.nom = nom;
 		this.voisins = voisins;
+		ArrayList<Cavalier> jCava = new ArrayList<Cavalier>();
+		this.cavalierListJoueur = jCava;
 	}
 	
 
@@ -100,6 +102,36 @@ public class Territoire {
 	public Territoire[] getVoisins() {
 		return voisins;
 	}
+
+	public ArrayList<Soldat> getSoldatListJoueur() {
+		return soldatListJoueur;
+	}
+
+
+	public void setSoldatListJoueur(ArrayList<Soldat> soldatListJoueur) {
+		this.soldatListJoueur = soldatListJoueur;
+	}
+
+
+	public ArrayList<Cavalier> getCavalierListJoueur() {
+		return cavalierListJoueur;
+	}
+
+
+	public void setCavalierListJoueur(ArrayList<Cavalier> cavalierListJoueur) {
+		this.cavalierListJoueur = cavalierListJoueur;
+	}
+
+
+	public ArrayList<Canon> getCanonListJoueur() {
+		return canonListJoueur;
+	}
+
+
+	public void setCanonListJoueur(ArrayList<Canon> canonListJoueur) {
+		this.canonListJoueur = canonListJoueur;
+	}
+
 
 	public void setVoisins(Territoire[] voisins) {
 		this.voisins = voisins;
