@@ -104,7 +104,7 @@ public class Plateau {
 		territoiresList.add(NewGuinea);
 		territoiresList.add(Greenland);
 		
-		Ural.getCavalierListJoueur().add(new Cavalier());
+		Ural.getCavalierListTerritoire().add(new Cavalier());
 	}
 	
 

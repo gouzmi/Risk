@@ -20,15 +20,17 @@ import java.awt.Toolkit;
 public class Map extends JFrame{
 	
 	Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
-	//int l = p.width;
-	//int h = p.height;
-	int l = 1366;
-	int h = 915;
+	int l = p.width;
+	int h = p.height;
+	//int l = 1366;
+	//int h = 915;
 			
-	float cl = 1f;
-	float ch= 1f;
-	//float cl = 0.75f;
-	//float ch= 0.7f;
+	//float cl = 1f;
+	//float ch= 1f;
+	float cl = 0.7f;
+	float ch= 0.7f;
+	float pl = (l*cl)/1366;
+	float ph = (h*ch)/915;
 	
 	public Map() {
 		
@@ -71,7 +73,10 @@ public class Map extends JFrame{
 					g.drawImage(each, 0, 0,(int) (cl*l),(int) (ch*h), this);}
 				ImageIcon y = new ImageIcon("images/map1.png");
 				g.drawImage(y.getImage(), 0, 0,(int) (cl*l),(int) (ch*h),this);
-				g.fillOval(20, 20, 75, 75);
+				g.setColor(Color.ORANGE);
+				g.fillOval((int)(pl*260),(int)(ph*195), 25, 25);
+				g.setColor(Color.RED);
+				g.fillOval(260, 195, 25, 25);
 		  	}
 
 		  	public Background() {
@@ -118,10 +123,13 @@ public class Map extends JFrame{
 		@Override
 		public void mouseMoved(MouseEvent e) {
 
-			int ix = (int)((1366/(l*cl))*e.getX());
-			int iy = (int)((915/(h*ch))*e.getY());
+			int ix = (int)((1/pl)*e.getX());
+			int iy = (int)((1/ph)*e.getY());
 			System.out.println(ix);
 			System.out.println(iy);
+			System.out.println("-----");
+			System.out.println(e.getX());
+			System.out.println(e.getY());
 			int index = 0; 
 			for (BufferedImage each : imageList) 
 			{
@@ -149,12 +157,12 @@ public class Map extends JFrame{
 							if(t.getNom().equals(nom)) {
 								System.out.println("-------");
 								System.out.println(t.getNom()+" appartient à "+j.getNom());
-								//System.out.println("Soldat");
-								//System.out.println(t.getSoldatListJoueur().size());
+								System.out.println("Soldat");
+								System.out.println(t.getSoldatListTerritoire().size());
 								System.out.println("Cavalier");
-								System.out.println(t.getCavalierListJoueur().size());
+								System.out.println(t.getCavalierListTerritoire().size());
 								System.out.println("Canon");
-								System.out.println(t.getCanonListJoueur().size());
+								System.out.println(t.getCanonListTerritoire().size());
 							}
 						}
 					}

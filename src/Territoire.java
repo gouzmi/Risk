@@ -7,9 +7,9 @@ import javax.swing.ImageIcon;
 public class Territoire {
 	String nom;
 	Territoire voisins[];
-	protected ArrayList<Soldat> soldatListJoueur;
-	protected ArrayList<Cavalier> cavalierListJoueur;
-	protected ArrayList<Canon> canonListJoueur;
+	protected ArrayList<Soldat> soldatListTerritoire;
+	protected ArrayList<Cavalier> cavalierListTerritoire;
+	protected ArrayList<Canon> canonListTerritoire;
 	public static ArrayList<Territoire> territoiresList;
 	
 	
@@ -65,8 +65,12 @@ public class Territoire {
 	public Territoire(String nom, Territoire voisins[]) {
 		this.nom = nom;
 		this.voisins = voisins;
-		ArrayList<Cavalier> jCava = new ArrayList<Cavalier>();
-		this.cavalierListJoueur = jCava;
+		ArrayList<Cavalier> tCava = new ArrayList<Cavalier>();
+		this.cavalierListTerritoire = tCava;
+		ArrayList<Canon> tCan = new ArrayList<Canon>();
+		this.canonListTerritoire = tCan;
+		ArrayList<Soldat> tSol = new ArrayList<Soldat>();
+		this.soldatListTerritoire = tSol;
 	}
 	
 
@@ -103,33 +107,34 @@ public class Territoire {
 		return voisins;
 	}
 
-	public ArrayList<Soldat> getSoldatListJoueur() {
-		return soldatListJoueur;
+
+	public ArrayList<Soldat> getSoldatListTerritoire() {
+		return soldatListTerritoire;
 	}
 
 
-	public void setSoldatListJoueur(ArrayList<Soldat> soldatListJoueur) {
-		this.soldatListJoueur = soldatListJoueur;
+	public void setSoldatListTerritoire(ArrayList<Soldat> soldatListTerritoire) {
+		this.soldatListTerritoire = soldatListTerritoire;
 	}
 
 
-	public ArrayList<Cavalier> getCavalierListJoueur() {
-		return cavalierListJoueur;
+	public ArrayList<Cavalier> getCavalierListTerritoire() {
+		return cavalierListTerritoire;
 	}
 
 
-	public void setCavalierListJoueur(ArrayList<Cavalier> cavalierListJoueur) {
-		this.cavalierListJoueur = cavalierListJoueur;
+	public void setCavalierListTerritoire(ArrayList<Cavalier> cavalierListTerritoire) {
+		this.cavalierListTerritoire = cavalierListTerritoire;
 	}
 
 
-	public ArrayList<Canon> getCanonListJoueur() {
-		return canonListJoueur;
+	public ArrayList<Canon> getCanonListTerritoire() {
+		return canonListTerritoire;
 	}
 
 
-	public void setCanonListJoueur(ArrayList<Canon> canonListJoueur) {
-		this.canonListJoueur = canonListJoueur;
+	public void setCanonListTerritoire(ArrayList<Canon> canonListTerritoire) {
+		this.canonListTerritoire = canonListTerritoire;
 	}
 
 
