@@ -39,7 +39,7 @@ public class Map extends JFrame{
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
 	    this.setUndecorated(false);	    
-	    this.setResizable(false);
+	    //this.setResizable(false);
 	    Background map = new Background();
 	    this.add(map);
 	    this.setVisible(true);
@@ -141,10 +141,23 @@ public class Map extends JFrame{
 					
 					repaint();
 					ImageIcon img = imageNom.get(index-1);
-					String nom = img.getDescription();
-					System.out.println(nom.substring(14, nom.length()-6));
+					String source = img.getDescription();
+					String nom = source.substring(14, source.length()-6);
+					System.out.println(nom);
+					for(Joueur j: Plateau.joueurList) {
+						System.out.println(j.getNom());
+						for(Territoire t : j.territoireListJoueur) {
+							String a = t.getNom();
+							System.out.println(a);
+							System.out.println("-------");
+							System.out.println(nom);
+							if(a.equals(nom)) {
+								//System.out.println(j.getNom());
+								System.out.println("NICE");
+							}
+						}
+					}
 					
-					break;
 				}
 				
 			}

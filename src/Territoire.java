@@ -65,17 +65,18 @@ public class Territoire {
 	}
 	
 
-	public static void attribuerTer() {
-		
+	public static void attribuerTer(ArrayList<Territoire> territoiresList) {
 		
 		int j = 0; 
 		Collections.shuffle(territoiresList); // mélange liste Territoires
 		for (Territoire t : territoiresList){
-			if (j==Plateau.joueurList.size()-1){
+			if (j==Plateau.joueurList.size()){
 				j=0;
 			}
 			Plateau.joueurList.get(j).addTerritoire(t);
-			territoiresList.remove(t);
+			//territoiresList.remove(t);
+			System.out.println(Plateau.joueurList.get(j).getNom());
+			System.out.println(Plateau.joueurList.get(j).territoireListJoueur.get(Plateau.joueurList.get(j).territoireListJoueur.size()-1).getNom());
 			j++;
 		}
 		

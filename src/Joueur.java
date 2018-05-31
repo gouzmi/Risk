@@ -4,13 +4,17 @@ public class Joueur {
 	public String nom;
 	public int id;
 	protected ArrayList<Territoire> territoireListJoueur;
+	protected ArrayList<Soldat> soldatListJoueur;
 	
-	
+	 
 	public Joueur(int id, String nom) {
 		this.id = id;
 		this.nom = nom;
-		ArrayList<Territoire> terList = new ArrayList<Territoire>();
-		this.territoireListJoueur = terList;
+		ArrayList<Territoire> territoireListJoueur = new ArrayList<Territoire>();
+		this.territoireListJoueur = territoireListJoueur;
+		ArrayList<Soldat> soldatListJoueur = new ArrayList<Soldat>();
+		this.soldatListJoueur = soldatListJoueur;
+		
 	}
 	
 	public String getNom() {
@@ -42,7 +46,6 @@ public class Joueur {
 
 
 	public void addTerritoire (Territoire territoire){
-		this.territoireListJoueur.add(territoire);
-		
+		this.territoireListJoueur.add(territoire);	
 	}
 }

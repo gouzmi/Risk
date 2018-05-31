@@ -14,8 +14,15 @@ public class Risk{
   public static void main(String[] args) throws IOException{
 
 	//Menu fenetre = new Menu();
-	Map map = new Map();
+	
+	  
+	Plateau p = new Plateau();
+	Joueur.initListJoueurs(2);
+	Plateau.init();
+	Territoire.attribuerTer(Plateau.territoiresList);
 
+	Map map = new Map();
+	
 
 	  
 	  
