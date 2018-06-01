@@ -17,13 +17,13 @@ public class Risk{
 	
 	  
 	Plateau p = new Plateau();
-	Joueur.initListJoueurs(4);
+	Joueur.initListJoueurs(3);
+	Unite.attribuerArmees();
 	Plateau.init();
 	Territoire.attribuerTer(Plateau.territoiresList);
-	Unite.attribuerArmees();
-
-
+	//Plateau.territoiresList.get(0).addCanon(10);
 	Map map = new Map();
+	
 	
 
 	  

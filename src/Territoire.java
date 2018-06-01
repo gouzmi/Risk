@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 public class Territoire {
 	String nom;
 	Territoire voisins[];
+	Joueur occupant;
 	protected ArrayList<Soldat> soldatListTerritoire;
 	protected ArrayList<Cavalier> cavalierListTerritoire;
 	protected ArrayList<Canon> canonListTerritoire;
@@ -71,6 +72,7 @@ public class Territoire {
 		this.canonListTerritoire = tCan;
 		ArrayList<Soldat> tSol = new ArrayList<Soldat>();
 		this.soldatListTerritoire = tSol;
+		//this.occupant = occupant;
 	}
 	
 
@@ -83,7 +85,8 @@ public class Territoire {
 				j=0;
 			}
 			Plateau.joueurList.get(j).addTerritoire(t);
-			//territoiresList.remove(t);
+			t.setOccupant(Plateau.joueurList.get(j));
+			t.addSoldat(1);
 			j++;
 		}
 		
@@ -93,7 +96,18 @@ public class Territoire {
 			
 		}
 		
+		
 	}
+
+	public Joueur getOccupant() {
+		return occupant;
+	}
+
+
+	public void setOccupant(Joueur occupant) {
+		this.occupant = occupant;
+	}
+
 
 	public String getNom() {
 		return nom;
@@ -150,6 +164,44 @@ public class Territoire {
 		Territoire.territoiresList = territoiresList;
 	}
 
-
+	public void addSoldat(int nb) {
+		if(this.occupant.soldatListJoueur.size()>=nb) {
+			for(int i=0;i<nb;i++) {
+				this.soldatListTerritoire.add(new Soldat());
+				this.occupant.soldatListJoueur.remove(this.occupant.soldatListJoueur.size()-1);
+			}
+		}
+		else {
+			System.out.println("pas assez d'unités !");
+		}
+	}
+	
+	public void addCavalier(int nb) {
+		if(this.occupant.soldatListJoueur.size()>=3*nb) {
+			for(int i=0;i<nb;i++) {
+				this.cavalierListTerritoire.add(new Cavalier());
+			}
+			for(int i=0;i<3*nb;i++) {
+				this.occupant.soldatListJoueur.remove(this.occupant.soldatListJoueur.size()-1);
+			}
+		}
+		else {
+			System.out.println("pas assez d'unités !");
+		}
+	}
+	
+	public void addCanon(int nb) {
+		if(this.occupant.soldatListJoueur.size()>=7*nb) {
+			for(int i=0;i<nb;i++) {
+				this.canonListTerritoire.add(new Canon());
+			}
+			for(int i=0;i<7*nb;i++) {
+				this.occupant.soldatListJoueur.remove(this.occupant.soldatListJoueur.size()-1);
+			}
+		}
+		else {
+			System.out.println("pas assez d'unités !");
+		}
+	}
 	
 }

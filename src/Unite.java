@@ -63,7 +63,7 @@ public class Unite {
 	public static void ajoutsoldat(int nbarmee) {
 		for (Joueur j : Plateau.joueurList) {
 			for (int i=0; i<nbarmee; i++) {
-				j.addSoldat();
+				j.addSoldatJoueur();
 			}
 		System.out.println(j.getNom()+ " Ã  une armÃ©e de ");
 		System.out.println(j.soldatListJoueur.size());
@@ -118,6 +118,37 @@ public class Unite {
 
 	public void setNbmouv(int nbmouv) {
 		this.nbmouv = nbmouv;
+	}
+	
+	public void move(Territoire dep, Territoire arr) {
+		if(dep.getOccupant()==arr.getOccupant()) {
+			if(this.nbmouv>0) {
+				if(this.cout==1) {
+					Soldat soldat = new Soldat();
+					soldat.setNbmouv(this.getNbmouv()-1);
+					arr.getSoldatListTerritoire().add(soldat);
+					dep.getSoldatListTerritoire().remove(this);
+				}
+				else if(this.cout==3) {
+					Cavalier cavalier = new Cavalier();
+					cavalier.setNbmouv(this.getNbmouv()-1);
+					arr.getCavalierListTerritoire().add(cavalier);
+					dep.getCavalierListTerritoire().remove(this);
+				}
+				else {
+					Canon canon = new Canon();
+					canon.setNbmouv(this.getNbmouv()-1);
+					arr.getCanonListTerritoire().add(canon);
+					dep.getCanonListTerritoire().remove(this);
+				}
+			}
+			else {
+				System.out.println("Plus assez de déplacement");
+			}
+		}
+		else {
+			System.out.println("Les 2 territoires ne sont pas au même occupant");
+		}
 	}
 	
 }

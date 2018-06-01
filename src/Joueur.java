@@ -47,9 +47,11 @@ public class Joueur {
 		this.territoireListJoueur.add(territoire);	
 	}
 	
-	public void addSoldat (){
+	public void addSoldatJoueur (){
 		Soldat soldat = new Soldat(); 
-		this.soldatListJoueur.add(soldat);
-		
+		this.soldatListJoueur.add(soldat);	
 	}
+	
+	
+	
 }

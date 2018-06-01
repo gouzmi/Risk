@@ -60,6 +60,7 @@ public class Plateau {
 		Territoire WesternAustralia = new Territoire("Western Australia",null);
 		Territoire EasternAustralia = new Territoire("Eastern Australia",null);
 		Territoire NewGuinea = new Territoire("New Guinea",null);
+		
 	
 		territoiresList.add(Alaska);
 		territoiresList.add(NorthwestTerritory);
@@ -104,7 +105,6 @@ public class Plateau {
 		territoiresList.add(NewGuinea);
 		territoiresList.add(Greenland);
 		
-		Ural.getCavalierListTerritoire().add(new Cavalier());
 	}
 	
 
