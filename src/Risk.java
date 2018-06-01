@@ -20,6 +20,8 @@ public class Risk{
 	Joueur.initListJoueurs(4);
 	Plateau.init();
 	Territoire.attribuerTer(Plateau.territoiresList);
+	Unite.attribuerArmees();
+
 
 	Map map = new Map();
 	
