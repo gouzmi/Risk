@@ -5,9 +5,9 @@ public class Plateau {
 
 	public static ArrayList<Joueur> joueurList;
 	public static ArrayList<Territoire> territoiresList;
-	
-		
-		
+	public static ArrayList<Region> regionsList;
+
+			
 	
 	public Plateau() {
 
@@ -15,6 +15,7 @@ public class Plateau {
 		ArrayList<Territoire> tList = new ArrayList<Territoire>();
 		this.joueurList = jList;
 		this.territoiresList = tList;
+		this.regionsList = regionsList;
 	}
 	
 	public static void init() {
@@ -61,7 +62,94 @@ public class Plateau {
 		Territoire EasternAustralia = new Territoire("Eastern Australia",null);
 		Territoire NewGuinea = new Territoire("New Guinea",null);
 		
-	
+
+		
+		Territoire voisinAlaska [] = {NorthwestTerritory, Alberta, Kamchatka};
+	    Alaska.setVoisins(voisinAlaska);
+	    Territoire voisinNorthwestTerritory [] = { Alberta, Alaska , Ontario, Greenland};
+	    NorthwestTerritory.setVoisins(voisinNorthwestTerritory);
+	    Territoire voisinAlberta  [] = {Alaska, NorthwestTerritory, Ontario, WesternUS};
+	    Alberta.setVoisins(voisinAlberta);
+	    Territoire voisinOntario  [] = {NorthwestTerritory, Alberta, WesternUS, EasternUS, Greenland, Quebec};
+	    Ontario.setVoisins(voisinOntario);
+	    Territoire voisinGreenland  [] = {NorthwestTerritory, Ontario, Quebec, Iceland};
+	    Greenland.setVoisins(voisinGreenland);
+	    Territoire voisinQuebec  [] = {Ontario, EasternUS, Greenland};
+	    Quebec.setVoisins(voisinQuebec);
+	    Territoire voisinWesternUS [] = {Alberta, Ontario, EasternUS, CentralAmerica};
+	    WesternUS.setVoisins(voisinWesternUS);
+	    Territoire voisinEasternUS [] = {WesternUS, Ontario, Quebec, CentralAmerica};
+	    EasternUS.setVoisins(voisinEasternUS);
+	    Territoire voisinCentralAmerica [] = {WesternUS, EasternUS, Venezuela};
+	    CentralAmerica.setVoisins(voisinCentralAmerica);
+	    Territoire voisinVenezuela  [] = {CentralAmerica, Brazil, Peru};
+	    Venezuela.setVoisins(voisinVenezuela);
+	    Territoire voisinPeru [] = {NorthwestTerritory, Alberta, Kamchatka};
+	    Peru.setVoisins(voisinPeru);
+	    Territoire voisinArgentina  [] = {Peru, Brazil};
+	    Argentina.setVoisins(voisinArgentina);
+	    Territoire voisinBrazil [] = {Peru, Venezuela, Argentina, NorthAfrica};
+	    Brazil.setVoisins(voisinBrazil);
+	    Territoire voisinNorthAfrica [] = {Brazil, Egypt, EastAfrica, Congo, WesternEU, SouthernEU};
+	    NorthAfrica.setVoisins(voisinNorthAfrica);
+	    Territoire voisinCongo  [] = {NorthAfrica, EastAfrica, SouthAfrica};
+	    Congo.setVoisins(voisinCongo);
+	    Territoire voisinSouthAfrica [] = {Congo, EastAfrica, Madagascar};
+	    SouthAfrica.setVoisins(voisinSouthAfrica);
+	    Territoire voisinMadagascar [] = {SouthAfrica, EastAfrica};
+	    Madagascar.setVoisins(voisinMadagascar);
+	    Territoire voisinEastAfrica [] = {NorthAfrica, Egypt, Congo, SouthAfrica};
+	    EastAfrica.setVoisins(voisinEastAfrica);
+	    Territoire voisinEgypt [] = {EastAfrica, NorthAfrica, SouthernEU, MiddleEast};
+	    Egypt.setVoisins(voisinEgypt);
+	    Territoire voisinSouthernEU [] = {WesternEU, NorthernEU, Ukraine, MiddleEast};
+	    SouthernEU.setVoisins(voisinSouthernEU);
+	    Territoire voisinWesternEU [] = {SouthernEU, NorthAfrica, NorthernEU, GreatBritain};
+	    WesternEU.setVoisins(voisinWesternEU);
+	    Territoire voisinGreatBritain  [] = {WesternEU, Iceland, Scandinavia};
+	    GreatBritain.setVoisins(voisinGreatBritain);
+	    Territoire voisinIceland [] = {Greenland, Scandinavia, GreatBritain};
+	    Iceland.setVoisins(voisinIceland);
+	    Territoire voisinScandinavia  [] = {Iceland, GreatBritain, NorthernEU, Ukraine};
+	    Scandinavia.setVoisins(voisinScandinavia);
+	    Territoire voisinNorthernEU  [] = {GreatBritain, Scandinavia, WesternEU, SouthernEU, Ukraine};
+	    NorthernEU.setVoisins(voisinArgentina);
+	    Territoire voisinUkraine  [] = {Scandinavia, NorthernEU, SouthernEU, MiddleEast, Afganistan, Ural};
+	    Ukraine.setVoisins(voisinUkraine);
+	    Territoire voisinMiddleEast  [] = {Egypt, EastAfrica, SouthernEU, Ukraine, Afganistan, India};
+	    MiddleEast.setVoisins(voisinMiddleEast);
+	    Territoire voisinAfganistan  [] = {MiddleEast, India, China, Ural, Ukraine};
+	    Afganistan.setVoisins(voisinAfganistan);
+	    Territoire voisinUral [] = {Ukraine, Siberia, Afganistan, China};
+	    Ural.setVoisins(voisinUral);
+	    Territoire voisinSiberia  [] = {Ural, Yakutsk, Irkutsk, Mongolia, China};
+	    Siberia.setVoisins(voisinSiberia);
+	    Territoire voisinChina [] = {Ural, Afganistan, India, Siam, Mongolia, Siberia};
+	    China.setVoisins(voisinChina);
+	    Territoire voisinIndia  [] = {MiddleEast, Afganistan, Siam, China};
+	    India.setVoisins(voisinIndia);
+	    Territoire voisinSiam  [] = {India, China, Indonesia};
+	    Siam.setVoisins(voisinSiam);
+	    Territoire voisinMongolia  [] = {China, Siberia, Irkutsk, Kamchatka, Japan};
+	    Mongolia.setVoisins(voisinMongolia);
+	    Territoire voisinYakutsk [] = {Siberia, Irkutsk, Kamchatka};
+	    Yakutsk.setVoisins(voisinYakutsk);
+	    Territoire voisinIrkutsk [] = {Siberia, Yakutsk, Kamchatka, Mongolia};
+	    Irkutsk.setVoisins(voisinIrkutsk);
+	    Territoire voisinKamchatka  [] = {Yakutsk, Irkutsk, Mongolia, Alaska};
+	    Kamchatka.setVoisins(voisinKamchatka);
+	    Territoire voisinJapan  [] = {Mongolia, Kamchatka};
+	    Japan.setVoisins(voisinJapan);
+	    Territoire voisinIndonesia  [] = {Siam, NewGuinea, WesternAustralia};
+	    Indonesia.setVoisins(voisinIndonesia);
+	    Territoire voisinWesternAustralia  [] = {Indonesia, NewGuinea, EasternAustralia};
+	    WesternAustralia.setVoisins(voisinWesternAustralia);
+	    Territoire voisinEasternAustralia [] = {WesternAustralia, NewGuinea};
+	    EasternAustralia.setVoisins(voisinEasternAustralia);
+	    Territoire voisinNewGuinea  [] = {Indonesia, EasternAustralia, WesternAustralia};
+	    NewGuinea.setVoisins(voisinArgentina);
+	    
+	   
 		territoiresList.add(Alaska);
 		territoiresList.add(NorthwestTerritory);
 		territoiresList.add(Alberta);
@@ -105,7 +193,32 @@ public class Plateau {
 		territoiresList.add(NewGuinea);
 		territoiresList.add(Greenland);
 		
+
+		//Initialisation des régions
+
+		Territoire TNorthUS [] = {Alaska, NorthwestTerritory, Alberta, Ontario, WesternUS, CentralAmerica, EasternUS, Quebec, Greenland};
+		Region NorthUS = new Region ("NorthUS", TNorthUS);
+		Territoire TSouthUS [] = {Venezuela, Peru, Argentina, Brazil};
+		Region SouthUS = new Region ("SouthUS", TSouthUS);
+		Territoire TEurope [] = {Iceland, GreatBritain, WesternEU, SouthernEU, NorthernEU, Scandinavia, Ukraine};
+		Region Europe = new Region ("Europe", TEurope);
+		Territoire TAfrica [] = {NorthAfrica, Egypt, EastAfrica, Congo, SouthAfrica, Madagascar};
+		Region Africa = new Region ("Africa", TAfrica);
+		Territoire TAsia [] = {MiddleEast, India, Afganistan, Ural, Siberia, China, Siam, Mongolia, Irkutsk, Yakutsk, Kamchatka, Japan};
+		Region Asia = new Region ("Asia", TAsia);
+		Territoire TAustralia [] = {Indonesia, NewGuinea, WesternAustralia, EasternAustralia};
+		Region Australia = new Region ("Australia", TAustralia);
+		
+		// Ajout des régions dans une liste
+		
+		regionsList.add(NorthUS);
+		regionsList.add(SouthUS);
+		regionsList.add(Europe);
+		regionsList.add(Africa);
+		regionsList.add(Asia);
+		regionsList.add(Australia);
 	}
+	
 	
 
 }
