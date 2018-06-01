@@ -65,10 +65,34 @@ public class Unite {
 			for (int i=0; i<nbarmee; i++) {
 				j.addSoldatJoueur();
 			}
-		System.out.println(j.getNom()+ " à une armée de ");
+		System.out.println(j.getNom()+ " Ã  une armÃ©e de ");
 		System.out.println(j.soldatListJoueur.size());
 		}
 	}
+	
+		public static void renfort(Joueur j) {
+		int r = (int) Math.floor((j.territoireListJoueur.size()/3));
+		if (r<=2) {
+			r = 2;
+		}
+		int compt = 0;
+		for (Region region : Plateau.regionsList) {
+			for (Territoire t : region.territoires) {
+				for(Territoire tj : j.territoireListJoueur) {
+					if (tj == t) {
+						compt++;
+					}
+				}
+			}
+			if (compt == region.territoires.length) {
+				r = r+(int)Math.floor(compt/2);
+			}
+		}
+		for (int i=0; i<r; i++) {
+			j.addSoldatJoueur();
+		}
+	}
+	
 	
 	// Getters et Setters 
 	
@@ -143,11 +167,11 @@ public class Unite {
 				}
 			}
 			else {
-				System.out.println("Plus assez de d�placement");
+				System.out.println("Plus assez de déplacement");
 			}
 		}
 		else {
-			System.out.println("Les 2 territoires ne sont pas au m�me occupant");
+			System.out.println("Les 2 territoires ne sont pas au même occupant");
 		}
 	}
 	
