@@ -5,9 +5,9 @@ public class Plateau {
 
 	public static ArrayList<Joueur> joueurList;
 	public static ArrayList<Territoire> territoiresList;
-	
-		
-		
+	public static ArrayList<Region> regionsList;
+
+			
 	
 	public Plateau() {
 
@@ -15,6 +15,7 @@ public class Plateau {
 		ArrayList<Territoire> tList = new ArrayList<Territoire>();
 		this.joueurList = jList;
 		this.territoiresList = tList;
+		this.regionsList = regionsList;
 	}
 	
 	public static void init() {
@@ -148,7 +149,7 @@ public class Plateau {
 	    Territoire voisinNewGuinea  [] = {Indonesia, EasternAustralia, WesternAustralia};
 	    NewGuinea.setVoisins(voisinArgentina);
 	    
-	
+	   
 		territoiresList.add(Alaska);
 		territoiresList.add(NorthwestTerritory);
 		territoiresList.add(Alberta);
@@ -192,8 +193,31 @@ public class Plateau {
 		territoiresList.add(NewGuinea);
 		territoiresList.add(Greenland);
 		
-		Ural.getCavalierListTerritoire().add(new Cavalier());
+		//Initialisation des régions
+
+		Territoire TNorthUS [] = {Alaska, NorthwestTerritory, Alberta, Ontario, WesternUS, CentralAmerica, EasternUS, Quebec, Greenland};
+		Region NorthUS = new Region ("NorthUS", TNorthUS);
+		Territoire TSouthUS [] = {Venezuela, Peru, Argentina, Brazil};
+		Region SouthUS = new Region ("SouthUS", TSouthUS);
+		Territoire TEurope [] = {Iceland, GreatBritain, WesternEU, SouthernEU, NorthernEU, Scandinavia, Ukraine};
+		Region Europe = new Region ("Europe", TEurope);
+		Territoire TAfrica [] = {NorthAfrica, Egypt, EastAfrica, Congo, SouthAfrica, Madagascar};
+		Region Africa = new Region ("Africa", TAfrica);
+		Territoire TAsia [] = {MiddleEast, India, Afganistan, Ural, Siberia, China, Siam, Mongolia, Irkutsk, Yakutsk, Kamchatka, Japan};
+		Region Asia = new Region ("Asia", TAsia);
+		Territoire TAustralia [] = {Indonesia, NewGuinea, WesternAustralia, EasternAustralia};
+		Region Australia = new Region ("Australia", TAustralia);
+		
+		// Ajout des régions dans une liste
+		
+		regionsList.add(NorthUS);
+		regionsList.add(SouthUS);
+		regionsList.add(Europe);
+		regionsList.add(Africa);
+		regionsList.add(Asia);
+		regionsList.add(Australia);
 	}
+	
 	
 
 }
