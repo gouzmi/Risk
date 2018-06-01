@@ -65,6 +65,8 @@ public class Unite {
 			for (int i=0; i<nbarmee; i++) {
 				j.addSoldat();
 			}
+		System.out.println(j.getNom()+ " à une armée de ");
+		System.out.println(j.soldatListJoueur.size());
 		}
 	}
 	
