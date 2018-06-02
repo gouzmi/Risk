@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
@@ -19,11 +20,6 @@ public class Unite {
 		this.nbmouv = nbmouv;
 	}
 
-	public static int attribuerpuissance (int mouvmin, int mouvmax) {
-		Random r = new Random();
-		int puissance = mouvmin + r.nextInt(mouvmax - mouvmin);
-		return puissance;
-	}
 	
 	public static void attribuerArmees () {
 	
@@ -146,32 +142,45 @@ public class Unite {
 	
 	public void move(Territoire dep, Territoire arr) {
 		if(dep.getOccupant()==arr.getOccupant()) {
-			if(this.nbmouv>0) {
-				if(this.cout==1) {
-					Soldat soldat = new Soldat();
-					soldat.setNbmouv(this.getNbmouv()-1);
-					arr.getSoldatListTerritoire().add(soldat);
-					dep.getSoldatListTerritoire().remove(this);
-				}
-				else if(this.cout==3) {
-					Cavalier cavalier = new Cavalier();
-					cavalier.setNbmouv(this.getNbmouv()-1);
-					arr.getCavalierListTerritoire().add(cavalier);
-					dep.getCavalierListTerritoire().remove(this);
+			for(Unite each : dep.getUniteMove()) {
+				if(each.getNbmouv()>0) {
+					if(this.cout==1) {
+						Soldat soldat = new Soldat();
+						soldat.setNbmouv(this.getNbmouv()-1);
+						arr.getSoldatListTerritoire().add(soldat);
+						dep.getSoldatListTerritoire().remove(this);
+					}
+					else if(this.cout==3) {
+						Cavalier cavalier = new Cavalier();
+						cavalier.setNbmouv(this.getNbmouv()-1);
+						arr.getCavalierListTerritoire().add(cavalier);
+						dep.getCavalierListTerritoire().remove(this);
+					}
+					else {
+						Canon canon = new Canon();
+						canon.setNbmouv(this.getNbmouv()-1);
+						arr.getCanonListTerritoire().add(canon);
+						dep.getCanonListTerritoire().remove(this);
+					}
+					
 				}
 				else {
-					Canon canon = new Canon();
-					canon.setNbmouv(this.getNbmouv()-1);
-					arr.getCanonListTerritoire().add(canon);
-					dep.getCanonListTerritoire().remove(this);
+					System.out.println("Plus assez de déplacement pour votre "+each.getType());
 				}
+				dep.getUniteMove().remove(each);
 			}
-			else {
-				System.out.println("Plus assez de dÃ©placement");
-			}
+			
+			
 		}
 		else {
-			System.out.println("Les 2 territoires ne sont pas au mÃªme occupant");
+			if(dep.uniteMove.size()<4) {
+				System.out.println("A l'attaque !");
+				dep.getUniteAtt().clear();
+				dep.getUniteAtt().addAll(dep.getUniteMove());
+			}
+			else {
+				System.out.println("Trop d'unités pour attaquer !");
+			}
 		}
 	}
 	

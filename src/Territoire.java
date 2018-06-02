@@ -11,7 +11,9 @@ public class Territoire {
 	protected ArrayList<Soldat> soldatListTerritoire;
 	protected ArrayList<Cavalier> cavalierListTerritoire;
 	protected ArrayList<Canon> canonListTerritoire;
-	public static ArrayList<Territoire> territoiresList;
+	public ArrayList<Territoire> territoiresList;
+	public ArrayList<Unite> uniteAtt;
+	public ArrayList<Unite> uniteMove;
 	int x;
 	int y;
 	
@@ -181,12 +183,12 @@ public class Territoire {
 		this.voisins = voisins;
 	}
 
-	public static ArrayList<Territoire> getTerritoiresList() {
+	public ArrayList<Territoire> getTerritoiresList() {
 		return territoiresList;
 	}
 
-	public static void setTerritoiresList(ArrayList<Territoire> territoiresList) {
-		Territoire.territoiresList = territoiresList;
+	public void setTerritoiresList(ArrayList<Territoire> territoiresList) {
+		this.territoiresList = territoiresList;
 	}
 
 	public void addSoldat(int nb) {
@@ -227,6 +229,25 @@ public class Territoire {
 		else {
 			System.out.println("pas assez d'unités !");
 		}
+	}
+	
+	public ArrayList<Unite> getUniteAtt() {
+		return uniteAtt;
+	}
+
+
+	public void setUniteAtt(ArrayList<Unite> uniteAtt) {
+		this.uniteAtt = uniteAtt;
+	}
+
+
+	public ArrayList<Unite> getUniteMove() {
+		return uniteMove;
+	}
+
+
+	public void setUniteMove(ArrayList<Unite> uniteMove) {
+		this.uniteMove = uniteMove;
 	}
 	
 }

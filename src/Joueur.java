@@ -9,6 +9,8 @@ public class Joueur {
 	Color color;
 	
 	
+
+
 	public Joueur(int id, String nom) {
 		this.id = id;
 		this.nom = nom;

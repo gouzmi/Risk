@@ -77,6 +77,8 @@ public class Map extends JFrame{
 				for(Territoire each:Plateau.territoiresList) {
 					g.setColor(each.getOccupant().getColor());
 					g.fillOval((int)(pl*each.getX()), (int)(ph*each.getY()), 25, 25);
+					g.setColor(Color.BLACK);
+					g.drawOval((int)(pl*each.getX())-1, (int)(ph*each.getY())-1, 25+2, 25+2);
 				}
 		  	}
 
