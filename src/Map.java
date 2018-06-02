@@ -20,15 +20,15 @@ import java.awt.Toolkit;
 public class Map extends JFrame{
 	
 	Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
-	int l = p.width;
-	int h = p.height;
-	//int l = 1366;
-	//int h = 915;
+	//int l = p.width;
+	//int h = p.height;
+	int l = 1366;
+	int h = 915;
 			
-	//float cl = 1f;
-	//float ch= 1f;
-	float cl = 0.7f;
-	float ch= 0.7f;
+	float cl = 1f;
+	float ch= 1f;
+	//float cl = 0.7f;
+	//float ch= 0.7f;
 	float pl = (l*cl)/1366;
 	float ph = (h*ch)/915;
 	
@@ -73,10 +73,11 @@ public class Map extends JFrame{
 					g.drawImage(each, 0, 0,(int) (cl*l),(int) (ch*h), this);}
 				ImageIcon y = new ImageIcon("images/map1.png");
 				g.drawImage(y.getImage(), 0, 0,(int) (cl*l),(int) (ch*h),this);
-				g.setColor(Color.ORANGE);
-				g.fillOval((int)(pl*260),(int)(ph*195), 25, 25);
-				g.setColor(Color.RED);
-				g.fillOval(260, 195, 25, 25);
+				
+				for(Territoire each:Plateau.territoiresList) {
+					g.setColor(each.getOccupant().getColor());
+					g.fillOval((int)(pl*each.getX()), (int)(ph*each.getY()), 25, 25);
+				}
 		  	}
 
 		  	public Background() {

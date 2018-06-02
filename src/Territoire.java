@@ -12,8 +12,8 @@ public class Territoire {
 	protected ArrayList<Cavalier> cavalierListTerritoire;
 	protected ArrayList<Canon> canonListTerritoire;
 	public static ArrayList<Territoire> territoiresList;
-	
-	
+	int x;
+	int y;
 	
 	/*
 	Alaska : Northwest Territory, Alberta, Kamchatka
@@ -63,7 +63,10 @@ public class Territoire {
 	
 	
 	   
-	public Territoire(String nom, Territoire voisins[]) {
+
+
+
+	public Territoire(String nom, Territoire voisins[], int x,int y) {
 		this.nom = nom;
 		this.voisins = voisins;
 		ArrayList<Cavalier> tCava = new ArrayList<Cavalier>();
@@ -73,8 +76,30 @@ public class Territoire {
 		ArrayList<Soldat> tSol = new ArrayList<Soldat>();
 		this.soldatListTerritoire = tSol;
 		//this.occupant = occupant;
+		this.x=x;
+		this.y=y;
 	}
 	
+
+	public int getX() {
+		return x;
+	}
+
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+
+	public int getY() {
+		return y;
+	}
+
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
 
 	public static void attribuerTer(ArrayList<Territoire> territoiresList) {
 		

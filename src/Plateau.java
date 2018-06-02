@@ -13,54 +13,55 @@ public class Plateau {
 
 		ArrayList<Joueur> jList = new ArrayList<Joueur>();
 		ArrayList<Territoire> tList = new ArrayList<Territoire>();
+		ArrayList<Region> rList = new ArrayList<Region>();
 		this.joueurList = jList;
 		this.territoiresList = tList;
-		this.regionsList = regionsList;
+		this.regionsList = rList;
 	}
 	
 	public static void init() {
-		Territoire Alaska = new Territoire("Alaska",null);
-		Territoire NorthwestTerritory = new Territoire("Northwest Territory",null);
-		Territoire Alberta = new Territoire("Alberta",null);
-		Territoire Ontario = new Territoire("Ontario",null);
-		Territoire Greenland = new Territoire("Greenland",null);
-		Territoire WesternUS = new Territoire("Western US",null);
-		Territoire Quebec = new Territoire("Quebec",null);
-		Territoire EasternUS = new Territoire("Eastern US",null);
-		Territoire CentralAmerica = new Territoire("Central America",null);
-		Territoire Venezuela = new Territoire("Venezuela",null);
-		Territoire Peru = new Territoire("Peru",null);
-		Territoire Argentina = new Territoire("Argentina",null);
-		Territoire Brazil = new Territoire("Brazil",null);
-		Territoire NorthAfrica = new Territoire("North Africa",null);
-		Territoire Congo = new Territoire("Congo",null);
-		Territoire SouthAfrica = new Territoire("South Africa",null);
-		Territoire Madagascar = new Territoire("Madagascar",null);
-		Territoire EastAfrica = new Territoire("East Africa",null);
-		Territoire Egypt = new Territoire("Egypt",null);
-		Territoire SouthernEU = new Territoire("Southern EU",null);
-		Territoire WesternEU = new Territoire("Western EU",null);
-		Territoire GreatBritain = new Territoire("Great Britain",null);
-		Territoire Iceland = new Territoire("Iceland",null);
-		Territoire Scandinavia = new Territoire("Scandinavia",null);
-		Territoire NorthernEU = new Territoire("Northern EU",null);
-		Territoire Ukraine = new Territoire("Ukraine",null);
-		Territoire MiddleEast = new Territoire("Middle East",null);
-		Territoire Afganistan = new Territoire("Afganistan",null);
-		Territoire Ural = new Territoire("Ural",null);
-		Territoire Siberia = new Territoire("Siberia",null);
-		Territoire China = new Territoire("China",null);
-		Territoire India = new Territoire("India",null);
-		Territoire Siam = new Territoire("Siam",null);
-		Territoire Mongolia = new Territoire("Mongolia",null);
-		Territoire Yakutsk = new Territoire("Yakutsk",null);
-		Territoire Irkutsk = new Territoire("Irkutsk",null);
-		Territoire Kamchatka = new Territoire("Kamchatka",null);
-		Territoire Japan = new Territoire("Japan",null);
-		Territoire Indonesia = new Territoire("Indonesia",null);
-		Territoire WesternAustralia = new Territoire("Western Australia",null);
-		Territoire EasternAustralia = new Territoire("Eastern Australia",null);
-		Territoire NewGuinea = new Territoire("New Guinea",null);
+		Territoire Alaska = new Territoire("Alaska",null,104,108);
+		Territoire NorthwestTerritory = new Territoire("Northwest Territory",null,215,119);
+		Territoire Alberta = new Territoire("Alberta",null,203,185);
+		Territoire Ontario = new Territoire("Ontario",null,287,193);
+		Territoire Greenland = new Territoire("Greenland",null,465,59);
+		Territoire WesternUS = new Territoire("Western US",null,218,271);
+		Territoire Quebec = new Territoire("Quebec",null,384,204);
+		Territoire EasternUS = new Territoire("Eastern US",null,317,283);
+		Territoire CentralAmerica = new Territoire("Central America",null,235,426);
+		Territoire Venezuela = new Territoire("Venezuela",null,322,473);
+		Territoire Peru = new Territoire("Peru",null,286,566);
+		Territoire Argentina = new Territoire("Argentina",null,342,663);
+		Territoire Brazil = new Territoire("Brazil",null,412,537);
+		Territoire NorthAfrica = new Territoire("North Africa",null,609,556);
+		Territoire Congo = new Territoire("Congo",null,725,614);
+		Territoire SouthAfrica = new Territoire("South Africa",null,715,720);
+		Territoire Madagascar = new Territoire("Madagascar",null,870,790);
+		Territoire EastAfrica = new Territoire("East Africa",null,757,560);
+		Territoire Egypt = new Territoire("Egypt",null,705,481);
+		Territoire SouthernEU = new Territoire("Southern EU",null,673,404);
+		Territoire WesternEU = new Territoire("Western EU",null,591,360);
+		Territoire GreatBritain = new Territoire("Great Britain",null,525,300);
+		Territoire Iceland = new Territoire("Iceland",null,584,208);
+		Territoire Scandinavia = new Territoire("Scandinavia",null,650,187);
+		Territoire NorthernEU = new Territoire("Northern EU",null,638,308);
+		Territoire Ukraine = new Territoire("Ukraine",null,800,175);
+		Territoire MiddleEast = new Territoire("Middle East",null,806,488);
+		Territoire Afganistan = new Territoire("Afganistan",null,883,350);
+		Territoire Ural = new Territoire("Ural",null,911,235);
+		Territoire Siberia = new Territoire("Siberia",null,971,180);
+		Territoire China = new Territoire("China",null,985,344);
+		Territoire India = new Territoire("India",null,930,400);
+		Territoire Siam = new Territoire("Siam",null,1061,472);
+		Territoire Mongolia = new Territoire("Mongolia",null,1060,330);
+		Territoire Yakutsk = new Territoire("Yakutsk",null,1082,78);
+		Territoire Irkutsk = new Territoire("Irkutsk",null,1036,242);
+		Territoire Kamchatka = new Territoire("Kamchatka",null,1133,167);
+		Territoire Japan = new Territoire("Japan",null,1205,276);
+		Territoire Indonesia = new Territoire("Indonesia",null,1040,625);
+		Territoire WesternAustralia = new Territoire("Western Australia",null,1140,720);
+		Territoire EasternAustralia = new Territoire("Eastern Australia",null,1220,700);
+		Territoire NewGuinea = new Territoire("New Guinea",null,1165,571);
 		
 
 		
@@ -113,7 +114,7 @@ public class Plateau {
 	    Territoire voisinScandinavia  [] = {Iceland, GreatBritain, NorthernEU, Ukraine};
 	    Scandinavia.setVoisins(voisinScandinavia);
 	    Territoire voisinNorthernEU  [] = {GreatBritain, Scandinavia, WesternEU, SouthernEU, Ukraine};
-	    NorthernEU.setVoisins(voisinArgentina);
+	    NorthernEU.setVoisins(voisinNorthernEU);
 	    Territoire voisinUkraine  [] = {Scandinavia, NorthernEU, SouthernEU, MiddleEast, Afganistan, Ural};
 	    Ukraine.setVoisins(voisinUkraine);
 	    Territoire voisinMiddleEast  [] = {Egypt, EastAfrica, SouthernEU, Ukraine, Afganistan, India};
@@ -147,7 +148,7 @@ public class Plateau {
 	    Territoire voisinEasternAustralia [] = {WesternAustralia, NewGuinea};
 	    EasternAustralia.setVoisins(voisinEasternAustralia);
 	    Territoire voisinNewGuinea  [] = {Indonesia, EasternAustralia, WesternAustralia};
-	    NewGuinea.setVoisins(voisinArgentina);
+	    NewGuinea.setVoisins(voisinNewGuinea);
 	    
 	   
 		territoiresList.add(Alaska);
