@@ -13,6 +13,7 @@ public class Territoire {
 	protected ArrayList<Canon> canonListTerritoire;
 	public ArrayList<Territoire> territoiresList;
 	public ArrayList<Unite> uniteAtt;
+	public ArrayList<Unite> uniteDef;
 	public ArrayList<Unite> uniteMove;
 	int x;
 	int y;
@@ -249,5 +250,15 @@ public class Territoire {
 	public void setUniteMove(ArrayList<Unite> uniteMove) {
 		this.uniteMove = uniteMove;
 	}
+	public ArrayList<Unite> getUniteDef() {
+		return uniteDef;
+	}
+
+
+	public void setUniteDef(ArrayList<Unite> uniteDef) {
+		this.uniteDef = uniteDef;
+	}
+
+
 	
 }

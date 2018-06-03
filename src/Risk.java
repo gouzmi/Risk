@@ -13,7 +13,7 @@ public class Risk{
   
   public static void main(String[] args) throws IOException{
 
-	//Menu fenetre = new Menu();
+	Menu fenetre = new Menu();
 	
 	  
 	Plateau p = new Plateau();

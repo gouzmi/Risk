@@ -20,10 +20,10 @@ import java.awt.Toolkit;
 public class Map extends JFrame{
 	
 	Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
-	//int l = p.width;
-	//int h = p.height;
-	int l = 1366;
-	int h = 915;
+	int l = p.width;
+	int h = p.height;
+	//int l = 1366;
+	//int h = 915;
 			
 	//float cl = 1f;
 	//float ch= 1f;

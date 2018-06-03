@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Combat {
 	
-	public ArrayList<Unite> uniteDef;
+	public ArrayList<Unite> listSurvivant;
 	
 	
 	public Combat() {
@@ -34,15 +34,15 @@ public class Combat {
 	}
 	
 	public void choisirDEF(Territoire t) {
-		uniteDef.clear();
-		uniteDef.addAll(t.getSoldatListTerritoire());
-		uniteDef.addAll(t.getCanonListTerritoire());
-		uniteDef.addAll(t.getCavalierListTerritoire());	
-		Collections.sort(uniteDef, Comparator.comparing(Unite::getDefence));
+		t.getUniteDef().clear();
+		t.getUniteDef().addAll(t.getSoldatListTerritoire());
+		t.getUniteDef().addAll(t.getCanonListTerritoire());
+		t.getUniteDef().addAll(t.getCavalierListTerritoire());	
+		Collections.sort(t.getUniteDef(), Comparator.comparing(Unite::getDefence));
 		
-		if(uniteDef.size()>2) {
-			for(int i=uniteDef.size()-1;i>1;i--) {
-				uniteDef.remove(i);
+		if(t.getUniteDef().size()>2) {
+			for(int i=t.getUniteDef().size()-1;i>1;i--) {
+				t.getUniteDef().remove(i);
 			}
 		}
 		
@@ -72,14 +72,77 @@ public class Combat {
 		}
 	}
 	
+	public void affrontement(Territoire att, Territoire def) {
+		int r;
+		if(att.getUniteAtt().size()<def.getUniteDef().size()) {
+			r = att.getUniteAtt().size();
+		}
+		else {
+			r = def.getUniteDef().size();
+		}
+		// NETTOYAGE DE LA LISTE SURVIVANT AVANT LE COMBAT
+		this.listSurvivant.clear();
+		//
+		for(int i=0;i<r;i++) {
+			
+			// VICTOIRE
+			if(att.getUniteAtt().get(i).getPuissance()>def.getUniteDef().get(i).getPuissance()) {
+				System.out.println("Victoire au tour "+i+1);
+				this.listSurvivant.add(att.getUniteAtt().get(i));   // AJOUT A LA LISTE SURVIVANT 
+				if(def.getUniteDef().get(i).getCout()==1) {
+					def.getSoldatListTerritoire().remove(def.getUniteDef().get(i));
+				}
+				else if(def.getUniteDef().get(i).getCout()==3) {
+					def.getCavalierListTerritoire().remove(def.getUniteDef().get(i));
+				}
+				else {
+					def.getCanonListTerritoire().remove(def.getUniteDef().get(i));
+				}
+				//remove tdef
+				
+			// DEFAITE
+			}
+			else {
+				System.out.println("Défaite au tour "+i+1);
+				if(att.getUniteAtt().get(i).getCout()==1) {
+					att.getSoldatListTerritoire().remove(att.getUniteAtt().get(i));
+				}
+				else if(att.getUniteAtt().get(i).getCout()==3) {
+					att.getCavalierListTerritoire().remove(att.getUniteAtt().get(i));
+				}
+				else {
+					att.getCanonListTerritoire().remove(att.getUniteAtt().get(i));
+				}
+				//remove tatt
+			}
+			
+		}
+		if(def.getCanonListTerritoire().size()+def.getCavalierListTerritoire().size()+def.getSoldatListTerritoire().size()==0) {
+			System.out.println(def.getNom()+" conquis par "+att.getOccupant().getNom() );
+			def.setOccupant(att.getOccupant());  // CHANGEMENT D OCCUPANT
+			// PLACEMENT DES UNITES SURVIVANTES SELON LE TYPE
+			for(int i=0;i<this.listSurvivant.size();i++) {
+				if(this.listSurvivant.get(i).getCout()==1) {
+				//	def.getSoldatListTerritoire().add(this.listSurvivant.get(i));
+				}
+				else if(this.listSurvivant.get(i).getCout()==3) {
+				//	def.getCavalierListTerritoire().add(this.listSurvivant.get(i));
+				}
+				else {
+				//	def.getCanonListTerritoire().add(this.listSurvivant.get(i));
+				}
+			}
+	
+		}
+	}
+	
 	public void combattre(Territoire tATT,Territoire tDEF) {
 		choisirDEF(tDEF);
-		lancerDe(uniteDef);
-		trierDEF(uniteDef);
+		lancerDe(tDEF.getUniteDef());
+		trierDEF(tDEF.uniteDef);
 		
 		lancerDe(tATT.getUniteAtt());
 		trierATT(tATT);
-		
-		
+		affrontement(tATT,tDEF);
 	}
 }
