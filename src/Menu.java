@@ -9,7 +9,10 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,10 +23,18 @@ import javazoom.jl.player.Player;
 import java.awt.Toolkit;
 
 
-public class Menu extends JFrame implements ActionListener{
+public class Menu extends JFrame implements MouseListener{
 	
-	JButton jouer = new JButton("Jouer");
-	JButton quitter = new JButton("Quitter");
+	Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
+	int l = p.width;
+	int h = p.height;
+	int x = l/2;
+	int y = h/2;
+	
+	private JPanel menu;
+	private JLabel background;
+	private JLabel jouer;
+	private JLabel quitter;
 	JLabel joueur = new JLabel("Sélectionnez le nombre de joueur",SwingConstants.CENTER);
 	JButton retour = new JButton("Retour");
 	JButton j2 = new JButton("2 Joueurs");
@@ -41,15 +52,15 @@ public class Menu extends JFrame implements ActionListener{
        
   public Menu(){
 	
-	Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
-	int l = p.width;
-	int h = p.height;
+	
 	this.setSize(l,h);
 	this.setTitle("RiskIsep");
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLocationRelativeTo(null);
     
-    quitter.addActionListener(this);
+    this.setContentPane(panneau());
+    
+    /*quitter.addActionListener(this);
     jouer.addActionListener(this);
     retour.addActionListener(this);
     j2.addActionListener(this);
@@ -69,12 +80,10 @@ public class Menu extends JFrame implements ActionListener{
     t3.setVisible(false);
     t4.setVisible(false);
     t5.setVisible(false);
-    t6.setVisible(false);
+    t6.setVisible(false);*/
   
     this.setUndecorated(true);
-    Panneau pan = new Panneau();
     
-    this.add(pan);
     
 
     this.setVisible(true);
@@ -85,7 +94,10 @@ public class Menu extends JFrame implements ActionListener{
   
 
 
-public class Panneau extends JPanel { 
+/*public class Panneau extends JPanel { 
+	
+
+	
 	  public void paintComponent(Graphics g){
 		  
 		  super.paintComponent(g);
@@ -93,7 +105,7 @@ public class Panneau extends JPanel {
           g.drawImage(m.getImage(), 0, 0,this.getWidth(),this.getHeight(),this);
 	      int x = this.getWidth()/2;
 	      int y = this.getHeight()/2;	      
-          this.add(jouer);
+         
           this.add(quitter);
           this.add(retour);
           this.add(joueur);
@@ -108,6 +120,9 @@ public class Panneau extends JPanel {
           this.add(t4);
           this.add(t5);
           this.add(t6);
+          
+          
+      	  
           
           jouer.setBounds(x-160, y-35, 150, 70);
           joueur.setBounds(x-175, y-180, 350, 60);
@@ -129,11 +144,37 @@ public class Panneau extends JPanel {
           joueur.setBorder(border);
           joueur.setForeground(Color.WHITE);
           
-	  }               
+	  }     
+	  
+	}*/
+	private JPanel panneau() {
+		
+		menu = new JPanel();
+		menu.setLayout(null);
+		
+		JLabel background = new JLabel();
+		background.setIcon(new ImageIcon("images/risk.jpg"));
+		background.setBounds(0, 0, l, h);
+		
+		JLabel jouer = new JLabel();
+    	jouer.setIcon(new ImageIcon("Images/jouer.png"));
+    	jouer.setBounds(x-350, y-77, 300, 144);
+    	jouer.addMouseListener(this);
+    	background.add(jouer);
+    	
+    	JLabel quitter = new JLabel();
+    	quitter.setIcon(new ImageIcon("Images/quitter.png"));
+    	quitter.setBounds(x+50, y-77, 300, 144);
+    	quitter.addMouseListener(this);
+    	background.add(quitter);
+    	
+    	menu.add(background);
+    	return menu;
+		
 	}
  
 
-  public void actionPerformed(ActionEvent arg0) {
+  /*public void actionPerformed(ActionEvent arg0) {
 	  if(arg0.getSource() == jouer) {
 		  jouer.setVisible(false);
 		  quitter.setVisible(false);
@@ -238,9 +279,83 @@ public class Panneau extends JPanel {
 	  }
 	  
 	  
-	}
+	}*/
   
-  public static void playMusic(String filepath) {
+
+
+public void actionPerformed(ActionEvent arg0) {
+	// TODO Auto-generated method stub
+	if(arg0.getSource() == jouer) {
+		  jouer.setVisible(false);
+		  quitter.setVisible(false);
+		  retour.setVisible(true);
+		  j2.setVisible(true);
+		  j3.setVisible(true);
+		  j4.setVisible(true);
+		  j5.setVisible(true);
+		  j6.setVisible(true);
+		  joueur.setVisible(true);
+	  }
+
+	if(arg0.getSource() == quitter) {
+		  System.exit(0); 
+	  }
+}
+
+
+
+@Override
+public void mouseClicked(MouseEvent arg0) {
+	if(arg0.getSource() == jouer) {
+		  jouer.setVisible(false);
+		  quitter.setVisible(false);
+		  retour.setVisible(true);
+		  j2.setVisible(true);
+		  j3.setVisible(true);
+		  j4.setVisible(true);
+		  j5.setVisible(true);
+		  j6.setVisible(true);
+		  joueur.setVisible(true);
+	  }
+
+	if(arg0.getSource() == quitter) {
+		  System.exit(0); 
+	  }
+}
+
+	
+
+
+@Override
+public void mouseEntered(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+
+@Override
+public void mouseExited(MouseEvent arg0) {
+	
+}
+
+
+
+@Override
+public void mousePressed(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+
+@Override
+public void mouseReleased(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
+
+public static void playMusic(String filepath) {
 	  
 	  try {
 		  FileInputStream fileInputStream = new FileInputStream(filepath);
@@ -252,6 +367,6 @@ public class Panneau extends JPanel {
 	  catch(JavaLayerException e) {
 		  
 	  }
-  }
+}
  
 }
