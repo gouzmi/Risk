@@ -6,6 +6,7 @@ public class Joueur {
 	public int id;
 	protected ArrayList<Territoire> territoireListJoueur;
 	protected ArrayList<Soldat> soldatListJoueur;
+	public boolean Victoire = false;
 	Color color;
 	
 	
@@ -18,9 +19,11 @@ public class Joueur {
 		this.territoireListJoueur = territoireListJoueur;
 		ArrayList<Soldat> soldatListJoueur = new ArrayList<Soldat>();
 		this.soldatListJoueur = soldatListJoueur;
+		this.Victoire = Victoire;
 		
 	}
 	
+
 	public static void initListJoueurs(int nbJoueur) {
 		for (int i =1; i <=nbJoueur; i++) {
 			
@@ -58,6 +61,13 @@ public class Joueur {
 		this.color = color;
 	}
 
+	public boolean isVictoire() {
+		return Victoire;
+	}
+
+	public void setVictoire(boolean victoire) {
+		Victoire = victoire;
+	}
 	
 	
 	public String getNom() {
@@ -86,13 +96,20 @@ public class Joueur {
 		this.soldatListJoueur.add(soldat);	
 	}
 	
-	public void victoire (Joueur j) {
-	if (territoireListJoueur.size()==0) {
-		System.out.println("Défaite de "+j);
+	public boolean Victoire (Joueur j) {
+		if (territoireListJoueur.size()==42) {
+			Victoire = true; 
+			System.out.println("Victoire de "+j);
+			return Victoire;
 		}
-	if (territoireListJoueur.size()==42) {
-		System.out.println("Victoire de "+j);
+		return Victoire;
+	}
+		
+	public void defaite (Joueur j) {
+		if (territoireListJoueur.size()==0) {
+			System.out.println("Défaite de "+j);
 		}
 	}
+
 	
 }
