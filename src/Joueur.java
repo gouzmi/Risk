@@ -86,6 +86,13 @@ public class Joueur {
 		this.soldatListJoueur.add(soldat);	
 	}
 	
-	
+	public void victoire (Joueur j) {
+	if (territoireListJoueur.size()==0) {
+		System.out.println("Défaite de "+j);
+		}
+	if (territoireListJoueur.size()==42) {
+		System.out.println("Victoire de "+j);
+		}
+	}
 	
 }
