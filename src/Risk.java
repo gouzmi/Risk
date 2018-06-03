@@ -24,7 +24,19 @@ public class Risk{
 	//Plateau.territoiresList.get(0).addCanon(10);
 	Map map = new Map();
 	
-	
+	int compt = 1;
+	if (compt>Plateau.joueurList.size()) {
+		compt = 1;
+	}
+	for (Joueur j : Plateau.joueurList) {
+		if (j.Victoire==false) {
+			//actions de chaque joueur
+		}
+		else {
+			break;
+		}
+		compt++;		
+	}
 
 	  
 	  
