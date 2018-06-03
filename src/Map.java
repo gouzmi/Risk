@@ -25,10 +25,10 @@ public class Map extends JFrame{
 	int l = 1366;
 	int h = 915;
 			
-	float cl = 1f;
-	float ch= 1f;
-	//float cl = 0.7f;
-	//float ch= 0.7f;
+	//float cl = 1f;
+	//float ch= 1f;
+	float cl = 0.7f;
+	float ch= 0.7f;
 	float pl = (l*cl)/1366;
 	float ph = (h*ch)/915;
 	
@@ -159,7 +159,7 @@ public class Map extends JFrame{
 						for(Territoire t : j.territoireListJoueur) {		
 							if(t.getNom().equals(nom)) {
 								System.out.println("-------");
-								System.out.println(t.getNom()+" appartient à "+j.getNom());
+								System.out.println(t.getNom()+" appartient Ã  "+j.getNom());
 								System.out.println("Soldat");
 								System.out.println(t.getSoldatListTerritoire().size());
 								System.out.println("Cavalier");
