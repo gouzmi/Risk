@@ -19,7 +19,7 @@ public class Plateau {
 		this.regionsList = rList;
 	}
 	
-	public static void init() {
+	public void init() {
 		Territoire Alaska = new Territoire("Alaska",null,104,108);
 		Territoire NorthwestTerritory = new Territoire("Northwest Territory",null,215,119);
 		Territoire Alberta = new Territoire("Alberta",null,203,185);
