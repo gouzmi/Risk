@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.imageio.ImageIO;
@@ -27,16 +28,21 @@ public class Map extends JFrame{
 			
 	//float cl = 1f;
 	//float ch= 1f;
-	float cl = 0.7f;
-	float ch= 0.7f;
+	float cl = 0.8f;
+	float ch= 0.8f;
 	float pl = (l*cl)/1366;
 	float ph = (h*ch)/915;
 	private JLabel exit;
+	JLabel territoireAct;
+	JLabel soldatAct;
+	JLabel cavalierAct;
+	JLabel canonAct;
+	
 	
 	public Map() {
 		
 		this.setSize(l,h);
-		
+		this.setLayout(null);
 		//this.setSize(l,h);
 		this.setTitle("RiskIsep");
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,16 +51,45 @@ public class Map extends JFrame{
 	    //this.setResizable(false);
 	    Background map = new Background();
 	    this.add(map);
-	   
+	    map.setSize((int) (cl*l),(int) (ch*h));
 		map.add(exit);
+		
+		JPanel rightPanel = new JPanel();
+		rightPanel.setLayout(null);
+		Color fondr = Color.decode("#A1887F");
+		rightPanel.setBackground( fondr );
+		territoireAct = new JLabel("Territoire",SwingConstants.CENTER);
+		soldatAct = new JLabel("Soldat",SwingConstants.CENTER);
+		cavalierAct = new JLabel("Cavalier",SwingConstants.CENTER);
+		canonAct = new JLabel("Canon",SwingConstants.CENTER);
+		Font font = new Font("Arial",Font.BOLD,30);
+		territoireAct.setFont(font);
+		soldatAct.setFont(font);
+		cavalierAct.setFont(font);
+		canonAct.setFont(font);
+		territoireAct.setBounds(0, 0, 200, 100);
+		soldatAct.setBounds(0, 100, 200, 100);
+		cavalierAct.setBounds(0, 200, 200, 100);
+		canonAct.setBounds(0, 300, 200, 100);
+		rightPanel.add(territoireAct);
+		rightPanel.add(soldatAct);
+		rightPanel.add(cavalierAct);
+		rightPanel.add(canonAct);
+		this.add(rightPanel);
+		
+		JPanel downPanel = new JPanel();
+		downPanel.setLayout(null);
+		Color fondl = Color.decode("#8D6E63");
+		downPanel.setBackground( fondl );
+		this.add(downPanel);
+		
+		rightPanel.setBounds((int) (cl*l), 0, l-(int) (cl*l), h);
+		downPanel.setBounds(0, (int) (ch*h),(int) (cl*l), h-(int) (ch*h));
+		
 	    this.setVisible(true);
-	    
-	    
 	}
 	
-
-	
-	
+		
 	
 	public class Background extends JPanel implements MouseListener, MouseMotionListener{ 
 		

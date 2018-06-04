@@ -289,8 +289,8 @@ public void mouseClicked(MouseEvent arg0) {
 	  
 	  if(arg0.getSource() == lancer) {
 		  
-		  //System.exit(0); 
-		  this.dispose();
+		  
+		  
 		    Plateau p = new Plateau();
 			Joueur.initListJoueurs(nbjoueur);
 			Unite.attribuerArmees();
@@ -298,6 +298,7 @@ public void mouseClicked(MouseEvent arg0) {
 			Territoire.attribuerTer(Plateau.territoiresList);
 			//Plateau.territoiresList.get(0).addCanon(10);
 			Map map = new Map();
+			this.dispose();
 			
 	  }
 }
