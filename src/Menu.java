@@ -13,6 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -58,8 +59,9 @@ public class Menu extends JFrame implements MouseListener{
 	this.setSize(l,h);
 	this.setTitle("RiskIsep");
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.setLocationRelativeTo(null);   
-    this.setContentPane(panneau());
+    this.setLocationRelativeTo(null); 
+    this.add(panneau());
+    
     
     select.setVisible(false);
     j2.setVisible(false);
@@ -79,72 +81,79 @@ public class Menu extends JFrame implements MouseListener{
     this.setUndecorated(true);
     this.setVisible(true);
     playMusic("Faraway.mp3");
+    
   }      
 
+  	public class fond extends JPanel{
+  		public void paintComponent(Graphics g) {
+  			super.paintComponent(g);
+  			ImageIcon y = new ImageIcon("images/risk.jpg");
+			g.drawImage(y.getImage(), 0, 0,l,h,this);
+  		}
+  	}
+  
 	private JPanel panneau() {
 		
-		menu = new JPanel();
-		menu.setLayout(null);
-		
-		JLabel background = new JLabel();
-		background.setIcon(new ImageIcon("images/risk.jpg"));
-		background.setBounds(0, 0, l, h);
+
+		fond fond = new fond();
+	    this.add(fond);
+	    fond.setLayout(null);
 		
 		jouer = new JLabel();
     	jouer.setIcon(new ImageIcon("Images/jouer.png"));
     	jouer.setBounds(x-350, y-77, 300, 144);
     	jouer.addMouseListener(this);
-    	background.add(jouer);
+    	fond.add(jouer);
     	
     	quitter = new JLabel();
     	quitter.setIcon(new ImageIcon("Images/quitter.png"));
     	quitter.setBounds(x+50, y-77, 300, 144);
     	quitter.addMouseListener(this);
-    	background.add(quitter);
+    	fond.add(quitter);
     	
     	select = new JLabel();
     	select.setIcon(new ImageIcon("Images/select.png"));
     	select.setBounds(x-411, y-250-140, 823, 140);
     	select.addMouseListener(this);
-    	background.add(select);
+    	fond.add(select);
     	
     	retour = new JLabel();
     	retour.setIcon(new ImageIcon("Images/retour.png"));
     	retour.setBounds(x+300, y+300, 300, 144);
     	retour.addMouseListener(this);
-    	background.add(retour);
+    	fond.add(retour);
     	
     	lancer = new JLabel();
     	lancer.setIcon(new ImageIcon("Images/lancer.png"));
     	lancer.setBounds(x-600, y+300, 300, 144);
     	lancer.addMouseListener(this);
-    	background.add(lancer);
+    	fond.add(lancer);
     	
     	j2 = new JLabel();
     	j2.setIcon(new ImageIcon("Images/2.png"));
     	j2.setBounds(x-163-81-81, y-144-10, 163, 144);
     	j2.addMouseListener(this);
-    	background.add(j2);
+    	fond.add(j2);
     	j3 = new JLabel();
     	j3.setIcon(new ImageIcon("Images/3.png"));
     	j3.setBounds(x-81, y-144-10, 163, 144);
     	j3.addMouseListener(this);
-    	background.add(j3);
+    	fond.add(j3);
     	j4 = new JLabel();
     	j4.setIcon(new ImageIcon("Images/4.png"));
     	j4.setBounds(x+82+81, y-144-10, 163, 144);
     	j4.addMouseListener(this);
-    	background.add(j4);
+    	fond.add(j4);
     	j5 = new JLabel();
     	j5.setIcon(new ImageIcon("Images/5.png"));
     	j5.setBounds(x-163-42, y+10, 163, 144);
     	j5.addMouseListener(this);
-    	background.add(j5);
+    	fond.add(j5);
     	j6 = new JLabel();
     	j6.setIcon(new ImageIcon("Images/6.png"));
     	j6.setBounds(x+41, y+10, 163, 144);
     	j6.addMouseListener(this);
-    	background.add(j6);
+    	fond.add(j6);
     	
     	
     	t1.setBounds(x-140, y-17, 280, 34);
@@ -153,15 +162,15 @@ public class Menu extends JFrame implements MouseListener{
         t4.setBounds(x-140, y+17+3*5+2*34, 280, 34);
         t5.setBounds(x-140, y+17+4*5+3*34, 280, 34);
         t6.setBounds(x-140, y+17+5*5+4*34, 280, 34);
-        background.add(t1);
-        background.add(t2);
-        background.add(t3);
-        background.add(t4);
-        background.add(t5);
-        background.add(t6);
+        fond.add(t1);
+        fond.add(t2);
+        fond.add(t3);
+        fond.add(t4);
+        fond.add(t5);
+        fond.add(t6);
     	
-    	menu.add(background);
-    	return menu;
+    	
+    	return fond;
 		
 	}
  

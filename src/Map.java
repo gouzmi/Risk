@@ -41,7 +41,17 @@ public class Map extends JFrame{
 	JLabel vsoldatAct;
 	JLabel vcavalierAct;
 	JLabel vcanonAct;
-	
+	JLabel j1;
+	JLabel j2;
+	JLabel j3;
+	JLabel j4;
+	JLabel j5;
+	JLabel j6;
+	JLabel suivant;
+	JLabel renfort;
+	JLabel nbTer;
+	JLabel renfortAct;
+	JLabel nbTerAct;
 	
 	
 	public Map() {
@@ -52,16 +62,21 @@ public class Map extends JFrame{
 		this.setTitle("RiskIsep");
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
-	    this.setUndecorated(true);	    
-	    //this.setResizable(false);
+	    this.setUndecorated(true);	 
+	    
+	    // PANEL CARTE
+	    
 	    Background map = new Background();
 	    this.add(map);
 	    map.setSize((int) (cl*l),(int) (ch*h));
 		map.add(exit);
 		
+		//PANEL DE DROITE
+		
+		
 		JPanel rightPanel = new JPanel();
 		rightPanel.setLayout(null);
-		Color fondr = Color.decode("#A1887F");
+		Color fondr = Color.decode("#e5b886");
 		rightPanel.setBackground( fondr );
 		territoireAct = new JLabel("Territoire",SwingConstants.CENTER);
 		soldatAct = new JLabel("Soldat",SwingConstants.CENTER);
@@ -100,14 +115,68 @@ public class Map extends JFrame{
 		rightPanel.add(vsoldatAct);
 		rightPanel.add(vcavalierAct);
 		rightPanel.add(vcanonAct);
+		suivant = new JLabel();
+		suivant.setIcon(new ImageIcon("images/suivant.png"));
+		suivant.setBounds((int)(0.3*(l-cl*l)), (int) (ch*h+40), 150, 117);
+		rightPanel.add(suivant);
+
 		this.add(rightPanel);
+		
+		// PANEL DU BAS
 		
 		JPanel downPanel = new JPanel();
 		downPanel.setLayout(null);
-		Color fondl = Color.decode("#8D6E63");
+		Color fondl = Color.decode("#e5b886");
 		downPanel.setBackground( fondl );
-		this.add(downPanel);
 		
+		Font fontjoueur = new Font("Arial",Font.BOLD,30);
+		j1 = new JLabel("Joueur 1",SwingConstants.CENTER);
+		j1.setFont(fontjoueur);
+		j1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
+
+		j1.setBounds(0, 0, (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
+		j2 = new JLabel("Joueur 2",SwingConstants.CENTER);
+		j2.setFont(fontjoueur);
+		j2.setBounds(0, (int)(0.33*(h-ch*h)), (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
+		j3 = new JLabel("Joueur 3",SwingConstants.CENTER);
+		j3.setFont(fontjoueur);
+		j3.setBounds(0, (int)(2*0.33*(h-ch*h)), (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
+		j4 = new JLabel("Joueur 4",SwingConstants.CENTER);
+		j4.setFont(fontjoueur);
+		j4.setBounds((int) (0.17*cl*l), 0, (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
+		j5 = new JLabel("Joueur 5",SwingConstants.CENTER);
+		j5.setFont(fontjoueur);
+		j5.setBounds((int) (0.17*cl*l), (int)(0.33*(h-ch*h)), (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
+		j6 = new JLabel("Joueur 6",SwingConstants.CENTER);
+		j6.setFont(fontjoueur);
+		j6.setBounds((int) (0.17*cl*l), (int)(2*0.33*(h-ch*h)), (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
+		downPanel.add(j1);
+		downPanel.add(j2);
+		downPanel.add(j3);
+		downPanel.add(j4);
+		downPanel.add(j5);
+		downPanel.add(j6);
+		
+		renfort = new JLabel("Renforts :");
+		nbTer = new JLabel("Territoires :");
+		renfortAct = new JLabel("Renforts");
+		nbTerAct = new JLabel("Territoires");
+		Font fontclass = new Font("Arial",Font.BOLD,30);
+		renfort.setFont(fontclass);
+		nbTer.setFont(fontclass);
+		renfortAct.setFont(fontclass);
+		nbTerAct.setFont(fontclass);
+		renfort.setBounds((int) (2.5*0.17*cl*l), 30, (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
+		nbTer.setBounds((int) (2.5*0.17*cl*l), (int)(0.33*(h-ch*h)+30), (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
+		renfortAct.setBounds((int) (3.5*0.17*cl*l), 30, 60, (int)(0.33*(h-ch*h)));
+		nbTerAct.setBounds((int) (3.5*0.17*cl*l), (int)(0.33*(h-ch*h)+30), 60, (int)(0.33*(h-ch*h)));
+		downPanel.add(renfort);
+		downPanel.add(nbTer);
+		downPanel.add(renfortAct);
+		downPanel.add(nbTerAct);
+		
+	
+		this.add(downPanel);
 		rightPanel.setBounds((int) (cl*l), 0, l-(int) (cl*l), h);
 		downPanel.setBounds(0, (int) (ch*h),(int) (cl*l), h-(int) (ch*h));
 		
@@ -128,7 +197,7 @@ public class Map extends JFrame{
 		
 		  public void paintComponent(Graphics g){ 
 			  
-			  Color fond = Color.decode("#d6c2aa");
+			  Color fond = Color.decode("#e5b886");
 			  this.setBackground( fond );
 			  super.paintComponent(g);
 				for (BufferedImage each : imageToDraw) 
