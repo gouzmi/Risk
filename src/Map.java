@@ -31,6 +31,7 @@ public class Map extends JFrame{
 	float ch= 0.7f;
 	float pl = (l*cl)/1366;
 	float ph = (h*ch)/915;
+	private JLabel exit;
 	
 	public Map() {
 		
@@ -40,10 +41,12 @@ public class Map extends JFrame{
 		this.setTitle("RiskIsep");
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
-	    this.setUndecorated(false);	    
+	    this.setUndecorated(true);	    
 	    //this.setResizable(false);
 	    Background map = new Background();
 	    this.add(map);
+	   
+		map.add(exit);
 	    this.setVisible(true);
 	    
 	    
@@ -53,7 +56,7 @@ public class Map extends JFrame{
 	
 	
 	
-	public class Background extends JPanel implements MouseMotionListener{ 
+	public class Background extends JPanel implements MouseListener, MouseMotionListener{ 
 		
 		
 		ArrayList<BufferedImage> imageList = new ArrayList<BufferedImage>(); // 
@@ -84,8 +87,12 @@ public class Map extends JFrame{
 
 		  	public Background() {
 		  		this.setLayout(null);
+				this.addMouseListener(this);
 				this.addMouseMotionListener(this);
-				
+				exit = new JLabel();
+			    exit.setIcon(new ImageIcon("images/exit.png"));
+				exit.setBounds(0, 0, 80, 70);
+				exit.addMouseListener(this);
 				try 
 				{
 						String [] listenormal; 
@@ -173,6 +180,64 @@ public class Map extends JFrame{
 				}
 				
 			}
+			
+		}
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			int ix = (int)((1/pl)*e.getX());
+			int iy = (int)((1/ph)*e.getY());
+			int index = 0; 
+			for (BufferedImage each : imageList) 
+			{
+				index++;
+				int alpha = (each.getRGB(ix, iy) >> 24) & 0xff;
+				if (alpha != 0) 
+				{
+					
+					ImageIcon img = imageNom.get(index-1);
+					String source = img.getDescription();
+					String nom = source.substring(14, source.length()-6);
+					System.out.println(nom);
+					for(Joueur j: Plateau.joueurList) {
+						for(Territoire t : j.territoireListJoueur) {		
+							if(t.getNom().equals(nom)) {
+								System.out.println("TA MERE");
+							}
+						}
+					}
+					
+				}
+				
+			}
+			
+			if(e.getSource() == exit) {
+				System.exit(0);
+			}
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			// TODO Auto-generated method stub
 			
 		}
 
