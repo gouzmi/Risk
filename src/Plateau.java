@@ -220,6 +220,15 @@ public class Plateau {
 		regionsList.add(Australia);
 	}
 	
+	/*	public boolean fintour () {
+		if (//vérif bouton) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}*/
+	
 	
 
 }
