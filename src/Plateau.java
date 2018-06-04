@@ -220,14 +220,40 @@ public class Plateau {
 		regionsList.add(Australia);
 	}
 	
-	/*	public boolean fintour () {
+	//Tour à tour 
+	
+/*	public static boolean fintour () {
 		if (//vérif bouton) {
 			return true;
 		}
 		else {
 			return false;
 		}
-	}*/
+	}
+	
+	
+	public void Tour () {
+		int compt = 0;
+		Joueur j = Plateau.joueurList.get(compt);
+		while (j.Victoire==false) {
+			//actions de chaque joueur
+			Unite.renfort(j);
+			if (j.soldatListJoueur.size()==0) {//vérifie que le joueur à placer tous ses renforts
+				System.out.println("Choississez le territoire de départ");
+				System.out.println("Choississez le territoire de destination");
+				Territoire.move(Territoire dep, Territoire arr);
+				Combat combat = new Combat();
+				Combat.combattre(dep, arr);
+			}
+			if (fintour() == true) {
+				//passe au joueur suivant
+				if (compt>=Plateau.joueurList.size()) {
+					compt = 0;
+				}
+				j = Plateau.joueurList.get(compt++);
+			}
+		}
+	} */
 	
 	
 
