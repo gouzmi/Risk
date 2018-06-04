@@ -19,25 +19,13 @@ public class Risk{
 	Plateau p = new Plateau();
 	Joueur.initListJoueurs(3);
 	Unite.attribuerArmees();
-	Plateau.init();
-	Territoire.attribuerTer(Plateau.territoiresList);
+	p.init();
+	Territoire.attribuerTer(p.territoiresList);
 	//Plateau.territoiresList.get(0).addCanon(10);
 	Map map = new Map();
 	
-	int compt = 1;
-	if (compt>Plateau.joueurList.size()) {
-		compt = 1;
-	}
-	for (Joueur j : Plateau.joueurList) {
-		if (j.Victoire==false) {
-			//actions de chaque joueur
-		}
-		else {
-			break;
-		}
-		compt++;		
-	}
-
+		//Tour à tour
+	p.Tour();
 	  
 	  
 	  

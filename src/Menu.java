@@ -294,8 +294,8 @@ public void mouseClicked(MouseEvent arg0) {
 		    Plateau p = new Plateau();
 			Joueur.initListJoueurs(nbjoueur);
 			Unite.attribuerArmees();
-			Plateau.init();
-			Territoire.attribuerTer(Plateau.territoiresList);
+			p.init();
+			Territoire.attribuerTer(p.territoiresList);
 			//Plateau.territoiresList.get(0).addCanon(10);
 			Map map = new Map();
 			this.dispose();
