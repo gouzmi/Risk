@@ -37,6 +37,11 @@ public class Map extends JFrame{
 	JLabel soldatAct;
 	JLabel cavalierAct;
 	JLabel canonAct;
+	JLabel vterritoireAct;
+	JLabel vsoldatAct;
+	JLabel vcavalierAct;
+	JLabel vcanonAct;
+	
 	
 	
 	public Map() {
@@ -62,19 +67,39 @@ public class Map extends JFrame{
 		soldatAct = new JLabel("Soldat",SwingConstants.CENTER);
 		cavalierAct = new JLabel("Cavalier",SwingConstants.CENTER);
 		canonAct = new JLabel("Canon",SwingConstants.CENTER);
+		vterritoireAct = new JLabel("Territoire",SwingConstants.CENTER);
+		vsoldatAct = new JLabel("Soldat",SwingConstants.CENTER);
+		vcavalierAct = new JLabel("Cavalier",SwingConstants.CENTER);
+		vcanonAct = new JLabel("Canon",SwingConstants.CENTER);
 		Font font = new Font("Arial",Font.BOLD,30);
 		territoireAct.setFont(font);
 		soldatAct.setFont(font);
 		cavalierAct.setFont(font);
 		canonAct.setFont(font);
-		territoireAct.setBounds(0, 0, 200, 100);
-		soldatAct.setBounds(0, 100, 200, 100);
-		cavalierAct.setBounds(0, 200, 200, 100);
-		canonAct.setBounds(0, 300, 200, 100);
+		vterritoireAct.setFont(font);
+		vsoldatAct.setFont(font);
+		vcavalierAct.setFont(font);
+		vcanonAct.setFont(font);
+		territoireAct.setBounds(0, 0, 180, 80);
+		soldatAct.setBounds(0, 80, 180, 80);
+		cavalierAct.setBounds(0, 160, 180, 80);
+		canonAct.setBounds(0, 240, 180, 80);
+		vterritoireAct.setFont(font);
+		vsoldatAct.setFont(font);
+		vcavalierAct.setFont(font);
+		vcanonAct.setFont(font);
+		vterritoireAct.setBounds(180, 0, 180, 80);
+		vsoldatAct.setBounds(180, 80, 180, 80);
+		vcavalierAct.setBounds(180, 160, 180, 80);
+		vcanonAct.setBounds(180, 240, 180, 80);
 		rightPanel.add(territoireAct);
 		rightPanel.add(soldatAct);
 		rightPanel.add(cavalierAct);
 		rightPanel.add(canonAct);
+		rightPanel.add(vterritoireAct);
+		rightPanel.add(vsoldatAct);
+		rightPanel.add(vcavalierAct);
+		rightPanel.add(vcanonAct);
 		this.add(rightPanel);
 		
 		JPanel downPanel = new JPanel();
@@ -202,12 +227,16 @@ public class Map extends JFrame{
 							if(t.getNom().equals(nom)) {
 								System.out.println("-------");
 								System.out.println(t.getNom()+" appartient à "+j.getNom());
+								vterritoireAct.setText(nom);
 								System.out.println("Soldat");
 								System.out.println(t.getSoldatListTerritoire().size());
+								vsoldatAct.setText(Integer.toString(t.getSoldatListTerritoire().size()));
 								System.out.println("Cavalier");
 								System.out.println(t.getCavalierListTerritoire().size());
+								vcavalierAct.setText(Integer.toString(t.getCavalierListTerritoire().size()));
 								System.out.println("Canon");
-								System.out.println(t.getCanonListTerritoire().size());
+								System.out.println(Integer.toString(t.getCanonListTerritoire().size()));
+								vcanonAct.setText(Integer.toString(t.getCanonListTerritoire().size()));
 							}
 						}
 					}
@@ -277,5 +306,54 @@ public class Map extends JFrame{
 		}
 
 	}
+
+	public JLabel getVterritoireAct() {
+		return vterritoireAct;
+	}
+
+
+
+	public void setVterritoireAct(JLabel vterritoireAct) {
+		this.vterritoireAct = vterritoireAct;
+	}
+
+
+
+	public JLabel getVsoldatAct() {
+		return vsoldatAct;
+	}
+
+
+
+	public void setVsoldatAct(JLabel vsoldatAct) {
+		this.vsoldatAct = vsoldatAct;
+	}
+
+
+
+	public JLabel getVcavalierAct() {
+		return vcavalierAct;
+	}
+
+
+
+	public void setVcavalierAct(JLabel vcavalierAct) {
+		this.vcavalierAct = vcavalierAct;
+	}
+
+
+
+	public JLabel getVcanonAct() {
+		return vcanonAct;
+	}
+
+
+
+	public void setVcanonAct(JLabel vcanonAct) {
+		this.vcanonAct = vcanonAct;
+	}
+
+
+
 	
 }
