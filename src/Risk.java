@@ -25,7 +25,7 @@ public class Risk{
 	Map map = new Map();
 	
 		//Tour à tour
-	p.Tour();
+	//p.Tour();
 	  
 	  
 	  
