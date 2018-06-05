@@ -8,6 +8,9 @@ import java.util.Random;
 public class Combat {
 	
 	public ArrayList<Unite> listSurvivant;
+	public ArrayList<Soldat> soldatSurvivant;
+	public ArrayList<Cavalier> cavalierSurvivant;
+	public ArrayList<Canon> canonSurvivant;
 	
 	
 	public Combat() {
@@ -98,6 +101,7 @@ public class Combat {
 				else {
 					def.getCanonListTerritoire().remove(def.getUniteDef().get(i));
 				}
+				
 				//remove tdef
 				
 			// DEFAITE
@@ -123,13 +127,19 @@ public class Combat {
 			// PLACEMENT DES UNITES SURVIVANTES SELON LE TYPE
 			for(int i=0;i<this.listSurvivant.size();i++) {
 				if(this.listSurvivant.get(i).getCout()==1) {
-				//	def.getSoldatListTerritoire().add(this.listSurvivant.get(i));
+					Soldat soldat = new Soldat();
+					soldat.setNbmouv(listSurvivant.get(i).getNbmouv()-1);
+					def.getSoldatListTerritoire().add(soldat);
 				}
 				else if(this.listSurvivant.get(i).getCout()==3) {
-				//	def.getCavalierListTerritoire().add(this.listSurvivant.get(i));
+					Cavalier cavalier = new Cavalier();
+					cavalier.setNbmouv(listSurvivant.get(i).getNbmouv()-1);
+					def.getCavalierListTerritoire().add(cavalier);
 				}
 				else {
-				//	def.getCanonListTerritoire().add(this.listSurvivant.get(i));
+					Canon canon = new Canon();
+					canon.setNbmouv(listSurvivant.get(i).getNbmouv()-1);
+					def.getCanonListTerritoire().add(canon);
 				}
 			}
 	

@@ -23,6 +23,7 @@ public class Map extends JFrame{
 	Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
 	int l = p.width;
 	int h = p.height;
+	int joueurAct = 0;
 	//int l = 1366;
 	//int h = 915;
 			
@@ -52,6 +53,22 @@ public class Map extends JFrame{
 	JLabel nbTer;
 	JLabel renfortAct;
 	JLabel nbTerAct;
+	JLabel soldat;
+	JLabel cavalier;
+	JLabel canon;
+	
+	JLabel plus1;
+	JLabel plus2;
+	JLabel plus3;
+	JLabel moins1;
+	JLabel moins2;
+	JLabel moins3;
+	
+	JLabel nbSoldat;
+	JLabel nbCavalier;
+	JLabel nbCanon;
+	
+	boolean premierTour;
 	
 	
 	public Map() {
@@ -86,7 +103,7 @@ public class Map extends JFrame{
 		vsoldatAct = new JLabel("Soldat",SwingConstants.CENTER);
 		vcavalierAct = new JLabel("Cavalier",SwingConstants.CENTER);
 		vcanonAct = new JLabel("Canon",SwingConstants.CENTER);
-		Font font = new Font("Arial",Font.BOLD,30);
+		Font font = new Font("Times New Roman",Font.BOLD,30);
 		territoireAct.setFont(font);
 		soldatAct.setFont(font);
 		cavalierAct.setFont(font);
@@ -118,6 +135,49 @@ public class Map extends JFrame{
 		suivant = new JLabel();
 		suivant.setIcon(new ImageIcon("images/suivant.png"));
 		suivant.setBounds((int)(0.3*(l-cl*l)), (int) (ch*h+40), 150, 117);
+		suivant.addMouseListener(m);
+		
+		soldat = new JLabel();
+    	soldat.setIcon(new ImageIcon("Images/soldat.png"));
+    	soldat.setBounds(10, 320, 100, 80);
+    	rightPanel.add(soldat);
+    	cavalier = new JLabel();
+    	cavalier.setIcon(new ImageIcon("Images/cavalier.png"));
+    	cavalier.setBounds(10, 400, 100, 80);
+    	rightPanel.add(cavalier);
+    	canon = new JLabel(); 
+    	canon.setIcon(new ImageIcon("Images/canon.png"));
+    	canon.setBounds(10, 480, 100, 80);
+    	rightPanel.add(canon);
+    	
+    	plus1 = new JLabel(); 
+    	plus1.setIcon(new ImageIcon("Images/plus.png"));
+    	plus1.setBounds(100+40, 320+30, 35, 35);
+    	rightPanel.add(plus1);
+    	plus2 = new JLabel(); 
+    	plus2.setIcon(new ImageIcon("Images/plus.png"));
+    	plus2.setBounds(100+40, 400+30, 35, 35);
+    	rightPanel.add(plus2);
+    	plus3 = new JLabel(); 
+    	plus3.setIcon(new ImageIcon("Images/plus.png"));
+    	plus3.setBounds(100+40, 480+30, 35, 35);
+    	rightPanel.add(plus3);
+    	
+    	moins1 = new JLabel(); 
+    	moins1.setIcon(new ImageIcon("Images/moins.png"));
+    	moins1.setBounds(200+40, 320+30, 35, 35);
+    	rightPanel.add(moins1);
+    	moins2 = new JLabel(); 
+    	moins2.setIcon(new ImageIcon("Images/moins.png"));
+    	moins2.setBounds(200+40, 400+30, 35, 35);
+    	rightPanel.add(moins2);
+    	moins3 = new JLabel(); 
+    	moins3.setIcon(new ImageIcon("Images/moins.png"));
+    	moins3.setBounds(200+40, 480+30, 35, 35);
+    	rightPanel.add(moins3);
+    	
+    	
+		
 		rightPanel.add(suivant);
 
 		this.add(rightPanel);
@@ -131,10 +191,9 @@ public class Map extends JFrame{
 		
 		Font fontjoueur = new Font("Arial",Font.BOLD,30);
 		j1 = new JLabel("Joueur 1",SwingConstants.CENTER);
-		j1.setFont(fontjoueur);
-		j1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
-
+		j1.setFont(fontjoueur);	
 		j1.setBounds(0, 0, (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
+		j1.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 5)); 
 		j2 = new JLabel("Joueur 2",SwingConstants.CENTER);
 		j2.setFont(fontjoueur);
 		j2.setBounds(0, (int)(0.33*(h-ch*h)), (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
@@ -159,8 +218,8 @@ public class Map extends JFrame{
 		
 		renfort = new JLabel("Renforts :");
 		nbTer = new JLabel("Territoires :");
-		renfortAct = new JLabel("Renforts");
-		nbTerAct = new JLabel("Territoires");
+		renfortAct = new JLabel(Integer.toString(Plateau.joueurList.get(0).getSoldatListJoueur().size()));
+		nbTerAct = new JLabel(Integer.toString(Plateau.joueurList.get(0).getTerritoireListJoueur().size()));
 		Font fontclass = new Font("Arial",Font.BOLD,30);
 		renfort.setFont(fontclass);
 		nbTer.setFont(fontclass);
@@ -183,6 +242,90 @@ public class Map extends JFrame{
 	    this.setVisible(true);
 	}
 	
+	MouseListener m = new MouseListener() {
+		public void mouseClicked(MouseEvent e) {
+			if (e.getSource() == suivant) {
+				joueurAct++;
+				
+				
+				if (joueurAct >= Plateau.joueurList.size()) {
+					joueurAct = 0;
+					premierTour = false;
+				}
+				renfortAct.setText(Integer.toString(Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size()));
+				nbTerAct.setText(Integer.toString(Plateau.joueurList.get(joueurAct).getTerritoireListJoueur() .size()));
+				if (joueurAct == 0) {
+					j1.setBorder(BorderFactory.createLineBorder( Plateau.joueurList.get(joueurAct).getColor(), 5));
+					j2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+				}
+				if (joueurAct == 1) {
+					j2.setBorder(BorderFactory.createLineBorder( Plateau.joueurList.get(joueurAct).getColor(), 5));
+					j1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+				}
+
+				if (joueurAct == 2) {
+					j3.setBorder(BorderFactory.createLineBorder( Plateau.joueurList.get(joueurAct).getColor(), 5));
+					j1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+				}
+
+				if (joueurAct == 3) {
+					j4.setBorder(BorderFactory.createLineBorder( Plateau.joueurList.get(joueurAct).getColor(), 5));
+					j1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+				}
+
+				if (joueurAct == 4) {
+					j5.setBorder(BorderFactory.createLineBorder( Plateau.joueurList.get(joueurAct).getColor(), 5));
+					j1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+				}
+				if (joueurAct == 5) {
+					j6.setBorder(BorderFactory.createLineBorder( Plateau.joueurList.get(joueurAct).getColor(), 5));
+					j1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+				}
+			}
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+		}
+
+	};
 		
 	
 	public class Background extends JPanel implements MouseListener, MouseMotionListener{ 
@@ -217,6 +360,7 @@ public class Map extends JFrame{
 		  	public Background() {
 		  		this.setLayout(null);
 				this.addMouseListener(this);
+				
 				this.addMouseMotionListener(this);
 				exit = new JLabel();
 			    exit.setIcon(new ImageIcon("images/exit.png"));
@@ -297,15 +441,10 @@ public class Map extends JFrame{
 								System.out.println("-------");
 								System.out.println(t.getNom()+" appartient à "+j.getNom());
 								vterritoireAct.setText(nom);
-								System.out.println("Soldat");
-								System.out.println(t.getSoldatListTerritoire().size());
 								vsoldatAct.setText(Integer.toString(t.getSoldatListTerritoire().size()));
-								System.out.println("Cavalier");
-								System.out.println(t.getCavalierListTerritoire().size());
 								vcavalierAct.setText(Integer.toString(t.getCavalierListTerritoire().size()));
-								System.out.println("Canon");
-								System.out.println(Integer.toString(t.getCanonListTerritoire().size()));
 								vcanonAct.setText(Integer.toString(t.getCanonListTerritoire().size()));
+								
 							}
 						}
 					}
@@ -422,6 +561,19 @@ public class Map extends JFrame{
 		this.vcanonAct = vcanonAct;
 	}
 
+
+
+	public int getJoueurAct() {
+		return joueurAct;
+	}
+
+
+
+	public void setJoueurAct(int joueurAct) {
+		this.joueurAct = joueurAct;
+	}
+
+	
 
 
 	

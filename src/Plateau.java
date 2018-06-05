@@ -219,6 +219,32 @@ public class Plateau {
 		regionsList.add(Asia);
 		regionsList.add(Australia);
 	}
+
+	public static ArrayList<Joueur> getJoueurList() {
+		return joueurList;
+	}
+
+	public static void setJoueurList(ArrayList<Joueur> joueurList) {
+		Plateau.joueurList = joueurList;
+	}
+
+	public static ArrayList<Territoire> getTerritoiresList() {
+		return territoiresList;
+	}
+
+	public static void setTerritoiresList(ArrayList<Territoire> territoiresList) {
+		Plateau.territoiresList = territoiresList;
+	}
+
+	public static ArrayList<Region> getRegionsList() {
+		return regionsList;
+	}
+
+	public static void setRegionsList(ArrayList<Region> regionsList) {
+		Plateau.regionsList = regionsList;
+	}
+
+	
 	
 	//Tour à tour 
 	

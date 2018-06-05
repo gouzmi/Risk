@@ -140,47 +140,62 @@ public class Unite {
 		this.nbmouv = nbmouv;
 	}
 	
+	public boolean sontVoisin(Territoire dep, Territoire arr) {
+		for (int i=0;i<arr.voisins.length;i++) {
+			if(dep == arr.voisins[i]) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public void move(Territoire dep, Territoire arr) {
-		if(dep.getOccupant()==arr.getOccupant()) {
-			for(Unite each : dep.getUniteMove()) {
-				if(each.getNbmouv()>0) {
-					if(this.cout==1) {
-						Soldat soldat = new Soldat();
-						soldat.setNbmouv(this.getNbmouv()-1);
-						arr.getSoldatListTerritoire().add(soldat);
-						dep.getSoldatListTerritoire().remove(this);
-					}
-					else if(this.cout==3) {
-						Cavalier cavalier = new Cavalier();
-						cavalier.setNbmouv(this.getNbmouv()-1);
-						arr.getCavalierListTerritoire().add(cavalier);
-						dep.getCavalierListTerritoire().remove(this);
+		
+		if(sontVoisin(dep,arr)) {
+			if(dep.getOccupant()==arr.getOccupant()) {
+				for(Unite each : dep.getUniteMove()) {
+					if(each.getNbmouv()>0) {
+						if(this.cout==1) {
+							Soldat soldat = new Soldat();
+							soldat.setNbmouv(this.getNbmouv()-1);
+							arr.getSoldatListTerritoire().add(soldat);
+							dep.getSoldatListTerritoire().remove(this);
+						}
+						else if(this.cout==3) {
+							Cavalier cavalier = new Cavalier();
+							cavalier.setNbmouv(this.getNbmouv()-1);
+							arr.getCavalierListTerritoire().add(cavalier);
+							dep.getCavalierListTerritoire().remove(this);
+						}
+						else {
+							Canon canon = new Canon();
+							canon.setNbmouv(this.getNbmouv()-1);
+							arr.getCanonListTerritoire().add(canon);
+							dep.getCanonListTerritoire().remove(this);
+						}
+						
 					}
 					else {
-						Canon canon = new Canon();
-						canon.setNbmouv(this.getNbmouv()-1);
-						arr.getCanonListTerritoire().add(canon);
-						dep.getCanonListTerritoire().remove(this);
+						System.out.println("Plus assez de déplacement pour votre "+each.getType());
 					}
-					
+					dep.getUniteMove().remove(each);
 				}
-				else {
-					System.out.println("Plus assez de déplacement pour votre "+each.getType());
-				}
-				dep.getUniteMove().remove(each);
-			}
-			
-			
-		}
-		else {
-			if(dep.uniteMove.size()<4) {
-				System.out.println("A l'attaque !");
-				dep.getUniteAtt().clear();
-				dep.getUniteAtt().addAll(dep.getUniteMove());
+				
+				
 			}
 			else {
-				System.out.println("Trop d'unités pour attaquer !");
+				if(dep.uniteMove.size()<4) {
+					System.out.println("A l'attaque !");
+					dep.getUniteAtt().clear();
+					dep.getUniteAtt().addAll(dep.getUniteMove());
+				}
+				else {
+					System.out.println("Trop d'unités pour attaquer !");
+				}
 			}
+		}
+		else {
+			System.out.println("Les territoires ne sont pas voisins !");
 		}
 	}
 	

@@ -17,7 +17,7 @@ public class Risk{
 	
 	  
 	Plateau p = new Plateau();
-	Joueur.initListJoueurs(3);
+	Joueur.initListJoueurs(4);
 	Unite.attribuerArmees();
 	p.init();
 	Territoire.attribuerTer(p.territoiresList);
