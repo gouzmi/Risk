@@ -1,22 +1,21 @@
+import java.awt.List;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
 public class Plateau {
 
-	public static ArrayList<Joueur> joueurList;
+	public static ArrayList<Joueur> joueurList = new ArrayList<Joueur>();
 	public static ArrayList<Territoire> territoiresList;
 	public static ArrayList<Region> regionsList;
+	
 
 			
 	
-	public Plateau() {
-
-		ArrayList<Joueur> jList = new ArrayList<Joueur>();
-		ArrayList<Territoire> tList = new ArrayList<Territoire>();
-		ArrayList<Region> rList = new ArrayList<Region>();
+	public Plateau(ArrayList<Joueur> jList) {
 		this.joueurList = jList;
-		this.territoiresList = tList;
-		this.regionsList = rList;
+		this.territoiresList = new ArrayList<>();
+		this.regionsList = new ArrayList<>();
 	}
 	
 	public void init() {
@@ -218,6 +217,11 @@ public class Plateau {
 		regionsList.add(Africa);
 		regionsList.add(Asia);
 		regionsList.add(Australia);
+		
+		//initialisation des missions
+		
+		Mission m = new Mission(joueurList);
+		
 	}
 
 	public static ArrayList<Joueur> getJoueurList() {
