@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.ActionListener;
@@ -19,6 +20,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+
 import javazoom.jl.decoder.*;
 import javazoom.jl.player.Player;
 import java.awt.Toolkit;
@@ -51,6 +54,7 @@ public class Menu extends JFrame implements MouseListener{
 	JTextField t5 = new JTextField("joueur 5");
 	JTextField t6 = new JTextField("joueur 6");
 	int nbjoueur;
+
 	
        
   public Menu(){
@@ -298,10 +302,16 @@ public void mouseClicked(MouseEvent arg0) {
 	  
 	  if(arg0.getSource() == lancer) {
 		  
-		  
-		  
-		    Plateau p = new Plateau();
-			Joueur.initListJoueurs(nbjoueur);
+		  	ArrayList<Joueur> JJ = new ArrayList<Joueur>();
+			Color tabColor[] = {Color.yellow,Color.red,Color.green,Color.blue,Color.black,Color.white};
+			String listNom[] = {t1.getText(),t2.getText(), t3.getText(), t4.getText(), t5.getText(), t6.getText()};
+		    for (int i=0; i<nbjoueur; i++) {
+		    	Joueur j = new Joueur(i, listNom[i], tabColor[i]);
+		    	JJ.add(j);
+		    }
+		
+		    Plateau p = new Plateau(JJ);
+			//Joueur.initListJoueurs(nbjoueur);
 			Unite.attribuerArmees();
 			p.init();
 			Territoire.attribuerTer(p.territoiresList);
