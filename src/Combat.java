@@ -14,6 +14,8 @@ public class Combat {
 	
 	
 	public Combat() {
+		ArrayList<Unite> sur = new ArrayList<Unite>();
+		this.listSurvivant = sur;
 	}
 	
 	public static int attribuerPui (int a, int b) {
@@ -125,6 +127,7 @@ public class Combat {
 			System.out.println(def.getNom()+" conquis par "+att.getOccupant().getNom() );
 			def.setOccupant(att.getOccupant());  // CHANGEMENT D OCCUPANT
 			// PLACEMENT DES UNITES SURVIVANTES SELON LE TYPE
+			
 			for(int i=0;i<this.listSurvivant.size();i++) {
 				if(this.listSurvivant.get(i).getCout()==1) {
 					Soldat soldat = new Soldat();

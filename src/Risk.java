@@ -13,16 +13,16 @@ public class Risk{
   
   public static void main(String[] args) throws IOException{
 
-	//Menu fenetre = new Menu();
+	Menu fenetre = new Menu();
 	
 	  
-	Plateau p = new Plateau();
+	/*Plateau p = new Plateau();
 	Joueur.initListJoueurs(4);
 	Unite.attribuerArmees();
 	p.init();
 	Territoire.attribuerTer(p.territoiresList);
 	//Plateau.territoiresList.get(0).addCanon(10);
-	Map map = new Map();
+	Map map = new Map();*/
 	
 		//Tour à tour
 	//p.Tour();

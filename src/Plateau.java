@@ -84,7 +84,7 @@ public class Plateau {
 	    CentralAmerica.setVoisins(voisinCentralAmerica);
 	    Territoire voisinVenezuela  [] = {CentralAmerica, Brazil, Peru};
 	    Venezuela.setVoisins(voisinVenezuela);
-	    Territoire voisinPeru [] = {NorthwestTerritory, Alberta, Kamchatka};
+	    Territoire voisinPeru [] = {Brazil, Argentina, Venezuela};
 	    Peru.setVoisins(voisinPeru);
 	    Territoire voisinArgentina  [] = {Peru, Brazil};
 	    Argentina.setVoisins(voisinArgentina);

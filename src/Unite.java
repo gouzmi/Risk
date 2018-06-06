@@ -158,20 +158,35 @@ public class Unite {
 				Collections.sort(dep.soldatListTerritoire, Comparator.comparing(Soldat::getNbmouv));
 				Collections.reverse(dep.getSoldatListTerritoire());
 				for(int i=0;i<nbS;i++) {
-					System.out.println(dep.soldatListTerritoire.size());
-					System.out.println(dep.soldatListTerritoire.get(i).getType());
-					System.out.println(dep.uniteMove.size());
-					dep.uniteMove.add(dep.getSoldatListTerritoire().get(i));
+					if(dep.getSoldatListTerritoire().get(i).getNbmouv()>0) {
+						dep.uniteMove.add(dep.getSoldatListTerritoire().get(i));
+					}
+					else {
+						System.out.println("Plus assez de déplacement pour votre "+dep.getSoldatListTerritoire().get(i).getType());
+					}
+					
 				}
 				Collections.sort(dep.cavalierListTerritoire, Comparator.comparing(Cavalier::getNbmouv));
 				Collections.reverse(dep.getCavalierListTerritoire());
 				for(int i=0;i<nbCav;i++) {
-					dep.getUniteMove().add(dep.getCavalierListTerritoire().get(i));
+					if(dep.getCavalierListTerritoire().get(i).getNbmouv()>0) {
+						dep.getUniteMove().add(dep.getCavalierListTerritoire().get(i));
+					}
+					else {
+						System.out.println("Plus assez de déplacement pour votre "+dep.getCavalierListTerritoire().get(i).getType());
+					}
+					
 				}
 				Collections.sort(dep.canonListTerritoire, Comparator.comparing(Canon::getNbmouv));
 				Collections.reverse(dep.getCanonListTerritoire());
 				for(int i=0;i<nbCan;i++) {
-					dep.getUniteMove().add(dep.getCanonListTerritoire().get(i));
+					if(dep.getCanonListTerritoire().get(i).getNbmouv()>0) {
+						dep.getUniteMove().add(dep.getCanonListTerritoire().get(i));
+					}
+					else {
+						System.out.println("Plus assez de déplacement pour votre "+dep.getCanonListTerritoire().get(i).getType());
+					}
+					
 				}
 			}
 			else {
@@ -186,10 +201,10 @@ public class Unite {
 	
 	public static void move(Territoire dep, Territoire arr) {
 		
-		if(sontVoisin(dep,arr)) {
+		if(sontVoisin(dep,arr)==true) {
 			if(dep.getOccupant()==arr.getOccupant()) {
 				for(Unite each : dep.getUniteMove()) {
-					if(each.getNbmouv()>0) {
+						if(each.cout==1) {
 							Soldat soldat = new Soldat();
 							soldat.setNbmouv(each.getNbmouv()-1);
 							arr.getSoldatListTerritoire().add(soldat);
@@ -216,6 +231,11 @@ public class Unite {
 					System.out.println("A l'attaque !");
 					dep.getUniteAtt().clear();
 					dep.getUniteAtt().addAll(dep.getUniteMove());
+					dep.getUniteMove().clear();
+					Combat c = new Combat();
+					System.out.println("A l'attaque !");
+					c.combattre(dep, arr);	
+					System.out.println("A l'attaque !");
 				}
 				else {
 					System.out.println("Trop d'unités pour attaquer !");

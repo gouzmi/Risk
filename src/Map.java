@@ -448,6 +448,8 @@ public class Map extends JFrame{
 						nbCan=0;
 						actualiserNb();
 						actualiserTerRen();	
+						System.out.println("joueur ="+joueurAct);
+						System.out.println(Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size());
 					}
 					else {
 						System.out.println("Vous n'avez pas assez de renforts !");
@@ -496,8 +498,8 @@ public class Map extends JFrame{
 	}
 	
 	public void actualiserTerRen(){
-		renfortAct.setText(Integer.toString(Plateau.joueurList.get(0).getSoldatListJoueur().size()));
-		nbTerAct.setText(Integer.toString(Plateau.joueurList.get(0).getTerritoireListJoueur().size()));
+		renfortAct.setText(Integer.toString(Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size()));
+		nbTerAct.setText(Integer.toString(Plateau.joueurList.get(joueurAct).getTerritoireListJoueur().size()));
 	}
 	
 	public class Background extends JPanel implements MouseListener, MouseMotionListener{ 
@@ -508,6 +510,7 @@ public class Map extends JFrame{
 		ArrayList<BufferedImage> imageList_highlight = new ArrayList<BufferedImage>(); // 
 		ArrayList<BufferedImage> imageToDraw = new ArrayList<BufferedImage>(); // 
 		int currentHighLight; //
+		
 		
 		
 		  public void paintComponent(Graphics g){ 
@@ -526,6 +529,7 @@ public class Map extends JFrame{
 					g.fillOval((int)(pl*each.getX()), (int)(ph*each.getY()), 25, 25);
 					g.setColor(Color.BLACK);
 					g.drawOval((int)(pl*each.getX())-1, (int)(ph*each.getY())-1, 25+2, 25+2);
+					this.repaint();
 				}
 		  	}
 
@@ -580,11 +584,11 @@ public class Map extends JFrame{
 
 			int ix = (int)((1/pl)*e.getX());
 			int iy = (int)((1/ph)*e.getY());
-			System.out.println(ix);
+			/*System.out.println(ix);
 			System.out.println(iy);
 			System.out.println("-----");
 			System.out.println(e.getX());
-			System.out.println(e.getY());
+			System.out.println(e.getY());*/
 			int index = 0; 
 			for (BufferedImage each : imageList) 
 			{
@@ -606,12 +610,9 @@ public class Map extends JFrame{
 					ImageIcon img = imageNom.get(index-1);
 					String source = img.getDescription();
 					String nom = source.substring(14, source.length()-6);
-					System.out.println(nom);
 					for(Joueur j: Plateau.joueurList) {
 						for(Territoire t : j.territoireListJoueur) {		
 							if(t.getNom().equals(nom)) {
-								System.out.println("-------");
-								System.out.println(t.getNom()+" appartient Ã  "+j.getNom());
 								vterritoireAct.setText(nom);
 								vsoldatAct.setText(Integer.toString(t.getSoldatListTerritoire().size()));
 								vcavalierAct.setText(Integer.toString(t.getCavalierListTerritoire().size()));
@@ -642,11 +643,9 @@ public class Map extends JFrame{
 					ImageIcon img = imageNom.get(index-1);
 					String source = img.getDescription();
 					String nom = source.substring(14, source.length()-6);
-					System.out.println(nom);
 					for(Joueur j: Plateau.joueurList) {
 						for(Territoire t : j.territoireListJoueur) {		
 							if(t.getNom().equals(nom)) {
-								System.out.println("TA MERE");
 								if(TerritoireD==null) {
 									TerritoireD=t;
 									terdep.setText(TerritoireD.getNom());
