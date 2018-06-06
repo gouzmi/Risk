@@ -6,15 +6,17 @@ public class Joueur {
 	public int id;
 	protected ArrayList<Territoire> territoireListJoueur;
 	protected ArrayList<Soldat> soldatListJoueur;
-	public boolean Victoire = false;
+	public static boolean Victoire = false;
 	Color color;
+	private String mission = new String();
 	
 	
 
 
-	public Joueur(int id, String nom) {
+	public Joueur(int id, String nom, Color color) {
 		this.id = id;
 		this.nom = nom;
+		this.color = color;
 		ArrayList<Territoire> territoireListJoueur = new ArrayList<Territoire>();
 		this.territoireListJoueur = territoireListJoueur;
 		ArrayList<Soldat> soldatListJoueur = new ArrayList<Soldat>();
@@ -24,11 +26,12 @@ public class Joueur {
 	}
 	
 
+
 	public static void initListJoueurs(int nbJoueur) {
 		for (int i =1; i <=nbJoueur; i++) {
 			
 			Color tabColor[] = {Color.yellow,Color.red,Color.green,Color.blue,Color.black,Color.white};
-			Joueur j=new Joueur(i, "joueur"+i);	
+			Joueur j=new Joueur(i, "joueur"+i, tabColor[i]);	
 			Plateau.joueurList.add(j);	
 			Color color = tabColor[i-1];
 			j.setColor(color);
@@ -84,6 +87,15 @@ public class Joueur {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public String getMission() {
+		return mission;
+	}
+
+
+	public void setMission(String mission) {
+		this.mission = mission;
 	}
 
 

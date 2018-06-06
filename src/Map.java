@@ -229,12 +229,12 @@ public class Map extends JFrame{
     	move.addMouseListener(m);
 		rightPanel.add(move);
 		
-		terdep = new JLabel("Territoires départ",SwingConstants.CENTER);
+		terdep = new JLabel("Territoires dÃ©part",SwingConstants.CENTER);
 		terdep.setFont(font);
 		terdep.setBounds((int)(0.1*(l-cl*l)), 570, (int)(0.8*(l-(cl*l))), 80);
 		rightPanel.add(terdep);
 		
-		terarr = new JLabel("Territoires d'arrivée",SwingConstants.CENTER);
+		terarr = new JLabel("Territoires d'arrivÃ©e",SwingConstants.CENTER);
 		terarr.setFont(font);
 		terarr.setBounds((int)(0.1*(l-cl*l)),762,(int)(0.8*(l-(cl*l))), 80);
 		rightPanel.add(terarr);
@@ -251,31 +251,39 @@ public class Map extends JFrame{
 		downPanel.setBackground( fondl );
 		
 		Font fontjoueur = new Font("Arial",Font.BOLD,25);
-		j1 = new JLabel("Joueur 1",SwingConstants.CENTER);
+		j1 = new JLabel("" + Plateau.joueurList.get(0).getNom(),SwingConstants.CENTER);
 		j1.setFont(fontjoueur);	
 		j1.setBounds(0, 0, (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
 		j1.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 5)); 
-		j2 = new JLabel("Joueur 2",SwingConstants.CENTER);
+		j2 = new JLabel("" + Plateau.joueurList.get(1).getNom(),SwingConstants.CENTER);
 		j2.setFont(fontjoueur);
 		j2.setBounds(0, (int)(0.33*(h-ch*h)), (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
-		j3 = new JLabel("Joueur 3",SwingConstants.CENTER);
-		j3.setFont(fontjoueur);
-		j3.setBounds(0, (int)(2*0.33*(h-ch*h)), (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
-		j4 = new JLabel("Joueur 4",SwingConstants.CENTER);
-		j4.setFont(fontjoueur);
-		j4.setBounds((int) (0.17*cl*l), 0, (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
-		j5 = new JLabel("Joueur 5",SwingConstants.CENTER);
-		j5.setFont(fontjoueur);
-		j5.setBounds((int) (0.17*cl*l), (int)(0.33*(h-ch*h)), (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
-		j6 = new JLabel("Joueur 6",SwingConstants.CENTER);
-		j6.setFont(fontjoueur);
-		j6.setBounds((int) (0.17*cl*l), (int)(2*0.33*(h-ch*h)), (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
 		downPanel.add(j1);
 		downPanel.add(j2);
-		downPanel.add(j3);
-		downPanel.add(j4);
-		downPanel.add(j5);
-		downPanel.add(j6);
+		
+		for(int i = 2; i<=Plateau.joueurList.size(); i++) {
+			if(i == 3) {
+				j3 = new JLabel("" + Plateau.joueurList.get(i-1).getNom(),SwingConstants.CENTER);
+				j3.setFont(fontjoueur);
+				j3.setBounds(0, (int)(2*0.33*(h-ch*h)), (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
+				downPanel.add(j3);
+			} else if(i == 4) {
+				j4 = new JLabel("" + Plateau.joueurList.get(i-1).getNom(),SwingConstants.CENTER);
+				j4.setFont(fontjoueur);
+				j4.setBounds((int) (0.17*cl*l), 0, (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
+				downPanel.add(j4);
+			} else if(i == 5){
+				j5 = new JLabel("" + Plateau.joueurList.get(i-1).getNom(),SwingConstants.CENTER);
+				j5.setFont(fontjoueur);
+				j5.setBounds((int) (0.17*cl*l), (int)(0.33*(h-ch*h)), (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
+				downPanel.add(j5);
+			} else if(i == 6) {
+				j6 = new JLabel("" + Plateau.joueurList.get(i-1).getNom(),SwingConstants.CENTER);
+				j6.setFont(fontjoueur);
+				j6.setBounds((int) (0.17*cl*l), (int)(2*0.33*(h-ch*h)), (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
+				downPanel.add(j6);
+			}
+		}		
 		
 		renfort = new JLabel("Renforts :");
 		nbTer = new JLabel("Territoires :");
@@ -341,53 +349,47 @@ public class Map extends JFrame{
 				nbTerAct.setText(Integer.toString(Plateau.joueurList.get(joueurAct).getTerritoireListJoueur() .size()));
 				if (joueurAct == 0) {
 					j1.setBorder(BorderFactory.createLineBorder( Plateau.joueurList.get(joueurAct).getColor(), 5));
-					j2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					if (Plateau.joueurList.size()==2) {
+						j2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					}
+					else if (Plateau.joueurList.size()==3) {
+						j3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					}
+					else if (Plateau.joueurList.size()==4) {
+						j4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					}
+					else if (Plateau.joueurList.size()==5) {
+						j5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					}
+					else if (Plateau.joueurList.size()==6) {
+						j6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					}
 				}
 				if (joueurAct == 1) {
 					j2.setBorder(BorderFactory.createLineBorder( Plateau.joueurList.get(joueurAct).getColor(), 5));
 					j1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
 					j3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
 					j4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
 					j5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					j6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
 				}
 
 				if (joueurAct == 2) {
 					j3.setBorder(BorderFactory.createLineBorder( Plateau.joueurList.get(joueurAct).getColor(), 5));
-					j1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
 					j2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
 				}
 
 				if (joueurAct == 3) {
 					j4.setBorder(BorderFactory.createLineBorder( Plateau.joueurList.get(joueurAct).getColor(), 5));
-					j1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
 					j3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
 				}
 
 				if (joueurAct == 4) {
 					j5.setBorder(BorderFactory.createLineBorder( Plateau.joueurList.get(joueurAct).getColor(), 5));
-					j1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
 					j4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
 				}
 				if (joueurAct == 5) {
 					j6.setBorder(BorderFactory.createLineBorder( Plateau.joueurList.get(joueurAct).getColor(), 5));
-					j1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
 					j5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
 				}
 			}
@@ -396,8 +398,18 @@ public class Map extends JFrame{
 			if(e.getSource()==refresh) {
 				TerritoireD = null;
 				TerritoireA = null;
-				terdep.setText("Territoires départ");
-				terarr.setText("Territoires d'arrivée");
+				terdep.setText("Territoires dÃ©part");
+				terarr.setText("Territoires d'arrivÃ©e");
+			}
+			
+			if (e.getSource()==mission) {
+				JOptionPane jop1;
+				 
+				//BoÃ®te du message d'information
+				jop1 = new JOptionPane();
+				//String message = Plateau.joueurList.get(joueurAct);
+				jop1.showMessageDialog(null, ""+Plateau.joueurList.get(joueurAct).getMission(), "Mission", JOptionPane.INFORMATION_MESSAGE);
+
 			}
 			
 			if(e.getSource()==plus1) {
@@ -599,7 +611,7 @@ public class Map extends JFrame{
 						for(Territoire t : j.territoireListJoueur) {		
 							if(t.getNom().equals(nom)) {
 								System.out.println("-------");
-								System.out.println(t.getNom()+" appartient Ã  "+j.getNom());
+								System.out.println(t.getNom()+" appartient Ãƒ  "+j.getNom());
 								vterritoireAct.setText(nom);
 								vsoldatAct.setText(Integer.toString(t.getSoldatListTerritoire().size()));
 								vcavalierAct.setText(Integer.toString(t.getCavalierListTerritoire().size()));
