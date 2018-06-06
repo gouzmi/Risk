@@ -50,6 +50,7 @@ public class Map extends JFrame{
 	JLabel j6;
 	JLabel suivant;
 	JLabel renfort;
+	JLabel refresh;
 	JLabel nbTer;
 	JLabel renfortAct;
 	JLabel nbTerAct;
@@ -67,6 +68,16 @@ public class Map extends JFrame{
 	JLabel nbSoldat;
 	JLabel nbCavalier;
 	JLabel nbCanon;
+	JLabel placer;
+	JLabel move;
+	JLabel mission;
+	JLabel instruction;
+	
+	JLabel terdep;
+	JLabel terarr;
+	Territoire TerritoireA;
+	Territoire TerritoireD;
+	
 	
 	boolean premierTour;
 	
@@ -103,7 +114,7 @@ public class Map extends JFrame{
 		vsoldatAct = new JLabel("Soldat",SwingConstants.CENTER);
 		vcavalierAct = new JLabel("Cavalier",SwingConstants.CENTER);
 		vcanonAct = new JLabel("Canon",SwingConstants.CENTER);
-		Font font = new Font("Times New Roman",Font.BOLD,30);
+		Font font = new Font("Arial",Font.BOLD,25);
 		territoireAct.setFont(font);
 		soldatAct.setFont(font);
 		cavalierAct.setFont(font);
@@ -134,8 +145,15 @@ public class Map extends JFrame{
 		rightPanel.add(vcanonAct);
 		suivant = new JLabel();
 		suivant.setIcon(new ImageIcon("images/suivant.png"));
-		suivant.setBounds((int)(0.3*(l-cl*l)), (int) (ch*h+40), 150, 117);
+		suivant.setBounds((int)(0.95*(l-cl*l)-149), (int) (ch*h+40), 149, 117);
 		suivant.addMouseListener(m);
+		refresh = new JLabel();
+		refresh.setIcon(new ImageIcon("images/refresh.png"));
+		refresh.setBounds((int)(0.05*(l-cl*l)), (int) (ch*h+40), 150, 113);
+		refresh.addMouseListener(m);
+		rightPanel.add(suivant);
+		rightPanel.add(refresh);
+		
 		
 		soldat = new JLabel();
     	soldat.setIcon(new ImageIcon("Images/soldat.png"));
@@ -152,33 +170,66 @@ public class Map extends JFrame{
     	
     	plus1 = new JLabel(); 
     	plus1.setIcon(new ImageIcon("Images/plus.png"));
-    	plus1.setBounds(100+40, 320+30, 35, 35);
+    	plus1.setBounds(100+40, 320+35, 35, 35);
     	rightPanel.add(plus1);
     	plus2 = new JLabel(); 
     	plus2.setIcon(new ImageIcon("Images/plus.png"));
-    	plus2.setBounds(100+40, 400+30, 35, 35);
+    	plus2.setBounds(100+40, 400+35, 35, 35);
     	rightPanel.add(plus2);
     	plus3 = new JLabel(); 
     	plus3.setIcon(new ImageIcon("Images/plus.png"));
-    	plus3.setBounds(100+40, 480+30, 35, 35);
+    	plus3.setBounds(100+40, 480+35, 35, 35);
     	rightPanel.add(plus3);
     	
     	moins1 = new JLabel(); 
     	moins1.setIcon(new ImageIcon("Images/moins.png"));
-    	moins1.setBounds(200+40, 320+30, 35, 35);
+    	moins1.setBounds(200+40, 320+35, 35, 35);
     	rightPanel.add(moins1);
     	moins2 = new JLabel(); 
     	moins2.setIcon(new ImageIcon("Images/moins.png"));
-    	moins2.setBounds(200+40, 400+30, 35, 35);
+    	moins2.setBounds(200+40, 400+35, 35, 35);
     	rightPanel.add(moins2);
     	moins3 = new JLabel(); 
     	moins3.setIcon(new ImageIcon("Images/moins.png"));
-    	moins3.setBounds(200+40, 480+30, 35, 35);
+    	moins3.setBounds(200+40, 480+35, 35, 35);
     	rightPanel.add(moins3);
     	
-    	
+    	nbSoldat = new JLabel(Integer.toString(0),SwingConstants.CENTER);
+    	nbSoldat.setFont(font);
+    	nbSoldat.setBounds(208-25, 320+35, 50, 35);
+		rightPanel.add(nbSoldat);
+		nbCavalier = new JLabel(Integer.toString(0),SwingConstants.CENTER);
+		nbCavalier.setFont(font);
+		nbCavalier.setBounds(208-25, 400+35, 50, 35);
+		rightPanel.add(nbCavalier);
+		nbCanon = new JLabel(Integer.toString(0),SwingConstants.CENTER);
+		nbCanon.setFont(font);
+		nbCanon.setBounds(208-25, 480+35, 50, 35);
+		rightPanel.add(nbCanon);
 		
-		rightPanel.add(suivant);
+    	/*placer = new JLabel();
+    	placer.setIcon(new ImageIcon("images/renfort.png"));
+    	placer.setBounds(20, 650, 150, 72);
+    	placer.addMouseListener(m);
+		rightPanel.add(placer);*/
+		
+		move = new JLabel();
+    	move.setIcon(new ImageIcon("images/move.png"));
+    	move.setBounds((int)(((l-cl*l)-150)/2), 670, 150, 72);
+    	move.addMouseListener(m);
+		rightPanel.add(move);
+		
+		terdep = new JLabel("Territoires départ",SwingConstants.CENTER);
+		terdep.setFont(font);
+		terdep.setBounds((int)(0.1*(l-cl*l)), 570, (int)(0.8*(l-(cl*l))), 80);
+		rightPanel.add(terdep);
+		
+		terarr = new JLabel("Territoires d'arrivée",SwingConstants.CENTER);
+		terarr.setFont(font);
+		terarr.setBounds((int)(0.1*(l-cl*l)),762,(int)(0.8*(l-(cl*l))), 80);
+		rightPanel.add(terarr);
+		
+		
 
 		this.add(rightPanel);
 		
@@ -189,7 +240,7 @@ public class Map extends JFrame{
 		Color fondl = Color.decode("#e5b886");
 		downPanel.setBackground( fondl );
 		
-		Font fontjoueur = new Font("Arial",Font.BOLD,30);
+		Font fontjoueur = new Font("Arial",Font.BOLD,25);
 		j1 = new JLabel("Joueur 1",SwingConstants.CENTER);
 		j1.setFont(fontjoueur);	
 		j1.setBounds(0, 0, (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
@@ -225,14 +276,28 @@ public class Map extends JFrame{
 		nbTer.setFont(fontclass);
 		renfortAct.setFont(fontclass);
 		nbTerAct.setFont(fontclass);
-		renfort.setBounds((int) (2.5*0.17*cl*l), 30, (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
-		nbTer.setBounds((int) (2.5*0.17*cl*l), (int)(0.33*(h-ch*h)+30), (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
-		renfortAct.setBounds((int) (3.5*0.17*cl*l), 30, 60, (int)(0.33*(h-ch*h)));
-		nbTerAct.setBounds((int) (3.5*0.17*cl*l), (int)(0.33*(h-ch*h)+30), 60, (int)(0.33*(h-ch*h)));
+		renfort.setBounds((int) (2.3*0.17*cl*l), 30, (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
+		nbTer.setBounds((int) (2.3*0.17*cl*l), (int)(0.33*(h-ch*h)+30), (int) (0.17*cl*l), (int)(0.33*(h-ch*h)));
+		renfortAct.setBounds((int) (3.1*0.17*cl*l), 30, 50, (int)(0.33*(h-ch*h)));
+		nbTerAct.setBounds((int) (3.1*0.17*cl*l), (int)(0.33*(h-ch*h)+30), 50, (int)(0.33*(h-ch*h)));
 		downPanel.add(renfort);
 		downPanel.add(nbTer);
 		downPanel.add(renfortAct);
 		downPanel.add(nbTerAct);
+		
+		Font fonj = new Font("Arial",Font.BOLD,30);
+		mission = new JLabel();
+		mission.setIcon(new ImageIcon("images/petitbouton.png"));
+		mission.setBounds((int) (4*0.17*cl*l), (int)(0.2*(h-ch*h)), 150, 72);
+		mission.addMouseListener(m);
+		
+		downPanel.add(mission);
+		instruction = new JLabel();
+		instruction.setText("Placer les renforts");
+		instruction.setBounds((int) (3.8*0.17*cl*l), (int)(0.6*(h-ch*h)), 300, (int)(0.33*(h-ch*h)));
+		instruction.addMouseListener(m);
+		instruction.setFont(fonj);
+		downPanel.add(instruction);
 		
 	
 		this.add(downPanel);
@@ -241,6 +306,8 @@ public class Map extends JFrame{
 		
 	    this.setVisible(true);
 	}
+	
+	
 	
 	MouseListener m = new MouseListener() {
 		public void mouseClicked(MouseEvent e) {
@@ -305,6 +372,13 @@ public class Map extends JFrame{
 					j4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
 					j5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
 				}
+			}
+			
+			if(e.getSource()==refresh) {
+				TerritoireD = null;
+				TerritoireA = null;
+				terdep.setText("Territoires départ");
+				terarr.setText("Territoires d'arrivée");
 			}
 		}
 
@@ -475,6 +549,14 @@ public class Map extends JFrame{
 						for(Territoire t : j.territoireListJoueur) {		
 							if(t.getNom().equals(nom)) {
 								System.out.println("TA MERE");
+								if(TerritoireD==null) {
+									TerritoireD=t;
+									terdep.setText(TerritoireD.getNom());
+								}
+								else if(TerritoireA==null) {
+									TerritoireA=t;
+									terarr.setText(TerritoireA.getNom());
+								}
 							}
 						}
 					}
