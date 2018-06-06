@@ -68,6 +68,9 @@ public class Map extends JFrame{
 	JLabel nbSoldat;
 	JLabel nbCavalier;
 	JLabel nbCanon;
+	int nbS = 0;
+	int nbCav=0;
+	int nbCan=0;
 	JLabel placer;
 	JLabel move;
 	JLabel mission;
@@ -79,7 +82,7 @@ public class Map extends JFrame{
 	Territoire TerritoireD;
 	
 	
-	boolean premierTour;
+	boolean premierTour = true;
 	
 	
 	public Map() {
@@ -193,6 +196,13 @@ public class Map extends JFrame{
     	moins3.setIcon(new ImageIcon("Images/moins.png"));
     	moins3.setBounds(200+40, 480+35, 35, 35);
     	rightPanel.add(moins3);
+    	plus1.addMouseListener(m);
+    	plus2.addMouseListener(m);
+    	plus3.addMouseListener(m);
+    	moins1.addMouseListener(m);
+    	moins2.addMouseListener(m);
+    	moins3.addMouseListener(m);
+    	
     	
     	nbSoldat = new JLabel(Integer.toString(0),SwingConstants.CENTER);
     	nbSoldat.setFont(font);
@@ -207,15 +217,15 @@ public class Map extends JFrame{
 		nbCanon.setBounds(208-25, 480+35, 50, 35);
 		rightPanel.add(nbCanon);
 		
-    	/*placer = new JLabel();
+    	placer = new JLabel();
     	placer.setIcon(new ImageIcon("images/renfort.png"));
-    	placer.setBounds(20, 650, 150, 72);
+    	placer.setBounds(15, 670, 150, 72);
     	placer.addMouseListener(m);
-		rightPanel.add(placer);*/
+		rightPanel.add(placer);
 		
 		move = new JLabel();
     	move.setIcon(new ImageIcon("images/move.png"));
-    	move.setBounds((int)(((l-cl*l)-150)/2), 670, 150, 72);
+    	move.setBounds((int)((((l-cl*l))/2)+15), 670, 150, 72);
     	move.addMouseListener(m);
 		rightPanel.add(move);
 		
@@ -304,6 +314,7 @@ public class Map extends JFrame{
 		rightPanel.setBounds((int) (cl*l), 0, l-(int) (cl*l), h);
 		downPanel.setBounds(0, (int) (ch*h),(int) (cl*l), h-(int) (ch*h));
 		
+		
 	    this.setVisible(true);
 	}
 	
@@ -311,8 +322,15 @@ public class Map extends JFrame{
 	
 	MouseListener m = new MouseListener() {
 		public void mouseClicked(MouseEvent e) {
-			if (e.getSource() == suivant) {
+			if (e.getSource() == suivant && Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size()==0) {
+
 				joueurAct++;
+				nbS=0;
+				nbSoldat.setText(Integer.toString(nbS));
+				nbCav=0;
+				nbCan=0;
+				nbCanon.setText(Integer.toString(nbCan));
+				nbCavalier.setText(Integer.toString(nbCav));
 				
 				
 				if (joueurAct >= Plateau.joueurList.size()) {
@@ -374,11 +392,69 @@ public class Map extends JFrame{
 				}
 			}
 			
+			
 			if(e.getSource()==refresh) {
 				TerritoireD = null;
 				TerritoireA = null;
 				terdep.setText("Territoires départ");
 				terarr.setText("Territoires d'arrivée");
+			}
+			
+			if(e.getSource()==plus1) {
+				nbS++;
+				nbSoldat.setText(Integer.toString(nbS));
+			}
+			if(e.getSource()==moins1) {
+				nbS--;
+				nbSoldat.setText(Integer.toString(nbS));
+			}
+			if(e.getSource()==plus2) {
+				nbCav++;
+				nbCavalier.setText(Integer.toString(nbCav));
+			}
+			if(e.getSource()==moins2) {
+				nbCav--;
+				nbCavalier.setText(Integer.toString(nbCav));
+			}
+			if(e.getSource()==plus3) {
+				nbCan++;
+				nbCanon.setText(Integer.toString(nbCan));
+			}
+			if(e.getSource()==moins3) {
+				nbCan--;
+				nbCanon.setText(Integer.toString(nbCan));
+			}
+			
+			if(e.getSource()==placer) {
+				if(TerritoireD.getOccupant() == Plateau.joueurList.get(joueurAct)) {
+					if(TerritoireD.getOccupant().getSoldatListJoueur().size()>=(nbS+nbCav+nbCan)) {
+						TerritoireD.addSoldat(nbS);
+						nbS=0;
+						TerritoireD.addCavalier(nbCav);
+						nbCav=0;
+						TerritoireD.addCanon(nbCan);
+						nbCan=0;
+						actualiserNb();
+						actualiserTerRen();	
+					}
+					else {
+						System.out.println("Vous n'avez pas assez de renforts !");
+					}
+					
+				}
+				else {
+					System.out.println("Ce territoire n'est pas à vous !");
+				}
+				
+			}
+			if(e.getSource()==move) {
+				Unite.beforeMove(TerritoireD, nbS,nbCav, nbCan);
+				Unite.move(TerritoireD, TerritoireA);
+				nbS=0;
+				nbCav=0;
+				nbCan=0;
+				actualiserNb();
+				actualiserTerRen();
 			}
 		}
 
@@ -401,6 +477,16 @@ public class Map extends JFrame{
 
 	};
 		
+	public void actualiserNb() {
+		nbSoldat.setText(Integer.toString(nbS));
+		nbCavalier.setText(Integer.toString(nbCav));
+		nbCanon.setText(Integer.toString(nbCan));
+	}
+	
+	public void actualiserTerRen(){
+		renfortAct.setText(Integer.toString(Plateau.joueurList.get(0).getSoldatListJoueur().size()));
+		nbTerAct.setText(Integer.toString(Plateau.joueurList.get(0).getTerritoireListJoueur().size()));
+	}
 	
 	public class Background extends JPanel implements MouseListener, MouseMotionListener{ 
 		

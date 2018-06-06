@@ -79,6 +79,12 @@ public class Territoire {
 		ArrayList<Soldat> tSol = new ArrayList<Soldat>();
 		this.soldatListTerritoire = tSol;
 		//this.occupant = occupant;
+		ArrayList<Unite> uM = new ArrayList<Unite>();
+		this.uniteMove = uM;
+		ArrayList<Unite> uA = new ArrayList<Unite>();
+		this.uniteAtt = uA;
+		ArrayList<Unite> uD = new ArrayList<Unite>();
+		this.uniteDef = uD;
 		this.x=x;
 		this.y=y;
 	}

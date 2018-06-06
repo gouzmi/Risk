@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Random;
 
 public class Unite {
@@ -140,7 +141,7 @@ public class Unite {
 		this.nbmouv = nbmouv;
 	}
 	
-	public boolean sontVoisin(Territoire dep, Territoire arr) {
+	public static boolean sontVoisin(Territoire dep, Territoire arr) {
 		for (int i=0;i<arr.voisins.length;i++) {
 			if(dep == arr.voisins[i]) {
 				return true;
@@ -149,39 +150,66 @@ public class Unite {
 		return false;
 	}
 	
-	public void move(Territoire dep, Territoire arr) {
+	public static void beforeMove(Territoire dep, int nbS,int nbCav, int nbCan) {
+		if(dep.getCanonListTerritoire().size()+dep.getSoldatListTerritoire().size()+dep.getCavalierListTerritoire().size()>nbS+nbCan+nbCav) {
+			// IL DOIT RESTER AU MOINS UNE UNITE SUR DEP
+			if(dep.getCanonListTerritoire().size()>=nbCan && dep.getSoldatListTerritoire().size()>=nbS && dep.getCavalierListTerritoire().size()>=nbCav  ) {
+			// VERIFICATION SUR LE NOMBRE DE CHAQUE TYPE
+				Collections.sort(dep.soldatListTerritoire, Comparator.comparing(Soldat::getNbmouv));
+				Collections.reverse(dep.getSoldatListTerritoire());
+				for(int i=0;i<nbS;i++) {
+					System.out.println(dep.soldatListTerritoire.size());
+					System.out.println(dep.soldatListTerritoire.get(i).getType());
+					System.out.println(dep.uniteMove.size());
+					dep.uniteMove.add(dep.getSoldatListTerritoire().get(i));
+				}
+				Collections.sort(dep.cavalierListTerritoire, Comparator.comparing(Cavalier::getNbmouv));
+				Collections.reverse(dep.getCavalierListTerritoire());
+				for(int i=0;i<nbCav;i++) {
+					dep.getUniteMove().add(dep.getCavalierListTerritoire().get(i));
+				}
+				Collections.sort(dep.canonListTerritoire, Comparator.comparing(Canon::getNbmouv));
+				Collections.reverse(dep.getCanonListTerritoire());
+				for(int i=0;i<nbCan;i++) {
+					dep.getUniteMove().add(dep.getCanonListTerritoire().get(i));
+				}
+			}
+			else {
+				System.out.println("Un de vos types d'unités n'est pas suffisant");
+			}
+		}
+		else {
+			System.out.println("Il doit rester au moins une unité sur le territoire de départ");
+		}
+		
+	}
+	
+	public static void move(Territoire dep, Territoire arr) {
 		
 		if(sontVoisin(dep,arr)) {
 			if(dep.getOccupant()==arr.getOccupant()) {
 				for(Unite each : dep.getUniteMove()) {
 					if(each.getNbmouv()>0) {
-						if(this.cout==1) {
 							Soldat soldat = new Soldat();
-							soldat.setNbmouv(this.getNbmouv()-1);
+							soldat.setNbmouv(each.getNbmouv()-1);
 							arr.getSoldatListTerritoire().add(soldat);
-							dep.getSoldatListTerritoire().remove(this);
+							dep.getSoldatListTerritoire().remove(each);
 						}
-						else if(this.cout==3) {
+						else if(each.cout==3) {
 							Cavalier cavalier = new Cavalier();
-							cavalier.setNbmouv(this.getNbmouv()-1);
+							cavalier.setNbmouv(each.getNbmouv()-1);
 							arr.getCavalierListTerritoire().add(cavalier);
-							dep.getCavalierListTerritoire().remove(this);
+							dep.getCavalierListTerritoire().remove(each);
 						}
 						else {
 							Canon canon = new Canon();
-							canon.setNbmouv(this.getNbmouv()-1);
+							canon.setNbmouv(each.getNbmouv()-1);
 							arr.getCanonListTerritoire().add(canon);
-							dep.getCanonListTerritoire().remove(this);
+							dep.getCanonListTerritoire().remove(each);
 						}
-						
-					}
-					else {
-						System.out.println("Plus assez de déplacement pour votre "+each.getType());
-					}
-					dep.getUniteMove().remove(each);
 				}
-				
-				
+				dep.getUniteMove().clear();
+	
 			}
 			else {
 				if(dep.uniteMove.size()<4) {
