@@ -409,7 +409,6 @@ public class Map extends JFrame{
 				 
 				//BoÃ®te du message d'information
 				jop1 = new JOptionPane();
-				//String message = Plateau.joueurList.get(joueurAct);
 				jop1.showMessageDialog(null, ""+Plateau.joueurList.get(joueurAct).getMission(), "Mission", JOptionPane.INFORMATION_MESSAGE);
 
 			}
@@ -454,12 +453,17 @@ public class Map extends JFrame{
 						System.out.println(Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size());
 					}
 					else {
-						System.out.println("Vous n'avez pas assez de renforts !");
+						JOptionPane jop2;
+						jop2 = new JOptionPane();
+						jop2.showMessageDialog(null, "Vous n'avez pas assez de renforts !", "Attention", JOptionPane.INFORMATION_MESSAGE);
 					}
 					
 				}
 				else {
-					System.out.println("Ce territoire n'est pas à vous !");
+					JOptionPane jop2;
+					jop2 = new JOptionPane();
+					jop2.showMessageDialog(null, "Ce territoire n'est pas à vous !", "Attention", JOptionPane.INFORMATION_MESSAGE);
+					System.out.println();
 				}
 				
 			}
