@@ -229,12 +229,12 @@ public class Map extends JFrame{
     	move.addMouseListener(m);
 		rightPanel.add(move);
 		
-		terdep = new JLabel("Territoires départ",SwingConstants.CENTER);
+		terdep = new JLabel("Territoires dÃ©part",SwingConstants.CENTER);
 		terdep.setFont(font);
 		terdep.setBounds((int)(0.1*(l-cl*l)), 570, (int)(0.8*(l-(cl*l))), 80);
 		rightPanel.add(terdep);
 		
-		terarr = new JLabel("Territoires d'arrivée",SwingConstants.CENTER);
+		terarr = new JLabel("Territoires d'arrivÃ©e",SwingConstants.CENTER);
 		terarr.setFont(font);
 		terarr.setBounds((int)(0.1*(l-cl*l)),762,(int)(0.8*(l-(cl*l))), 80);
 		rightPanel.add(terarr);
@@ -331,7 +331,12 @@ public class Map extends JFrame{
 	MouseListener m = new MouseListener() {
 		public void mouseClicked(MouseEvent e) {
 			if (e.getSource() == suivant && Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size()==0) {
-
+				if (Plateau.getMission().Victoire(Plateau.joueurList.get(joueurAct), Plateau.joueurList) ==true) {
+					JOptionPane jop2;
+					//Boîte du message de victoire
+					jop2 = new JOptionPane();
+					jop2.showMessageDialog(null, ""+Plateau.joueurList.get(joueurAct)+", tu as Gagné !!!", "Fin du jeu", JOptionPane.INFORMATION_MESSAGE);
+				}
 				joueurAct++;
 				nbS=0;
 				nbSoldat.setText(Integer.toString(nbS));
@@ -398,14 +403,14 @@ public class Map extends JFrame{
 			if(e.getSource()==refresh) {
 				TerritoireD = null;
 				TerritoireA = null;
-				terdep.setText("Territoires départ");
-				terarr.setText("Territoires d'arrivée");
+				terdep.setText("Territoires dÃ©part");
+				terarr.setText("Territoires d'arrivÃ©e");
 			}
 			
 			if (e.getSource()==mission) {
 				JOptionPane jop1;
 				 
-				//Boîte du message d'information
+				//BoÃ®te du message d'information
 				jop1 = new JOptionPane();
 				//String message = Plateau.joueurList.get(joueurAct);
 				jop1.showMessageDialog(null, ""+Plateau.joueurList.get(joueurAct).getMission(), "Mission", JOptionPane.INFORMATION_MESSAGE);
@@ -457,7 +462,7 @@ public class Map extends JFrame{
 					
 				}
 				else {
-					System.out.println("Ce territoire n'est pas � vous !");
+					System.out.println("Ce territoire n'est pas à vous !");
 				}
 				
 			}
