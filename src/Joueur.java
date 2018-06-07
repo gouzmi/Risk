@@ -108,11 +108,14 @@ public class Joueur {
 	}
 	
 		
-	public void defaite (Joueur j) {
+		public void defaite (Joueur j) {
 		if (territoireListJoueur.size()==0) {
-			System.out.println("Défaite de "+j);
+			JOptionPane jop1;
+			jop1 = new JOptionPane();
+			jop1.showMessageDialog(null,"Défaite de "+j , "Défaite", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
+
 
 	
 }
