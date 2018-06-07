@@ -337,6 +337,7 @@ public class Map extends JFrame{
 		public void mouseClicked(MouseEvent e) {
 			
 			if (e.getSource() == suivant && Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size()==0) {
+<<<<<<< HEAD
 				
 				/*if (Plateau.getMission().Victoire(Plateau.joueurList.get(joueurAct), Plateau.joueurList) ==true) {
 					JOptionPane jop2;
@@ -345,6 +346,15 @@ public class Map extends JFrame{
 					jop2.showMessageDialog(null, ""+Plateau.joueurList.get(joueurAct)+", tu as Gagné !!!", "Fin du jeu", JOptionPane.INFORMATION_MESSAGE);
 				}*/
 				Unite.renfort(Plateau.joueurList.get(joueurAct));
+=======
+				if (Plateau.getMission().Victoire(Plateau.joueurList.get(joueurAct), Plateau.joueurList) ==true) {
+					JOptionPane jop2;
+					//Boîte du message de victoire
+					jop2 = new JOptionPane();
+					ImageIcon img = new ImageIcon("images/pistolet.png");
+					jop2.showMessageDialog(null, ""+Plateau.joueurList.get(joueurAct)+", tu as Gagné !!!", "Fin du jeu", JOptionPane.INFORMATION_MESSAGE, img);
+				}
+>>>>>>> ca493ff2e27c50016fe72ac32967a452ff666006
 				joueurAct++;
 				nbS=0;
 				nbSoldat.setText(Integer.toString(nbS));
@@ -418,7 +428,6 @@ public class Map extends JFrame{
 				 
 				//BoÃ®te du message d'information
 				jop1 = new JOptionPane();
-				//String message = Plateau.joueurList.get(joueurAct);
 				jop1.showMessageDialog(null, ""+Plateau.joueurList.get(joueurAct).getMission(), "Mission", JOptionPane.INFORMATION_MESSAGE);
 
 			}
@@ -464,12 +473,17 @@ public class Map extends JFrame{
 						System.out.println(Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size());
 					}
 					else {
-						System.out.println("Vous n'avez pas assez de renforts !");
+						JOptionPane jop2;
+						jop2 = new JOptionPane();
+						jop2.showMessageDialog(null, "Vous n'avez pas assez de renforts !", "Attention", JOptionPane.INFORMATION_MESSAGE);
 					}
 					
 				}
 				else {
-					System.out.println("Ce territoire n'est pas à vous !");
+					JOptionPane jop2;
+					jop2 = new JOptionPane();
+					jop2.showMessageDialog(null, "Ce territoire n'est pas à vous !", "Attention", JOptionPane.INFORMATION_MESSAGE);
+					System.out.println();
 				}
 				
 			}

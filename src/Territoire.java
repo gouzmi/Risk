@@ -3,6 +3,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class Territoire {
 	String nom;
@@ -113,7 +114,7 @@ public class Territoire {
 	public static void attribuerTer(ArrayList<Territoire> territoiresList) {
 		
 		int j = 0; 
-		Collections.shuffle(territoiresList); // mélange liste Territoires
+		Collections.shuffle(territoiresList); // mÃ©lange liste Territoires
 		for (Territoire t : territoiresList){
 			if (j==Plateau.joueurList.size()){
 				j=0;
@@ -206,7 +207,9 @@ public class Territoire {
 			}
 		}
 		else {
-			System.out.println("pas assez d'unités !");
+			JOptionPane jop2;
+			jop2 = new JOptionPane();
+			jop2.showMessageDialog(null, "pas assez d'unitÃ©s !", "Attention", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 	
@@ -220,7 +223,9 @@ public class Territoire {
 			}
 		}
 		else {
-			System.out.println("pas assez d'unités !");
+			JOptionPane jop2;
+			jop2 = new JOptionPane();
+			jop2.showMessageDialog(null, "pas assez d'unitÃ©s !", "Attention", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 	
@@ -234,8 +239,9 @@ public class Territoire {
 			}
 		}
 		else {
-			System.out.println("pas assez d'unités !");
-		}
+			JOptionPane jop2;
+			jop2 = new JOptionPane();
+			jop2.showMessageDialog(null, "pas assez d'unitÃ©s !", "Attention", JOptionPane.INFORMATION_MESSAGE);		}
 	}
 	
 	public ArrayList<Unite> getUniteAtt() {
