@@ -224,6 +224,10 @@ public class Plateau {
 		
 	}
 
+	public static Mission getMission() {
+		return m;
+	}
+	
 	public static ArrayList<Joueur> getJoueurList() {
 		return joueurList;
 	}
