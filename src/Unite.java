@@ -30,7 +30,7 @@ public class Unite {
 		switch (nb) {
 		
 		case 2 :
-			nbarmee = 45;
+			nbarmee = 40;
 			ajoutsoldat(nbarmee);
 			break;
 			

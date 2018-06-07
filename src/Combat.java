@@ -159,21 +159,18 @@ public class Combat {
 		JOptionPane jop3;
 		//Boîte du message d'information
 		jop3 = new JOptionPane();
-		jop3.showMessageDialog(null, ""+victoires, "Résultats de l'attaque", JOptionPane.INFORMATION_MESSAGE);
+		for(int i=0;i<victoires.size();i++) {
+			jop3.showMessageDialog(null, victoires.get(i), "Resultats de l'attaque", JOptionPane.INFORMATION_MESSAGE);
+		}
 
 	}
 	
 	public void combattre(Territoire tATT,Territoire tDEF) {
 		choisirDEF(tDEF);
-		System.out.println("choisirDEF");
 		lancerDe(tDEF.getUniteDef());
-		System.out.println("lancerDe");
 		trierDEF(tDEF.uniteDef);
-		System.out.println("trierDEF");
 		lancerDe(tATT.getUniteAtt());
-		System.out.println("lancerDe");
 		trierATT(tATT);
-		System.out.println("trierATT");
 		affrontement(tATT,tDEF);
 	}
 }

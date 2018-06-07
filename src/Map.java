@@ -323,6 +323,11 @@ public class Map extends JFrame{
 		downPanel.setBounds(0, (int) (ch*h),(int) (cl*l), h-(int) (ch*h));
 		
 		
+			//voir actualiserRA
+			move.setVisible(false);
+			placer.setVisible(true);
+			suivant.setVisible(false);
+		
 	    this.setVisible(true);
 	}
 	
@@ -330,13 +335,16 @@ public class Map extends JFrame{
 	
 	MouseListener m = new MouseListener() {
 		public void mouseClicked(MouseEvent e) {
+			
 			if (e.getSource() == suivant && Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size()==0) {
+				
 				/*if (Plateau.getMission().Victoire(Plateau.joueurList.get(joueurAct), Plateau.joueurList) ==true) {
 					JOptionPane jop2;
 					//Boîte du message de victoire
 					jop2 = new JOptionPane();
 					jop2.showMessageDialog(null, ""+Plateau.joueurList.get(joueurAct)+", tu as Gagné !!!", "Fin du jeu", JOptionPane.INFORMATION_MESSAGE);
 				}*/
+				Unite.renfort(Plateau.joueurList.get(joueurAct));
 				joueurAct++;
 				nbS=0;
 				nbSoldat.setText(Integer.toString(nbS));
@@ -352,6 +360,7 @@ public class Map extends JFrame{
 				}
 				renfortAct.setText(Integer.toString(Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size()));
 				nbTerAct.setText(Integer.toString(Plateau.joueurList.get(joueurAct).getTerritoireListJoueur() .size()));
+				actualiserRA();
 				if (joueurAct == 0) {
 					j1.setBorder(BorderFactory.createLineBorder( Plateau.joueurList.get(joueurAct).getColor(), 5));
 					if (Plateau.joueurList.size()==2) {
@@ -449,6 +458,7 @@ public class Map extends JFrame{
 						TerritoireD.addCanon(nbCan);
 						nbCan=0;
 						actualiserNb();
+						actualiserRA();
 						actualiserTerRen();	
 						System.out.println("joueur ="+joueurAct);
 						System.out.println(Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size());
@@ -470,6 +480,7 @@ public class Map extends JFrame{
 				nbCav=0;
 				nbCan=0;
 				actualiserNb();
+				actualiserRA();
 				actualiserTerRen();
 			}
 		}
@@ -492,7 +503,24 @@ public class Map extends JFrame{
 		}
 
 	};
-		
+	
+	public void actualiserRA() {
+		if(Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size()!=0) {
+			instruction.setText("Placer les renforts");
+			move.setVisible(false);
+			placer.setVisible(true);
+			suivant.setVisible(false);
+		}
+		else {
+			instruction.setText("Attaquez/ d�placez");
+			if(premierTour==false) {
+				move.setVisible(true);
+			}
+			placer.setVisible(false);
+			suivant.setVisible(true);
+		}
+	}
+	
 	public void actualiserNb() {
 		nbSoldat.setText(Integer.toString(nbS));
 		nbCavalier.setText(Integer.toString(nbCav));

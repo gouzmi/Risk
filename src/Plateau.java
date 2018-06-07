@@ -102,7 +102,7 @@ public class Plateau {
 	    EastAfrica.setVoisins(voisinEastAfrica);
 	    Territoire voisinEgypt [] = {EastAfrica, NorthAfrica, SouthernEU, MiddleEast};
 	    Egypt.setVoisins(voisinEgypt);
-	    Territoire voisinSouthernEU [] = {WesternEU, NorthernEU, Ukraine, MiddleEast};
+	    Territoire voisinSouthernEU [] = {WesternEU, NorthernEU, Ukraine, MiddleEast, Egypt};
 	    SouthernEU.setVoisins(voisinSouthernEU);
 	    Territoire voisinWesternEU [] = {SouthernEU, NorthAfrica, NorthernEU, GreatBritain};
 	    WesternEU.setVoisins(voisinWesternEU);
