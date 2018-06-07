@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class Joueur {
 	public String nom;
 	public int id;

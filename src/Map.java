@@ -337,24 +337,19 @@ public class Map extends JFrame{
 		public void mouseClicked(MouseEvent e) {
 			
 			if (e.getSource() == suivant && Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size()==0) {
-<<<<<<< HEAD
+
 				
-				/*if (Plateau.getMission().Victoire(Plateau.joueurList.get(joueurAct), Plateau.joueurList) ==true) {
-					JOptionPane jop2;
-					//Boîte du message de victoire
-					jop2 = new JOptionPane();
-					jop2.showMessageDialog(null, ""+Plateau.joueurList.get(joueurAct)+", tu as Gagné !!!", "Fin du jeu", JOptionPane.INFORMATION_MESSAGE);
-				}*/
+				
 				Unite.renfort(Plateau.joueurList.get(joueurAct));
-=======
-				if (Plateau.getMission().Victoire(Plateau.joueurList.get(joueurAct), Plateau.joueurList) ==true) {
+
+				/*if (Plateau.getMission().Victoire(Plateau.joueurList.get(joueurAct), Plateau.joueurList) ==true) {
 					JOptionPane jop2;
 					//Boîte du message de victoire
 					jop2 = new JOptionPane();
 					ImageIcon img = new ImageIcon("images/pistolet.png");
 					jop2.showMessageDialog(null, ""+Plateau.joueurList.get(joueurAct)+", tu as Gagné !!!", "Fin du jeu", JOptionPane.INFORMATION_MESSAGE, img);
-				}
->>>>>>> ca493ff2e27c50016fe72ac32967a452ff666006
+				}*/
+
 				joueurAct++;
 				nbS=0;
 				nbSoldat.setText(Integer.toString(nbS));
@@ -526,9 +521,10 @@ public class Map extends JFrame{
 			suivant.setVisible(false);
 		}
 		else {
-			instruction.setText("Attaquez/ d�placez");
+			
 			if(premierTour==false) {
 				move.setVisible(true);
+				instruction.setText("Attaquez/ d�placez");
 			}
 			placer.setVisible(false);
 			suivant.setVisible(true);
