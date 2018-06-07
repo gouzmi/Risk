@@ -3,6 +3,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 public class Unite {
 
 	String type; 
@@ -62,7 +64,7 @@ public class Unite {
 			for (int i=0; i<nbarmee; i++) {
 				j.addSoldatJoueur();
 			}
-		System.out.println(j.getNom()+ " Ã  une armÃ©e de ");
+		System.out.println(j.getNom()+ " ÃƒÂ  une armÃƒÂ©e de ");
 		System.out.println(j.soldatListJoueur.size());
 		}
 	}
@@ -162,7 +164,9 @@ public class Unite {
 						dep.uniteMove.add(dep.getSoldatListTerritoire().get(i));
 					}
 					else {
-						System.out.println("Plus assez de d�placement pour votre "+dep.getSoldatListTerritoire().get(i).getType());
+						JOptionPane jop2;
+						jop2 = new JOptionPane();
+						jop2.showMessageDialog(null, "Plus assez de déplacement pour votre "+dep.getSoldatListTerritoire().get(i).getType(), "Attention", JOptionPane.INFORMATION_MESSAGE);	
 					}
 					
 				}
@@ -173,7 +177,9 @@ public class Unite {
 						dep.getUniteMove().add(dep.getCavalierListTerritoire().get(i));
 					}
 					else {
-						System.out.println("Plus assez de d�placement pour votre "+dep.getCavalierListTerritoire().get(i).getType());
+						JOptionPane jop2;
+						jop2 = new JOptionPane();
+						jop2.showMessageDialog(null, "Plus assez de déplacement pour votre "+dep.getCavalierListTerritoire().get(i).getType(), "Attention", JOptionPane.INFORMATION_MESSAGE);	
 					}
 					
 				}
@@ -184,17 +190,23 @@ public class Unite {
 						dep.getUniteMove().add(dep.getCanonListTerritoire().get(i));
 					}
 					else {
-						System.out.println("Plus assez de d�placement pour votre "+dep.getCanonListTerritoire().get(i).getType());
+						JOptionPane jop2;
+						jop2 = new JOptionPane();
+						jop2.showMessageDialog(null,"Plus assez de déplacement pour votre "+dep.getCanonListTerritoire().get(i).getType(), "Attention", JOptionPane.INFORMATION_MESSAGE);	
 					}
 					
 				}
 			}
 			else {
-				System.out.println("Un de vos types d'unit�s n'est pas suffisant");
+				JOptionPane jop2;
+				jop2 = new JOptionPane();
+				jop2.showMessageDialog(null,"Un de vos types d'unités n'est pas suffisant", "Attention", JOptionPane.INFORMATION_MESSAGE);				
 			}
 		}
 		else {
-			System.out.println("Il doit rester au moins une unit� sur le territoire de d�part");
+			JOptionPane jop2;
+			jop2 = new JOptionPane();
+			jop2.showMessageDialog(null,"Il doit rester au moins une unité sur le territoire de départ", "Attention", JOptionPane.INFORMATION_MESSAGE);				
 		}
 		
 	}
@@ -236,12 +248,16 @@ public class Unite {
 					c.combattre(dep, arr);	
 				}
 				else {
-					System.out.println("Trop d'unit�s pour attaquer !");
+					JOptionPane jop2;
+					jop2 = new JOptionPane();
+					jop2.showMessageDialog(null,"Trop d'unités pour attaquer !", "Attention", JOptionPane.INFORMATION_MESSAGE);				
 				}
 			}
 		}
 		else {
-			System.out.println("Les territoires ne sont pas voisins !");
+			JOptionPane jop2;
+			jop2 = new JOptionPane();
+			jop2.showMessageDialog(null,"Les territoires ne sont pas voisins !", "Attention", JOptionPane.INFORMATION_MESSAGE);				
 		}
 	}
 	
