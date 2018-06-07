@@ -96,7 +96,7 @@ public class Combat {
 
 			// VICTOIRE
 			if(att.getUniteAtt().get(i).getPuissance()>def.getUniteDef().get(i).getPuissance()) {
-				victoires.add("Victoire au tour "+a);
+				victoires.add("Victoire au tour "+a+" "+att.getUniteAtt().get(i).getPuissance()+"contre "+def.getUniteDef().get(i).getPuissance());
 				this.listSurvivant.add(att.getUniteAtt().get(i));   // AJOUT A LA LISTE SURVIVANT 
 				if(def.getUniteDef().get(i).getCout()==1) {
 					def.getSoldatListTerritoire().remove(def.getUniteDef().get(i));
@@ -113,7 +113,7 @@ public class Combat {
 			// DEFAITE
 			}
 			else {
-				victoires.add("Défaite au tour "+a);
+				victoires.add("Défaite au tour "+a+" "+def.getUniteDef().get(i).getPuissance()+"contre "+att.getUniteAtt().get(i).getPuissance());
 				if(att.getUniteAtt().get(i).getCout()==1) {
 					att.getSoldatListTerritoire().remove(att.getUniteAtt().get(i));
 				}

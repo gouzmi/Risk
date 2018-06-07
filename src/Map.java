@@ -229,12 +229,12 @@ public class Map extends JFrame{
     	move.addMouseListener(m);
 		rightPanel.add(move);
 		
-		terdep = new JLabel("Territoires dÃ©part",SwingConstants.CENTER);
+		terdep = new JLabel("Territoires départ",SwingConstants.CENTER);
 		terdep.setFont(font);
 		terdep.setBounds((int)(0.1*(l-cl*l)), 570, (int)(0.8*(l-(cl*l))), 80);
 		rightPanel.add(terdep);
 		
-		terarr = new JLabel("Territoires d'arrivÃ©e",SwingConstants.CENTER);
+		terarr = new JLabel("Territoires d'arrivée",SwingConstants.CENTER);
 		terarr.setFont(font);
 		terarr.setBounds((int)(0.1*(l-cl*l)),762,(int)(0.8*(l-(cl*l))), 80);
 		rightPanel.add(terarr);
@@ -334,7 +334,7 @@ public class Map extends JFrame{
 	
 	
 	MouseListener m = new MouseListener() {
-		public void mouseClicked(MouseEvent e) {
+		public void mousePressed(MouseEvent e) {
 			
 			if (e.getSource() == suivant && Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size()==0) {
 
@@ -414,8 +414,8 @@ public class Map extends JFrame{
 			if(e.getSource()==refresh) {
 				TerritoireD = null;
 				TerritoireA = null;
-				terdep.setText("Territoires dÃ©part");
-				terarr.setText("Territoires d'arrivÃ©e");
+				terdep.setText("Territoires départ");
+				terarr.setText("Territoires d'arrivée");
 			}
 			
 			if (e.getSource()==mission) {
@@ -495,7 +495,7 @@ public class Map extends JFrame{
 		}
 
 		@Override
-		public void mousePressed(MouseEvent e) {
+		public void mouseClicked(MouseEvent e) {
 
 		}
 
@@ -524,7 +524,7 @@ public class Map extends JFrame{
 			
 			if(premierTour==false) {
 				move.setVisible(true);
-				instruction.setText("Attaquez/ d�placez");
+				instruction.setText("Attaquez/ déplacez");
 			}
 			placer.setVisible(false);
 			suivant.setVisible(true);

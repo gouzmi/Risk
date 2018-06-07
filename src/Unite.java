@@ -64,28 +64,33 @@ public class Unite {
 			for (int i=0; i<nbarmee; i++) {
 				j.addSoldatJoueur();
 			}
-		System.out.println(j.getNom()+ " ÃƒÂ  une armÃƒÂ©e de ");
+		System.out.println(j.getNom()+ " a une armée de");
 		System.out.println(j.soldatListJoueur.size());
 		}
 	}
 	
 		public static void renfort(Joueur j) {
 		int r = (int) Math.floor((j.territoireListJoueur.size()/3));
-		if (r<=2) {
-			r = 2;
-		}
+		System.out.print(r);
+		
 		int compt = 0;
 		for (Region region : Plateau.regionsList) {
 			for (Territoire t : region.territoires) {
 				for(Territoire tj : j.territoireListJoueur) {
+					System.out.print("je suis ici");
 					if (tj == t) {
 						compt++;
 					}
 				}
 			}
 			if (compt == region.territoires.length) {
-				r = r+(int)Math.floor(compt/2);
+				r = r+(int) Math.floor((compt/2));
+				System.out.print(r);
 			}
+		}
+		System.out.print("r final "+r);
+		if (r<=2) {
+			r = 2;
 		}
 		for (int i=0; i<r; i++) {
 			j.addSoldatJoueur();

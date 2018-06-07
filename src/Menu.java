@@ -187,7 +187,7 @@ public void actionPerformed(ActionEvent arg0) {
 
 
 @Override
-public void mouseClicked(MouseEvent arg0) {
+public void mousePressed(MouseEvent arg0) {
 	if(arg0.getSource() == jouer) {
 		  jouer.setVisible(false);
 		  quitter.setVisible(false);
@@ -341,7 +341,7 @@ public void mouseExited(MouseEvent arg0) {
 
 
 @Override
-public void mousePressed(MouseEvent arg0) {
+public void mouseClicked(MouseEvent arg0) {
 	// TODO Auto-generated method stub
 	
 }
