@@ -6,7 +6,7 @@ public class Joueur {
 	public int id;
 	protected ArrayList<Territoire> territoireListJoueur;
 	protected ArrayList<Soldat> soldatListJoueur;
-	public static boolean Victoire = false;
+	private boolean Victoire = false;
 	Color color;
 	private String mission = new String();
 	
@@ -21,7 +21,6 @@ public class Joueur {
 		this.territoireListJoueur = territoireListJoueur;
 		ArrayList<Soldat> soldatListJoueur = new ArrayList<Soldat>();
 		this.soldatListJoueur = soldatListJoueur;
-		this.Victoire = Victoire;
 		
 	}
 	
@@ -64,7 +63,7 @@ public class Joueur {
 		this.color = color;
 	}
 
-	public boolean isVictoire() {
+	public boolean getVictoire() {
 		return Victoire;
 	}
 
@@ -108,14 +107,6 @@ public class Joueur {
 		this.soldatListJoueur.add(soldat);	
 	}
 	
-	public boolean Victoire (Joueur j) {
-		if (territoireListJoueur.size()==42) {
-			Victoire = true; 
-			System.out.println("Victoire de "+j);
-			return Victoire;
-		}
-		return Victoire;
-	}
 		
 	public void defaite (Joueur j) {
 		if (territoireListJoueur.size()==0) {
