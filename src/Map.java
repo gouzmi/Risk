@@ -331,12 +331,13 @@ public class Map extends JFrame{
 	MouseListener m = new MouseListener() {
 		public void mouseClicked(MouseEvent e) {
 			if (e.getSource() == suivant && Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size()==0) {
-				/*if (Plateau.getMission().Victoire(Plateau.joueurList.get(joueurAct), Plateau.joueurList) ==true) {
+				if (Plateau.getMission().Victoire(Plateau.joueurList.get(joueurAct), Plateau.joueurList) ==true) {
 					JOptionPane jop2;
 					//Boîte du message de victoire
 					jop2 = new JOptionPane();
-					jop2.showMessageDialog(null, ""+Plateau.joueurList.get(joueurAct)+", tu as Gagné !!!", "Fin du jeu", JOptionPane.INFORMATION_MESSAGE);
-				}*/
+					ImageIcon img = new ImageIcon("images/pistolet.png");
+					jop2.showMessageDialog(null, ""+Plateau.joueurList.get(joueurAct)+", tu as Gagné !!!", "Fin du jeu", JOptionPane.INFORMATION_MESSAGE, img);
+				}
 				joueurAct++;
 				nbS=0;
 				nbSoldat.setText(Integer.toString(nbS));
