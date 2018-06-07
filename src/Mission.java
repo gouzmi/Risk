@@ -87,53 +87,106 @@ public class Mission {
 		if (j.territoireListJoueur.size()==42) {
 			v = true;
 		}
-		if (j.getMission()==B) {
+		else if (j.getMission()==B) {
 			if (j.territoireListJoueur.size()==42) {
 				v = true;
 			}
 		}
-		if (j.getMission()==C) {
-			int compt=0;
+		else if (j.getMission()==C) {
+			int comptr=0;
 			if (j.territoireListJoueur.size()>=18) {
-				/*for (Region r : Plateau.regionsList) {
+				for (Region region : Plateau.regionsList) {
+					int comptt=0;
 					for (Territoire t : j.territoireListJoueur) {
-						for (Territoire region : ) {
-							
+						for (Territoire r : region.territoires) {
+							if (t==r) {
+								comptt++;
 						}
 					}
 				}
-			}*/
-				v = true;
-			}
-		}
-		if (j.getMission()==D) {
-			int nbarmee = 0;
-			if (j.territoireListJoueur.size()==18) {
-				for (Territoire t : j.territoireListJoueur) {
-					nbarmee =+ t.canonListTerritoire.size()+t.soldatListTerritoire.size()+t.cavalierListTerritoire.size();
-					if (nbarmee<=2) {
-						v=true;
+					if (comptt==region.territoires.length) {
+						comptr++;
 					}
+			}
+				if (comptr >=3) {
+				v = true;
 				}
 			}
 		}
-		if (j.getMission()==E) {
+		else if (j.getMission()==D) {
+			int compt = 0;
+			if (j.territoireListJoueur.size()>=18) {
+				int nbarmee = 0;
+				for (Territoire t : j.territoireListJoueur) {
+					nbarmee = t.canonListTerritoire.size()+t.soldatListTerritoire.size()+t.cavalierListTerritoire.size();
+					if (nbarmee>=2) {
+						compt++;
+					}
+				}
+				if (compt>=18) {
+					v=true;
+				}
+			}
+		}
+		else if (j.getMission()==E) {
 			if (j.territoireListJoueur.size()==30) {
 				v = true;
 			}
 		}
-		if (j.getMission()==F) {
+		else if (j.getMission()==F) {
 			if (j.territoireListJoueur.size()==24) {
 				v = true;
 			}
 		}
-		if (j.getMission()==G) {
+		else if (j.getMission()==G) {
 			if (j.territoireListJoueur.size()==21) {
 				v = true;
 			}
 		}
-		if (j.getMission()==H) {
+		else if (j.getMission()==H) {
+			int compt=0;
+			for (Territoire r : Plateau.regionsList.get(4).getTerritoires()) {
+				for (Territoire t : j.territoireListJoueur) {
+					if (r==t) {
+						compt++;
+					}
+				}
+			}
 			
+			if (compt==Plateau.regionsList.get(4).territoires.length) {
+				int comptr=0;
+				if (j.territoireListJoueur.size()>=18) {
+					ArrayList<Region> copie = new ArrayList<Region>();
+					copie = Plateau.regionsList;
+					copie.remove(4);
+					for (Region region : copie) {
+						int comptt=0;
+						for (Territoire t : j.territoireListJoueur) {
+							for (Territoire r : region.territoires) {
+								if (t==r) {
+									comptt++;
+							}
+						}
+					}
+						if (comptt==region.territoires.length) {
+							comptr++;
+						}
+				}
+					if (comptr >=1) {
+					v = true;
+					}
+				}		
+			}
+		}
+		else {
+			for(Joueur cible : Jlist) {
+				if(j.getMission().equals("Détruire le joueur "+cible.getNom())) {
+					System.out.print("Détruire le joueur " + cible.getNom() + " C'est la mission de " + j.getNom());
+					if(cible.getTerritoireListJoueur().size() == 0) {
+						v = true;
+					}
+				}
+			}
 		}
 		return v;
 	}
