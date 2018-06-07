@@ -81,5 +81,61 @@ public class Mission {
 			//System.out.println("La mission du joueur "+i+" est "+mission); // il faudra faire un pause d'affichage 
 		}
 	}
+	
+		public boolean Victoire(Joueur j, List<Joueur> Jlist) {
+		boolean v = false;
+		if (j.territoireListJoueur.size()==42) {
+			v = true;
+		}
+		if (j.getMission()==B) {
+			if (j.territoireListJoueur.size()==42) {
+				v = true;
+			}
+		}
+		if (j.getMission()==C) {
+			int compt=0;
+			if (j.territoireListJoueur.size()>=18) {
+				/*for (Region r : Plateau.regionsList) {
+					for (Territoire t : j.territoireListJoueur) {
+						for (Territoire region : ) {
+							
+						}
+					}
+				}
+			}*/
+				v = true;
+			}
+		}
+		if (j.getMission()==D) {
+			int nbarmee = 0;
+			if (j.territoireListJoueur.size()==18) {
+				for (Territoire t : j.territoireListJoueur) {
+					nbarmee =+ t.canonListTerritoire.size()+t.soldatListTerritoire.size()+t.cavalierListTerritoire.size();
+					if (nbarmee<=2) {
+						v=true;
+					}
+				}
+			}
+		}
+		if (j.getMission()==E) {
+			if (j.territoireListJoueur.size()==30) {
+				v = true;
+			}
+		}
+		if (j.getMission()==F) {
+			if (j.territoireListJoueur.size()==24) {
+				v = true;
+			}
+		}
+		if (j.getMission()==G) {
+			if (j.territoireListJoueur.size()==21) {
+				v = true;
+			}
+		}
+		if (j.getMission()==H) {
+			
+		}
+		return v;
+	}
 
 }
