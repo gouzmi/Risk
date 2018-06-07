@@ -3,6 +3,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 	
 
 public class Combat {
@@ -88,11 +90,13 @@ public class Combat {
 		// NETTOYAGE DE LA LISTE SURVIVANT AVANT LE COMBAT
 		this.listSurvivant.clear();
 		//
+		ArrayList<String>victoires = new ArrayList<String>();
 		for(int i=0;i<r;i++) {
-			
+			int a = i+1;
+
 			// VICTOIRE
 			if(att.getUniteAtt().get(i).getPuissance()>def.getUniteDef().get(i).getPuissance()) {
-				System.out.println("Victoire au tour "+i+1);
+				victoires.add("Victoire au tour "+a);
 				this.listSurvivant.add(att.getUniteAtt().get(i));   // AJOUT A LA LISTE SURVIVANT 
 				if(def.getUniteDef().get(i).getCout()==1) {
 					def.getSoldatListTerritoire().remove(def.getUniteDef().get(i));
@@ -109,7 +113,7 @@ public class Combat {
 			// DEFAITE
 			}
 			else {
-				System.out.println("D�faite au tour "+i+1);
+				victoires.add("Défaite au tour "+a);
 				if(att.getUniteAtt().get(i).getCout()==1) {
 					att.getSoldatListTerritoire().remove(att.getUniteAtt().get(i));
 				}
@@ -124,7 +128,8 @@ public class Combat {
 			
 		}
 		if(def.getCanonListTerritoire().size()+def.getCavalierListTerritoire().size()+def.getSoldatListTerritoire().size()==0) {
-			System.out.println(def.getNom()+" conquis par "+att.getOccupant().getNom() );
+			victoires.add(def.getNom()+" conquis par "+att.getOccupant().getNom());
+			//System.out.println(def.getNom()+" conquis par "+att.getOccupant().getNom() );
 			att.getOccupant().getTerritoireListJoueur().add(def);
 			def.getOccupant().getTerritoireListJoueur().remove(def);
 			def.setOccupant(att.getOccupant());
@@ -151,6 +156,11 @@ public class Combat {
 			}
 	
 		}
+		JOptionPane jop3;
+		//Boîte du message d'information
+		jop3 = new JOptionPane();
+		jop3.showMessageDialog(null, ""+victoires, "Résultats de l'attaque", JOptionPane.INFORMATION_MESSAGE);
+
 	}
 	
 	public void combattre(Territoire tATT,Territoire tDEF) {
