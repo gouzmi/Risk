@@ -233,9 +233,7 @@ public class Unite {
 					dep.getUniteAtt().addAll(dep.getUniteMove());
 					dep.getUniteMove().clear();
 					Combat c = new Combat();
-					System.out.println("A l'attaque !");
 					c.combattre(dep, arr);	
-					System.out.println("A l'attaque !");
 				}
 				else {
 					System.out.println("Trop d'unités pour attaquer !");

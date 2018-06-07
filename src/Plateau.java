@@ -8,7 +8,7 @@ public class Plateau {
 	public static ArrayList<Joueur> joueurList = new ArrayList<Joueur>();
 	public static ArrayList<Territoire> territoiresList;
 	public static ArrayList<Region> regionsList;
-	
+	public static Mission m;
 
 			
 	
@@ -98,7 +98,7 @@ public class Plateau {
 	    SouthAfrica.setVoisins(voisinSouthAfrica);
 	    Territoire voisinMadagascar [] = {SouthAfrica, EastAfrica};
 	    Madagascar.setVoisins(voisinMadagascar);
-	    Territoire voisinEastAfrica [] = {NorthAfrica, Egypt, Congo, SouthAfrica};
+	    Territoire voisinEastAfrica [] = {NorthAfrica, Egypt, Congo, SouthAfrica,MiddleEast};
 	    EastAfrica.setVoisins(voisinEastAfrica);
 	    Territoire voisinEgypt [] = {EastAfrica, NorthAfrica, SouthernEU, MiddleEast};
 	    Egypt.setVoisins(voisinEgypt);
@@ -106,7 +106,7 @@ public class Plateau {
 	    SouthernEU.setVoisins(voisinSouthernEU);
 	    Territoire voisinWesternEU [] = {SouthernEU, NorthAfrica, NorthernEU, GreatBritain};
 	    WesternEU.setVoisins(voisinWesternEU);
-	    Territoire voisinGreatBritain  [] = {WesternEU, Iceland, Scandinavia};
+	    Territoire voisinGreatBritain  [] = {WesternEU, Iceland, Scandinavia,NorthernEU};
 	    GreatBritain.setVoisins(voisinGreatBritain);
 	    Territoire voisinIceland [] = {Greenland, Scandinavia, GreatBritain};
 	    Iceland.setVoisins(voisinIceland);
@@ -136,12 +136,12 @@ public class Plateau {
 	    Yakutsk.setVoisins(voisinYakutsk);
 	    Territoire voisinIrkutsk [] = {Siberia, Yakutsk, Kamchatka, Mongolia};
 	    Irkutsk.setVoisins(voisinIrkutsk);
-	    Territoire voisinKamchatka  [] = {Yakutsk, Irkutsk, Mongolia, Alaska};
+	    Territoire voisinKamchatka  [] = {Yakutsk, Irkutsk, Mongolia, Alaska,Japan};
 	    Kamchatka.setVoisins(voisinKamchatka);
 	    Territoire voisinJapan  [] = {Mongolia, Kamchatka};
 	    Japan.setVoisins(voisinJapan);
 	    Territoire voisinIndonesia  [] = {Siam, NewGuinea, WesternAustralia};
-	    Indonesia.setVoisins(voisinIndonesia);
+	    Indonesia.setVoisins(voisinIndonesia);	
 	    Territoire voisinWesternAustralia  [] = {Indonesia, NewGuinea, EasternAustralia};
 	    WesternAustralia.setVoisins(voisinWesternAustralia);
 	    Territoire voisinEasternAustralia [] = {WesternAustralia, NewGuinea};

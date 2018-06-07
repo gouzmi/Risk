@@ -331,12 +331,12 @@ public class Map extends JFrame{
 	MouseListener m = new MouseListener() {
 		public void mouseClicked(MouseEvent e) {
 			if (e.getSource() == suivant && Plateau.joueurList.get(joueurAct).getSoldatListJoueur().size()==0) {
-				if (Plateau.getMission().Victoire(Plateau.joueurList.get(joueurAct), Plateau.joueurList) ==true) {
+				/*if (Plateau.getMission().Victoire(Plateau.joueurList.get(joueurAct), Plateau.joueurList) ==true) {
 					JOptionPane jop2;
 					//Boîte du message de victoire
 					jop2 = new JOptionPane();
 					jop2.showMessageDialog(null, ""+Plateau.joueurList.get(joueurAct)+", tu as Gagné !!!", "Fin du jeu", JOptionPane.INFORMATION_MESSAGE);
-				}
+				}*/
 				joueurAct++;
 				nbS=0;
 				nbSoldat.setText(Integer.toString(nbS));
@@ -373,10 +373,7 @@ public class Map extends JFrame{
 				if (joueurAct == 1) {
 					j2.setBorder(BorderFactory.createLineBorder( Plateau.joueurList.get(joueurAct).getColor(), 5));
 					j1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
-					j6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+					
 				}
 
 				if (joueurAct == 2) {

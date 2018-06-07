@@ -68,7 +68,7 @@ public class Combat {
 		Collections.sort(t.getUniteAtt(), Comparator.comparing(Unite::getPuissance));
 		Collections.reverse(t.getUniteAtt());
 		for (int i = t.getUniteAtt().size()-1; i > 0 ; i--) {
-			for(int j =0;j<	i;i++) {
+			for(int j =0;j<	i;j++) {
 				if(t.getUniteAtt().get(j+1).getPuissance()==t.getUniteAtt().get(j).getPuissance()
 						&& t.getUniteAtt().get(j+1).getAttaque()<t.getUniteAtt().get(j).getAttaque()) {
 					Collections.swap(t.getUniteAtt(), j+1, j);
@@ -125,7 +125,11 @@ public class Combat {
 		}
 		if(def.getCanonListTerritoire().size()+def.getCavalierListTerritoire().size()+def.getSoldatListTerritoire().size()==0) {
 			System.out.println(def.getNom()+" conquis par "+att.getOccupant().getNom() );
-			def.setOccupant(att.getOccupant());  // CHANGEMENT D OCCUPANT
+			att.getOccupant().getTerritoireListJoueur().add(def);
+			def.getOccupant().getTerritoireListJoueur().remove(def);
+			def.setOccupant(att.getOccupant());
+			// CHANGEMENT D OCCUPANT
+			
 			// PLACEMENT DES UNITES SURVIVANTES SELON LE TYPE
 			
 			for(int i=0;i<this.listSurvivant.size();i++) {
@@ -151,11 +155,15 @@ public class Combat {
 	
 	public void combattre(Territoire tATT,Territoire tDEF) {
 		choisirDEF(tDEF);
+		System.out.println("choisirDEF");
 		lancerDe(tDEF.getUniteDef());
+		System.out.println("lancerDe");
 		trierDEF(tDEF.uniteDef);
-		
+		System.out.println("trierDEF");
 		lancerDe(tATT.getUniteAtt());
+		System.out.println("lancerDe");
 		trierATT(tATT);
+		System.out.println("trierATT");
 		affrontement(tATT,tDEF);
 	}
 }
