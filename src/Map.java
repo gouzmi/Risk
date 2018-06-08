@@ -478,19 +478,28 @@ public class Map extends JFrame{
 					JOptionPane jop2;
 					jop2 = new JOptionPane();
 					jop2.showMessageDialog(null, "Ce territoire n'est pas à vous !", "Attention", JOptionPane.INFORMATION_MESSAGE);
-					System.out.println();
+					
 				}
 				
 			}
 			if(e.getSource()==move) {
-				Unite.beforeMove(TerritoireD, nbS,nbCav, nbCan);
-				Unite.move(TerritoireD, TerritoireA);
-				nbS=0;
-				nbCav=0;
-				nbCan=0;
-				actualiserNb();
-				actualiserRA();
-				actualiserTerRen();
+				if(TerritoireD.getOccupant() == Plateau.joueurList.get(joueurAct)) {
+					Unite.beforeMove(TerritoireD, nbS,nbCav, nbCan);
+					Unite.move(TerritoireD, TerritoireA);
+					nbS=0;
+					nbCav=0;
+					nbCan=0;
+					actualiserNb();
+					actualiserRA();
+					actualiserTerRen();
+				}
+				else {
+					JOptionPane jop2;
+					jop2 = new JOptionPane();
+					jop2.showMessageDialog(null, "Ce territoire n'est pas à vous !", "Attention", JOptionPane.INFORMATION_MESSAGE);
+					
+				}
+			
 			}
 		}
 

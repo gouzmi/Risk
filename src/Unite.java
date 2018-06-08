@@ -158,6 +158,7 @@ public class Unite {
 	}
 	
 	public static void beforeMove(Territoire dep, int nbS,int nbCav, int nbCan) {
+		dep.getUniteMove().clear();
 		if(dep.getCanonListTerritoire().size()+dep.getSoldatListTerritoire().size()+dep.getCavalierListTerritoire().size()>nbS+nbCan+nbCav) {
 			// IL DOIT RESTER AU MOINS UNE UNITE SUR DEP
 			if(dep.getCanonListTerritoire().size()>=nbCan && dep.getSoldatListTerritoire().size()>=nbS && dep.getCavalierListTerritoire().size()>=nbCav  ) {
