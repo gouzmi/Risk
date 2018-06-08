@@ -220,7 +220,7 @@ public class Plateau {
 		
 		//initialisation des missions
 		
-		Mission m = new Mission(joueurList);
+		m = new Mission(joueurList);
 		
 	}
 
