@@ -342,13 +342,13 @@ public class Map extends JFrame{
 				
 				Unite.renfort(Plateau.joueurList.get(joueurAct));
 
-				/*if (Plateau.getMission().Victoire(Plateau.joueurList.get(joueurAct), Plateau.joueurList) ==true) {
+				if (Plateau.getMission().Victoire(Plateau.joueurList.get(joueurAct), Plateau.joueurList) ==true) {
 					JOptionPane jop2;
 					//Boîte du message de victoire
 					jop2 = new JOptionPane();
 					ImageIcon img = new ImageIcon("images/pistolet.png");
 					jop2.showMessageDialog(null, ""+Plateau.joueurList.get(joueurAct)+", tu as Gagné !!!", "Fin du jeu", JOptionPane.INFORMATION_MESSAGE, img);
-				}*/
+				}
 
 				joueurAct++;
 				nbS=0;

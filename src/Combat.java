@@ -99,6 +99,7 @@ public class Combat {
 				victoires.add("Victoire au tour "+a+" "+att.getUniteAtt().get(i).getPuissance()+"contre "+def.getUniteDef().get(i).getPuissance());
 				this.listSurvivant.add(att.getUniteAtt().get(i));   // AJOUT A LA LISTE SURVIVANT 
 				if(def.getUniteDef().get(i).getCout()==1) {
+					//att.getSoldatListTerritoire().remove(att.getUniteAtt().get(i));
 					def.getSoldatListTerritoire().remove(def.getUniteDef().get(i));
 				}
 				else if(def.getUniteDef().get(i).getCout()==3) {
@@ -139,16 +140,19 @@ public class Combat {
 			
 			for(int i=0;i<this.listSurvivant.size();i++) {
 				if(this.listSurvivant.get(i).getCout()==1) {
+					att.getSoldatListTerritoire().remove(this.listSurvivant.get(i));
 					Soldat soldat = new Soldat();
 					soldat.setNbmouv(listSurvivant.get(i).getNbmouv()-1);
 					def.getSoldatListTerritoire().add(soldat);
 				}
 				else if(this.listSurvivant.get(i).getCout()==3) {
+					att.getCavalierListTerritoire().remove(this.listSurvivant.get(i));
 					Cavalier cavalier = new Cavalier();
 					cavalier.setNbmouv(listSurvivant.get(i).getNbmouv()-1);
 					def.getCavalierListTerritoire().add(cavalier);
 				}
 				else {
+					att.getCanonListTerritoire().remove(this.listSurvivant.get(i));
 					Canon canon = new Canon();
 					canon.setNbmouv(listSurvivant.get(i).getNbmouv()-1);
 					def.getCanonListTerritoire().add(canon);
