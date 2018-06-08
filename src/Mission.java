@@ -87,12 +87,12 @@ public class Mission {
 		if (j.territoireListJoueur.size()==42) {
 			v = true;
 		}
-		else if (j.getMission()==B) {
+		else if (j.getMission().equals(B)) {
 			if (j.territoireListJoueur.size()==42) {
 				v = true;
 			}
 		}
-		else if (j.getMission()==C) {
+		else if (j.getMission().equals(C)) {
 			int comptr=0;
 			if (j.territoireListJoueur.size()>=18) {
 				for (Region region : Plateau.regionsList) {
@@ -113,7 +113,7 @@ public class Mission {
 				}
 			}
 		}
-		else if (j.getMission()==D) {
+		else if (j.getMission().equals(D)) {
 			int compt = 0;
 			if (j.territoireListJoueur.size()>=18) {
 				int nbarmee = 0;
@@ -128,22 +128,22 @@ public class Mission {
 				}
 			}
 		}
-		else if (j.getMission()==E) {
+		else if (j.getMission().equals(E)) {
 			if (j.territoireListJoueur.size()==30) {
 				v = true;
 			}
 		}
-		else if (j.getMission()==F) {
+		else if (j.getMission().equals(F)) {
 			if (j.territoireListJoueur.size()==24) {
 				v = true;
 			}
 		}
-		else if (j.getMission()==G) {
+		else if (j.getMission().equals(G)) {
 			if (j.territoireListJoueur.size()==21) {
 				v = true;
 			}
 		}
-		else if (j.getMission()==H) {
+		else if (j.getMission().equals(H)) {
 			int compt=0;
 			for (Territoire r : Plateau.regionsList.get(4).getTerritoires()) {
 				for (Territoire t : j.territoireListJoueur) {
@@ -178,7 +178,8 @@ public class Mission {
 				}		
 			}
 		}
-		else {
+		/*else if(j.getMission().substring(0, 19) == "Détruire le joueur"){
+			System.out.println("LAAAAAAAAAAA");
 			for(Joueur cible : Jlist) {
 				if(j.getMission().equals("Détruire le joueur "+cible.getNom())) {
 					System.out.print("Détruire le joueur " + cible.getNom() + " C'est la mission de " + j.getNom());
@@ -187,7 +188,7 @@ public class Mission {
 					}
 				}
 			}
-		}
+		}*/
 		return v;
 	}
 
